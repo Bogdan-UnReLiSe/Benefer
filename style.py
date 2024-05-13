@@ -1190,21 +1190,25 @@ class Ui_MainWindow(object):
         self.gridLayout_87.addWidget(self.width_raz, 1, 0, 1, 1)
         self.gridLayout_13.addWidget(self.frame_32, 1, 0, 1, 1)
         self.verticalLayout_12.addLayout(self.gridLayout_13)
-        self.frame_34 = QtWidgets.QFrame(self.page_2)
-        self.frame_34.setMinimumSize(QtCore.QSize(120, 72))
-        self.frame_34.setMaximumSize(QtCore.QSize(120, 72))
-        self.frame_34.setStyleSheet("color: rgb(0, 0, 0);\n"
+        self.verticalLayout_44 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_44.setSpacing(0)
+        self.verticalLayout_44.setObjectName("verticalLayout_44")
+        self.frame_59 = QtWidgets.QFrame(self.page_2)
+        self.frame_59.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_59.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_59.setStyleSheet("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);\n"
-"border-radius: 16px\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
 "")
-        self.frame_34.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_34.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_34.setObjectName("frame_34")
-        self.gridLayout_89 = QtWidgets.QGridLayout(self.frame_34)
-        self.gridLayout_89.setContentsMargins(4, 5, 5, 5)
-        self.gridLayout_89.setSpacing(4)
-        self.gridLayout_89.setObjectName("gridLayout_89")
-        self.lineOfY = QtWidgets.QPushButton(self.frame_34)
+        self.frame_59.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_59.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_59.setObjectName("frame_59")
+        self.gridLayout_18 = QtWidgets.QGridLayout(self.frame_59)
+        self.gridLayout_18.setContentsMargins(4, 5, 5, 5)
+        self.gridLayout_18.setSpacing(4)
+        self.gridLayout_18.setObjectName("gridLayout_18")
+        self.lineOfY = QtWidgets.QPushButton(self.frame_59)
         self.lineOfY.setEnabled(False)
         self.lineOfY.setMinimumSize(QtCore.QSize(28, 28))
         self.lineOfY.setMaximumSize(QtCore.QSize(28, 28))
@@ -1221,8 +1225,8 @@ class Ui_MainWindow(object):
         self.lineOfY.setIconSize(QtCore.QSize(32, 32))
         self.lineOfY.setFlat(False)
         self.lineOfY.setObjectName("lineOfY")
-        self.gridLayout_89.addWidget(self.lineOfY, 1, 3, 1, 1)
-        self.lineOfX = QtWidgets.QPushButton(self.frame_34)
+        self.gridLayout_18.addWidget(self.lineOfY, 1, 3, 1, 1)
+        self.lineOfX = QtWidgets.QPushButton(self.frame_59)
         self.lineOfX.setEnabled(False)
         self.lineOfX.setMinimumSize(QtCore.QSize(28, 28))
         self.lineOfX.setMaximumSize(QtCore.QSize(28, 28))
@@ -1239,17 +1243,13 @@ class Ui_MainWindow(object):
         self.lineOfX.setIconSize(QtCore.QSize(32, 32))
         self.lineOfX.setFlat(False)
         self.lineOfX.setObjectName("lineOfX")
-        self.gridLayout_89.addWidget(self.lineOfX, 1, 1, 1, 1)
-        self.x_button = QtWidgets.QPushButton(self.frame_34)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.x_button.sizePolicy().hasHeightForWidth())
-        self.x_button.setSizePolicy(sizePolicy)
-        self.x_button.setMinimumSize(QtCore.QSize(56, 28))
-        self.x_button.setMaximumSize(QtCore.QSize(56, 28))
-        self.x_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.x_button.setStyleSheet("QPushButton {\n"
+        self.gridLayout_18.addWidget(self.lineOfX, 1, 1, 1, 1)
+        self.y_raz = QtWidgets.QPushButton(self.frame_59)
+        self.y_raz.setEnabled(True)
+        self.y_raz.setMinimumSize(QtCore.QSize(28, 28))
+        self.y_raz.setMaximumSize(QtCore.QSize(28, 28))
+        self.y_raz.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.y_raz.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(0, 0, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
@@ -1265,9 +1265,11 @@ class Ui_MainWindow(object):
 "    background-color: rgb(116, 116, 116);\n"
 "    border-radius: 12px\n"
 "}")
-        self.x_button.setObjectName("x_button")
-        self.gridLayout_89.addWidget(self.x_button, 0, 0, 1, 1)
-        self.y_button = QtWidgets.QPushButton(self.frame_34)
+        self.y_raz.setIconSize(QtCore.QSize(32, 32))
+        self.y_raz.setFlat(False)
+        self.y_raz.setObjectName("y_raz")
+        self.gridLayout_18.addWidget(self.y_raz, 1, 2, 1, 1)
+        self.y_button = QtWidgets.QPushButton(self.frame_59)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -1293,8 +1295,8 @@ class Ui_MainWindow(object):
 "    border-radius: 12px\n"
 "}")
         self.y_button.setObjectName("y_button")
-        self.gridLayout_89.addWidget(self.y_button, 0, 2, 1, 1)
-        self.x_raz = QtWidgets.QPushButton(self.frame_34)
+        self.gridLayout_18.addWidget(self.y_button, 0, 2, 1, 2)
+        self.x_raz = QtWidgets.QPushButton(self.frame_59)
         self.x_raz.setEnabled(True)
         self.x_raz.setMinimumSize(QtCore.QSize(28, 28))
         self.x_raz.setMaximumSize(QtCore.QSize(28, 28))
@@ -1318,13 +1320,17 @@ class Ui_MainWindow(object):
         self.x_raz.setIconSize(QtCore.QSize(32, 32))
         self.x_raz.setFlat(False)
         self.x_raz.setObjectName("x_raz")
-        self.gridLayout_89.addWidget(self.x_raz, 1, 0, 1, 1)
-        self.y_raz = QtWidgets.QPushButton(self.frame_34)
-        self.y_raz.setEnabled(True)
-        self.y_raz.setMinimumSize(QtCore.QSize(28, 28))
-        self.y_raz.setMaximumSize(QtCore.QSize(28, 28))
-        self.y_raz.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.y_raz.setStyleSheet("QPushButton {\n"
+        self.gridLayout_18.addWidget(self.x_raz, 1, 0, 1, 1)
+        self.x_button = QtWidgets.QPushButton(self.frame_59)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.x_button.sizePolicy().hasHeightForWidth())
+        self.x_button.setSizePolicy(sizePolicy)
+        self.x_button.setMinimumSize(QtCore.QSize(56, 28))
+        self.x_button.setMaximumSize(QtCore.QSize(56, 28))
+        self.x_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.x_button.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(0, 0, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
@@ -1340,11 +1346,146 @@ class Ui_MainWindow(object):
 "    background-color: rgb(116, 116, 116);\n"
 "    border-radius: 12px\n"
 "}")
-        self.y_raz.setIconSize(QtCore.QSize(32, 32))
-        self.y_raz.setFlat(False)
-        self.y_raz.setObjectName("y_raz")
-        self.gridLayout_89.addWidget(self.y_raz, 1, 2, 1, 1)
-        self.verticalLayout_12.addWidget(self.frame_34)
+        self.x_button.setObjectName("x_button")
+        self.gridLayout_18.addWidget(self.x_button, 0, 0, 1, 2)
+        self.verticalLayout_44.addWidget(self.frame_59)
+        self.frame_60 = QtWidgets.QFrame(self.page_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_60.sizePolicy().hasHeightForWidth())
+        self.frame_60.setSizePolicy(sizePolicy)
+        self.frame_60.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_60.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_60.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"")
+        self.frame_60.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_60.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_60.setObjectName("frame_60")
+        self.verticalLayout_48 = QtWidgets.QVBoxLayout(self.frame_60)
+        self.verticalLayout_48.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_48.setSpacing(0)
+        self.verticalLayout_48.setObjectName("verticalLayout_48")
+        self.frame_61 = QtWidgets.QFrame(self.frame_60)
+        self.frame_61.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_61.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_61.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
+"border-width: 4px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-style: outset;")
+        self.frame_61.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_61.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_61.setObjectName("frame_61")
+        self.gridLayout_101 = QtWidgets.QGridLayout(self.frame_61)
+        self.gridLayout_101.setContentsMargins(4, 4, 4, 4)
+        self.gridLayout_101.setSpacing(4)
+        self.gridLayout_101.setObjectName("gridLayout_101")
+        self.lineOfBorder_12 = QtWidgets.QPushButton(self.frame_61)
+        self.lineOfBorder_12.setEnabled(False)
+        self.lineOfBorder_12.setMinimumSize(QtCore.QSize(64, 28))
+        self.lineOfBorder_12.setMaximumSize(QtCore.QSize(64, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfBorder_12.setFont(font)
+        self.lineOfBorder_12.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfBorder_12.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfBorder_12.setText("")
+        self.lineOfBorder_12.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfBorder_12.setFlat(False)
+        self.lineOfBorder_12.setObjectName("lineOfBorder_12")
+        self.gridLayout_101.addWidget(self.lineOfBorder_12, 1, 1, 1, 1)
+        self.border_button_12 = QtWidgets.QPushButton(self.frame_61)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.border_button_12.sizePolicy().hasHeightForWidth())
+        self.border_button_12.setSizePolicy(sizePolicy)
+        self.border_button_12.setMinimumSize(QtCore.QSize(100, 28))
+        self.border_button_12.setMaximumSize(QtCore.QSize(100, 28))
+        self.border_button_12.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_button_12.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_button_12.setObjectName("border_button_12")
+        self.gridLayout_101.addWidget(self.border_button_12, 0, 0, 1, 2)
+        self.border_raz_12 = QtWidgets.QPushButton(self.frame_61)
+        self.border_raz_12.setEnabled(True)
+        self.border_raz_12.setMinimumSize(QtCore.QSize(28, 28))
+        self.border_raz_12.setMaximumSize(QtCore.QSize(28, 28))
+        self.border_raz_12.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_raz_12.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_raz_12.setIconSize(QtCore.QSize(32, 32))
+        self.border_raz_12.setFlat(False)
+        self.border_raz_12.setObjectName("border_raz_12")
+        self.gridLayout_101.addWidget(self.border_raz_12, 1, 0, 1, 1)
+        self.verticalLayout_48.addWidget(self.frame_61)
+        self.verticalLayout_44.addWidget(self.frame_60)
+        self.plus_vlozh_7 = QtWidgets.QPushButton(self.page_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.plus_vlozh_7.sizePolicy().hasHeightForWidth())
+        self.plus_vlozh_7.setSizePolicy(sizePolicy)
+        self.plus_vlozh_7.setMinimumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_7.setMaximumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_7.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.plus_vlozh_7.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-bottomp-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}")
+        self.plus_vlozh_7.setCheckable(True)
+        self.plus_vlozh_7.setObjectName("plus_vlozh_7")
+        self.verticalLayout_44.addWidget(self.plus_vlozh_7)
+        self.verticalLayout_12.addLayout(self.verticalLayout_44)
         spacerItem11 = QtWidgets.QSpacerItem(179, 3, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_12.addItem(spacerItem11)
         self.createText_button = QtWidgets.QPushButton(self.page_2)
@@ -1646,21 +1787,43 @@ class Ui_MainWindow(object):
         self.height_raz.setObjectName("height_raz")
         self.gridLayout_58.addWidget(self.height_raz, 1, 0, 1, 1)
         self.verticalLayout_5.addWidget(self.frame_7)
-        self.frame_5 = QtWidgets.QFrame(self.page_3)
-        self.frame_5.setMinimumSize(QtCore.QSize(120, 72))
-        self.frame_5.setMaximumSize(QtCore.QSize(120, 72))
-        self.frame_5.setStyleSheet("color: rgb(0, 0, 0);\n"
+        self.verticalLayout_36 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_36.setSpacing(0)
+        self.verticalLayout_36.setObjectName("verticalLayout_36")
+        self.frame_50 = QtWidgets.QFrame(self.page_3)
+        self.frame_50.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_50.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_50.setStyleSheet("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);\n"
-"border-radius: 16px\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
 "")
-        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_5.setObjectName("frame_5")
-        self.gridLayout_56 = QtWidgets.QGridLayout(self.frame_5)
-        self.gridLayout_56.setContentsMargins(4, 5, 5, 5)
-        self.gridLayout_56.setSpacing(4)
-        self.gridLayout_56.setObjectName("gridLayout_56")
-        self.lineOfX_2 = QtWidgets.QPushButton(self.frame_5)
+        self.frame_50.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_50.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_50.setObjectName("frame_50")
+        self.gridLayout_10 = QtWidgets.QGridLayout(self.frame_50)
+        self.gridLayout_10.setContentsMargins(4, 5, 5, 5)
+        self.gridLayout_10.setSpacing(4)
+        self.gridLayout_10.setObjectName("gridLayout_10")
+        self.lineOfY_2 = QtWidgets.QPushButton(self.frame_50)
+        self.lineOfY_2.setEnabled(False)
+        self.lineOfY_2.setMinimumSize(QtCore.QSize(28, 28))
+        self.lineOfY_2.setMaximumSize(QtCore.QSize(28, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfY_2.setFont(font)
+        self.lineOfY_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfY_2.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfY_2.setText("")
+        self.lineOfY_2.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfY_2.setFlat(False)
+        self.lineOfY_2.setObjectName("lineOfY_2")
+        self.gridLayout_10.addWidget(self.lineOfY_2, 1, 3, 1, 1)
+        self.lineOfX_2 = QtWidgets.QPushButton(self.frame_50)
         self.lineOfX_2.setEnabled(False)
         self.lineOfX_2.setMinimumSize(QtCore.QSize(28, 28))
         self.lineOfX_2.setMaximumSize(QtCore.QSize(28, 28))
@@ -1677,8 +1840,85 @@ class Ui_MainWindow(object):
         self.lineOfX_2.setIconSize(QtCore.QSize(32, 32))
         self.lineOfX_2.setFlat(False)
         self.lineOfX_2.setObjectName("lineOfX_2")
-        self.gridLayout_56.addWidget(self.lineOfX_2, 1, 1, 1, 1)
-        self.x_button_2 = QtWidgets.QPushButton(self.frame_5)
+        self.gridLayout_10.addWidget(self.lineOfX_2, 1, 1, 1, 1)
+        self.y_raz_2 = QtWidgets.QPushButton(self.frame_50)
+        self.y_raz_2.setEnabled(True)
+        self.y_raz_2.setMinimumSize(QtCore.QSize(28, 28))
+        self.y_raz_2.setMaximumSize(QtCore.QSize(28, 28))
+        self.y_raz_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.y_raz_2.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.y_raz_2.setIconSize(QtCore.QSize(32, 32))
+        self.y_raz_2.setFlat(False)
+        self.y_raz_2.setObjectName("y_raz_2")
+        self.gridLayout_10.addWidget(self.y_raz_2, 1, 2, 1, 1)
+        self.y_button_2 = QtWidgets.QPushButton(self.frame_50)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.y_button_2.sizePolicy().hasHeightForWidth())
+        self.y_button_2.setSizePolicy(sizePolicy)
+        self.y_button_2.setMinimumSize(QtCore.QSize(52, 28))
+        self.y_button_2.setMaximumSize(QtCore.QSize(52, 28))
+        self.y_button_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.y_button_2.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.y_button_2.setObjectName("y_button_2")
+        self.gridLayout_10.addWidget(self.y_button_2, 0, 2, 1, 2)
+        self.x_raz_2 = QtWidgets.QPushButton(self.frame_50)
+        self.x_raz_2.setEnabled(True)
+        self.x_raz_2.setMinimumSize(QtCore.QSize(28, 28))
+        self.x_raz_2.setMaximumSize(QtCore.QSize(28, 28))
+        self.x_raz_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.x_raz_2.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.x_raz_2.setIconSize(QtCore.QSize(32, 32))
+        self.x_raz_2.setFlat(False)
+        self.x_raz_2.setObjectName("x_raz_2")
+        self.gridLayout_10.addWidget(self.x_raz_2, 1, 0, 1, 1)
+        self.x_button_2 = QtWidgets.QPushButton(self.frame_50)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -1704,85 +1944,69 @@ class Ui_MainWindow(object):
 "    border-radius: 12px\n"
 "}")
         self.x_button_2.setObjectName("x_button_2")
-        self.gridLayout_56.addWidget(self.x_button_2, 0, 0, 1, 1)
-        self.x_raz_2 = QtWidgets.QPushButton(self.frame_5)
-        self.x_raz_2.setEnabled(True)
-        self.x_raz_2.setMinimumSize(QtCore.QSize(28, 28))
-        self.x_raz_2.setMaximumSize(QtCore.QSize(28, 28))
-        self.x_raz_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.x_raz_2.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.x_raz_2.setIconSize(QtCore.QSize(32, 32))
-        self.x_raz_2.setFlat(False)
-        self.x_raz_2.setObjectName("x_raz_2")
-        self.gridLayout_56.addWidget(self.x_raz_2, 1, 0, 1, 1)
-        self.y_raz_2 = QtWidgets.QPushButton(self.frame_5)
-        self.y_raz_2.setEnabled(True)
-        self.y_raz_2.setMinimumSize(QtCore.QSize(28, 28))
-        self.y_raz_2.setMaximumSize(QtCore.QSize(28, 28))
-        self.y_raz_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.y_raz_2.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.y_raz_2.setIconSize(QtCore.QSize(32, 32))
-        self.y_raz_2.setFlat(False)
-        self.y_raz_2.setObjectName("y_raz_2")
-        self.gridLayout_56.addWidget(self.y_raz_2, 1, 2, 1, 1)
-        self.lineOfY_2 = QtWidgets.QPushButton(self.frame_5)
-        self.lineOfY_2.setEnabled(False)
-        self.lineOfY_2.setMinimumSize(QtCore.QSize(28, 28))
-        self.lineOfY_2.setMaximumSize(QtCore.QSize(28, 28))
+        self.gridLayout_10.addWidget(self.x_button_2, 0, 0, 1, 2)
+        self.verticalLayout_36.addWidget(self.frame_50)
+        self.frame_51 = QtWidgets.QFrame(self.page_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_51.sizePolicy().hasHeightForWidth())
+        self.frame_51.setSizePolicy(sizePolicy)
+        self.frame_51.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_51.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_51.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"")
+        self.frame_51.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_51.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_51.setObjectName("frame_51")
+        self.verticalLayout_37 = QtWidgets.QVBoxLayout(self.frame_51)
+        self.verticalLayout_37.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_37.setSpacing(0)
+        self.verticalLayout_37.setObjectName("verticalLayout_37")
+        self.frame_52 = QtWidgets.QFrame(self.frame_51)
+        self.frame_52.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_52.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_52.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
+"border-width: 4px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-style: outset;")
+        self.frame_52.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_52.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_52.setObjectName("frame_52")
+        self.gridLayout_98 = QtWidgets.QGridLayout(self.frame_52)
+        self.gridLayout_98.setContentsMargins(4, 4, 4, 4)
+        self.gridLayout_98.setSpacing(4)
+        self.gridLayout_98.setObjectName("gridLayout_98")
+        self.lineOfBorder_9 = QtWidgets.QPushButton(self.frame_52)
+        self.lineOfBorder_9.setEnabled(False)
+        self.lineOfBorder_9.setMinimumSize(QtCore.QSize(64, 28))
+        self.lineOfBorder_9.setMaximumSize(QtCore.QSize(64, 28))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        self.lineOfY_2.setFont(font)
-        self.lineOfY_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lineOfY_2.setStyleSheet("QPushButton {\n"
+        self.lineOfBorder_9.setFont(font)
+        self.lineOfBorder_9.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfBorder_9.setStyleSheet("QPushButton {\n"
 "    color: rgb(0, 0, 0);\n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-radius: 12px\n"
 "}")
-        self.lineOfY_2.setText("")
-        self.lineOfY_2.setIconSize(QtCore.QSize(32, 32))
-        self.lineOfY_2.setFlat(False)
-        self.lineOfY_2.setObjectName("lineOfY_2")
-        self.gridLayout_56.addWidget(self.lineOfY_2, 1, 3, 1, 1)
-        self.y_button_2 = QtWidgets.QPushButton(self.frame_5)
+        self.lineOfBorder_9.setText("")
+        self.lineOfBorder_9.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfBorder_9.setFlat(False)
+        self.lineOfBorder_9.setObjectName("lineOfBorder_9")
+        self.gridLayout_98.addWidget(self.lineOfBorder_9, 1, 1, 1, 1)
+        self.border_button_9 = QtWidgets.QPushButton(self.frame_52)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.y_button_2.sizePolicy().hasHeightForWidth())
-        self.y_button_2.setSizePolicy(sizePolicy)
-        self.y_button_2.setMinimumSize(QtCore.QSize(56, 28))
-        self.y_button_2.setMaximumSize(QtCore.QSize(56, 28))
-        self.y_button_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.y_button_2.setStyleSheet("QPushButton {\n"
+        sizePolicy.setHeightForWidth(self.border_button_9.sizePolicy().hasHeightForWidth())
+        self.border_button_9.setSizePolicy(sizePolicy)
+        self.border_button_9.setMinimumSize(QtCore.QSize(100, 28))
+        self.border_button_9.setMaximumSize(QtCore.QSize(100, 28))
+        self.border_button_9.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_button_9.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(0, 0, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
@@ -1798,9 +2022,67 @@ class Ui_MainWindow(object):
 "    background-color: rgb(116, 116, 116);\n"
 "    border-radius: 12px\n"
 "}")
-        self.y_button_2.setObjectName("y_button_2")
-        self.gridLayout_56.addWidget(self.y_button_2, 0, 2, 1, 1)
-        self.verticalLayout_5.addWidget(self.frame_5)
+        self.border_button_9.setObjectName("border_button_9")
+        self.gridLayout_98.addWidget(self.border_button_9, 0, 0, 1, 2)
+        self.border_raz_9 = QtWidgets.QPushButton(self.frame_52)
+        self.border_raz_9.setEnabled(True)
+        self.border_raz_9.setMinimumSize(QtCore.QSize(28, 28))
+        self.border_raz_9.setMaximumSize(QtCore.QSize(28, 28))
+        self.border_raz_9.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_raz_9.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_raz_9.setIconSize(QtCore.QSize(32, 32))
+        self.border_raz_9.setFlat(False)
+        self.border_raz_9.setObjectName("border_raz_9")
+        self.gridLayout_98.addWidget(self.border_raz_9, 1, 0, 1, 1)
+        self.verticalLayout_37.addWidget(self.frame_52)
+        self.verticalLayout_36.addWidget(self.frame_51)
+        self.plus_vlozh_4 = QtWidgets.QPushButton(self.page_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.plus_vlozh_4.sizePolicy().hasHeightForWidth())
+        self.plus_vlozh_4.setSizePolicy(sizePolicy)
+        self.plus_vlozh_4.setMinimumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_4.setMaximumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.plus_vlozh_4.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-bottomp-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}")
+        self.plus_vlozh_4.setCheckable(True)
+        self.plus_vlozh_4.setObjectName("plus_vlozh_4")
+        self.verticalLayout_36.addWidget(self.plus_vlozh_4)
+        self.verticalLayout_5.addLayout(self.verticalLayout_36)
         spacerItem12 = QtWidgets.QSpacerItem(179, 641, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_5.addItem(spacerItem12)
         self.createImage_button = QtWidgets.QPushButton(self.page_3)
@@ -2710,10 +2992,10 @@ class Ui_MainWindow(object):
         self.listOfFunction.addWidget(self.page_4)
         self.page_5 = QtWidgets.QWidget()
         self.page_5.setObjectName("page_5")
-        self.verticalLayout_70 = QtWidgets.QVBoxLayout(self.page_5)
-        self.verticalLayout_70.setContentsMargins(15, 15, 15, 15)
-        self.verticalLayout_70.setSpacing(10)
-        self.verticalLayout_70.setObjectName("verticalLayout_70")
+        self.verticalLayout_40 = QtWidgets.QVBoxLayout(self.page_5)
+        self.verticalLayout_40.setContentsMargins(15, 15, 15, 15)
+        self.verticalLayout_40.setSpacing(10)
+        self.verticalLayout_40.setObjectName("verticalLayout_40")
         self.pushButton_21 = QtWidgets.QPushButton(self.page_5)
         self.pushButton_21.setMinimumSize(QtCore.QSize(120, 50))
         self.pushButton_21.setMaximumSize(QtCore.QSize(120, 16777215))
@@ -2729,7 +3011,7 @@ class Ui_MainWindow(object):
 "border-radius: 16px;\n"
 "font-size: 16pt;")
         self.pushButton_21.setObjectName("pushButton_21")
-        self.verticalLayout_70.addWidget(self.pushButton_21)
+        self.verticalLayout_40.addWidget(self.pushButton_21)
         self.frame_82 = QtWidgets.QFrame(self.page_5)
         self.frame_82.setMinimumSize(QtCore.QSize(120, 72))
         self.frame_82.setMaximumSize(QtCore.QSize(120, 72))
@@ -2819,7 +3101,7 @@ class Ui_MainWindow(object):
         self.width_raz_13.setFlat(False)
         self.width_raz_13.setObjectName("width_raz_13")
         self.gridLayout_120.addWidget(self.width_raz_13, 1, 0, 1, 1)
-        self.verticalLayout_70.addWidget(self.frame_82)
+        self.verticalLayout_40.addWidget(self.frame_82)
         self.frame_83 = QtWidgets.QFrame(self.page_5)
         self.frame_83.setMinimumSize(QtCore.QSize(120, 72))
         self.frame_83.setMaximumSize(QtCore.QSize(120, 72))
@@ -2909,7 +3191,7 @@ class Ui_MainWindow(object):
         self.height_raz_9.setFlat(False)
         self.height_raz_9.setObjectName("height_raz_9")
         self.gridLayout_121.addWidget(self.height_raz_9, 1, 0, 1, 1)
-        self.verticalLayout_70.addWidget(self.frame_83)
+        self.verticalLayout_40.addWidget(self.frame_83)
         self.verticalLayout_45 = QtWidgets.QVBoxLayout()
         self.verticalLayout_45.setSpacing(0)
         self.verticalLayout_45.setObjectName("verticalLayout_45")
@@ -3014,7 +3296,7 @@ class Ui_MainWindow(object):
         self.title_btn_43.setObjectName("title_btn_43")
         self.gridLayout_122.addWidget(self.title_btn_43, 1, 0, 1, 1)
         self.verticalLayout_45.addWidget(self.frame_84)
-        self.verticalLayout_70.addLayout(self.verticalLayout_45)
+        self.verticalLayout_40.addLayout(self.verticalLayout_45)
         self.verticalLayout_68 = QtWidgets.QVBoxLayout()
         self.verticalLayout_68.setSpacing(0)
         self.verticalLayout_68.setObjectName("verticalLayout_68")
@@ -3130,7 +3412,7 @@ class Ui_MainWindow(object):
         self.border_raz_7.setObjectName("border_raz_7")
         self.gridLayout_159.addWidget(self.border_raz_7, 1, 0, 1, 1)
         self.verticalLayout_68.addWidget(self.frame_128)
-        self.verticalLayout_70.addLayout(self.verticalLayout_68)
+        self.verticalLayout_40.addLayout(self.verticalLayout_68)
         self.verticalLayout_69 = QtWidgets.QVBoxLayout()
         self.verticalLayout_69.setSpacing(0)
         self.verticalLayout_69.setObjectName("verticalLayout_69")
@@ -3235,67 +3517,26 @@ class Ui_MainWindow(object):
         self.title_btn_65.setObjectName("title_btn_65")
         self.gridLayout_160.addWidget(self.title_btn_65, 1, 0, 1, 1)
         self.verticalLayout_69.addWidget(self.frame_129)
-        self.verticalLayout_70.addLayout(self.verticalLayout_69)
-        self.frame_130 = QtWidgets.QFrame(self.page_5)
-        self.frame_130.setMinimumSize(QtCore.QSize(120, 72))
-        self.frame_130.setMaximumSize(QtCore.QSize(120, 72))
-        self.frame_130.setStyleSheet("color: rgb(0, 0, 0);\n"
+        self.verticalLayout_40.addLayout(self.verticalLayout_69)
+        self.verticalLayout_38 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_38.setSpacing(0)
+        self.verticalLayout_38.setObjectName("verticalLayout_38")
+        self.frame_53 = QtWidgets.QFrame(self.page_5)
+        self.frame_53.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_53.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_53.setStyleSheet("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);\n"
-"border-radius: 16px\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
 "")
-        self.frame_130.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_130.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_130.setObjectName("frame_130")
-        self.gridLayout_161 = QtWidgets.QGridLayout(self.frame_130)
-        self.gridLayout_161.setContentsMargins(4, 5, 5, 5)
-        self.gridLayout_161.setSpacing(4)
-        self.gridLayout_161.setObjectName("gridLayout_161")
-        self.lineOfX_19 = QtWidgets.QPushButton(self.frame_130)
-        self.lineOfX_19.setEnabled(False)
-        self.lineOfX_19.setMinimumSize(QtCore.QSize(28, 28))
-        self.lineOfX_19.setMaximumSize(QtCore.QSize(28, 28))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        self.lineOfX_19.setFont(font)
-        self.lineOfX_19.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lineOfX_19.setStyleSheet("QPushButton {\n"
-"    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 12px\n"
-"}")
-        self.lineOfX_19.setText("")
-        self.lineOfX_19.setIconSize(QtCore.QSize(32, 32))
-        self.lineOfX_19.setFlat(False)
-        self.lineOfX_19.setObjectName("lineOfX_19")
-        self.gridLayout_161.addWidget(self.lineOfX_19, 1, 1, 1, 1)
-        self.x_button_19 = QtWidgets.QPushButton(self.frame_130)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.x_button_19.sizePolicy().hasHeightForWidth())
-        self.x_button_19.setSizePolicy(sizePolicy)
-        self.x_button_19.setMinimumSize(QtCore.QSize(56, 28))
-        self.x_button_19.setMaximumSize(QtCore.QSize(56, 28))
-        self.x_button_19.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.x_button_19.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.x_button_19.setObjectName("x_button_19")
-        self.gridLayout_161.addWidget(self.x_button_19, 0, 0, 1, 1)
-        self.lineOfY_19 = QtWidgets.QPushButton(self.frame_130)
+        self.frame_53.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_53.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_53.setObjectName("frame_53")
+        self.gridLayout_14 = QtWidgets.QGridLayout(self.frame_53)
+        self.gridLayout_14.setContentsMargins(4, 5, 5, 5)
+        self.gridLayout_14.setSpacing(4)
+        self.gridLayout_14.setObjectName("gridLayout_14")
+        self.lineOfY_19 = QtWidgets.QPushButton(self.frame_53)
         self.lineOfY_19.setEnabled(False)
         self.lineOfY_19.setMinimumSize(QtCore.QSize(28, 28))
         self.lineOfY_19.setMaximumSize(QtCore.QSize(28, 28))
@@ -3312,8 +3553,51 @@ class Ui_MainWindow(object):
         self.lineOfY_19.setIconSize(QtCore.QSize(32, 32))
         self.lineOfY_19.setFlat(False)
         self.lineOfY_19.setObjectName("lineOfY_19")
-        self.gridLayout_161.addWidget(self.lineOfY_19, 1, 3, 1, 1)
-        self.y_button_19 = QtWidgets.QPushButton(self.frame_130)
+        self.gridLayout_14.addWidget(self.lineOfY_19, 1, 3, 1, 1)
+        self.lineOfX_19 = QtWidgets.QPushButton(self.frame_53)
+        self.lineOfX_19.setEnabled(False)
+        self.lineOfX_19.setMinimumSize(QtCore.QSize(28, 28))
+        self.lineOfX_19.setMaximumSize(QtCore.QSize(28, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfX_19.setFont(font)
+        self.lineOfX_19.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfX_19.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfX_19.setText("")
+        self.lineOfX_19.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfX_19.setFlat(False)
+        self.lineOfX_19.setObjectName("lineOfX_19")
+        self.gridLayout_14.addWidget(self.lineOfX_19, 1, 1, 1, 1)
+        self.y_raz_19 = QtWidgets.QPushButton(self.frame_53)
+        self.y_raz_19.setEnabled(True)
+        self.y_raz_19.setMinimumSize(QtCore.QSize(28, 28))
+        self.y_raz_19.setMaximumSize(QtCore.QSize(28, 28))
+        self.y_raz_19.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.y_raz_19.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.y_raz_19.setIconSize(QtCore.QSize(32, 32))
+        self.y_raz_19.setFlat(False)
+        self.y_raz_19.setObjectName("y_raz_19")
+        self.gridLayout_14.addWidget(self.y_raz_19, 1, 2, 1, 1)
+        self.y_button_19 = QtWidgets.QPushButton(self.frame_53)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -3339,8 +3623,8 @@ class Ui_MainWindow(object):
 "    border-radius: 12px\n"
 "}")
         self.y_button_19.setObjectName("y_button_19")
-        self.gridLayout_161.addWidget(self.y_button_19, 0, 2, 1, 1)
-        self.x_raz_19 = QtWidgets.QPushButton(self.frame_130)
+        self.gridLayout_14.addWidget(self.y_button_19, 0, 2, 1, 2)
+        self.x_raz_19 = QtWidgets.QPushButton(self.frame_53)
         self.x_raz_19.setEnabled(True)
         self.x_raz_19.setMinimumSize(QtCore.QSize(28, 28))
         self.x_raz_19.setMaximumSize(QtCore.QSize(28, 28))
@@ -3364,13 +3648,17 @@ class Ui_MainWindow(object):
         self.x_raz_19.setIconSize(QtCore.QSize(32, 32))
         self.x_raz_19.setFlat(False)
         self.x_raz_19.setObjectName("x_raz_19")
-        self.gridLayout_161.addWidget(self.x_raz_19, 1, 0, 1, 1)
-        self.y_raz_19 = QtWidgets.QPushButton(self.frame_130)
-        self.y_raz_19.setEnabled(True)
-        self.y_raz_19.setMinimumSize(QtCore.QSize(28, 28))
-        self.y_raz_19.setMaximumSize(QtCore.QSize(28, 28))
-        self.y_raz_19.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.y_raz_19.setStyleSheet("QPushButton {\n"
+        self.gridLayout_14.addWidget(self.x_raz_19, 1, 0, 1, 1)
+        self.x_button_19 = QtWidgets.QPushButton(self.frame_53)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.x_button_19.sizePolicy().hasHeightForWidth())
+        self.x_button_19.setSizePolicy(sizePolicy)
+        self.x_button_19.setMinimumSize(QtCore.QSize(56, 28))
+        self.x_button_19.setMaximumSize(QtCore.QSize(56, 28))
+        self.x_button_19.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.x_button_19.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(0, 0, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
@@ -3386,13 +3674,148 @@ class Ui_MainWindow(object):
 "    background-color: rgb(116, 116, 116);\n"
 "    border-radius: 12px\n"
 "}")
-        self.y_raz_19.setIconSize(QtCore.QSize(32, 32))
-        self.y_raz_19.setFlat(False)
-        self.y_raz_19.setObjectName("y_raz_19")
-        self.gridLayout_161.addWidget(self.y_raz_19, 1, 2, 1, 1)
-        self.verticalLayout_70.addWidget(self.frame_130)
+        self.x_button_19.setObjectName("x_button_19")
+        self.gridLayout_14.addWidget(self.x_button_19, 0, 0, 1, 2)
+        self.verticalLayout_38.addWidget(self.frame_53)
+        self.frame_54 = QtWidgets.QFrame(self.page_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_54.sizePolicy().hasHeightForWidth())
+        self.frame_54.setSizePolicy(sizePolicy)
+        self.frame_54.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_54.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_54.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"")
+        self.frame_54.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_54.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_54.setObjectName("frame_54")
+        self.verticalLayout_39 = QtWidgets.QVBoxLayout(self.frame_54)
+        self.verticalLayout_39.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_39.setSpacing(0)
+        self.verticalLayout_39.setObjectName("verticalLayout_39")
+        self.frame_55 = QtWidgets.QFrame(self.frame_54)
+        self.frame_55.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_55.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_55.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
+"border-width: 4px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-style: outset;")
+        self.frame_55.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_55.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_55.setObjectName("frame_55")
+        self.gridLayout_99 = QtWidgets.QGridLayout(self.frame_55)
+        self.gridLayout_99.setContentsMargins(4, 4, 4, 4)
+        self.gridLayout_99.setSpacing(4)
+        self.gridLayout_99.setObjectName("gridLayout_99")
+        self.lineOfBorder_10 = QtWidgets.QPushButton(self.frame_55)
+        self.lineOfBorder_10.setEnabled(False)
+        self.lineOfBorder_10.setMinimumSize(QtCore.QSize(64, 28))
+        self.lineOfBorder_10.setMaximumSize(QtCore.QSize(64, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfBorder_10.setFont(font)
+        self.lineOfBorder_10.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfBorder_10.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfBorder_10.setText("")
+        self.lineOfBorder_10.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfBorder_10.setFlat(False)
+        self.lineOfBorder_10.setObjectName("lineOfBorder_10")
+        self.gridLayout_99.addWidget(self.lineOfBorder_10, 1, 1, 1, 1)
+        self.border_button_10 = QtWidgets.QPushButton(self.frame_55)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.border_button_10.sizePolicy().hasHeightForWidth())
+        self.border_button_10.setSizePolicy(sizePolicy)
+        self.border_button_10.setMinimumSize(QtCore.QSize(100, 28))
+        self.border_button_10.setMaximumSize(QtCore.QSize(100, 28))
+        self.border_button_10.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_button_10.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_button_10.setObjectName("border_button_10")
+        self.gridLayout_99.addWidget(self.border_button_10, 0, 0, 1, 2)
+        self.border_raz_10 = QtWidgets.QPushButton(self.frame_55)
+        self.border_raz_10.setEnabled(True)
+        self.border_raz_10.setMinimumSize(QtCore.QSize(28, 28))
+        self.border_raz_10.setMaximumSize(QtCore.QSize(28, 28))
+        self.border_raz_10.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_raz_10.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_raz_10.setIconSize(QtCore.QSize(32, 32))
+        self.border_raz_10.setFlat(False)
+        self.border_raz_10.setObjectName("border_raz_10")
+        self.gridLayout_99.addWidget(self.border_raz_10, 1, 0, 1, 1)
+        self.verticalLayout_39.addWidget(self.frame_55)
+        self.verticalLayout_38.addWidget(self.frame_54)
+        self.plus_vlozh_5 = QtWidgets.QPushButton(self.page_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.plus_vlozh_5.sizePolicy().hasHeightForWidth())
+        self.plus_vlozh_5.setSizePolicy(sizePolicy)
+        self.plus_vlozh_5.setMinimumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_5.setMaximumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.plus_vlozh_5.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-bottomp-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}")
+        self.plus_vlozh_5.setCheckable(True)
+        self.plus_vlozh_5.setObjectName("plus_vlozh_5")
+        self.verticalLayout_38.addWidget(self.plus_vlozh_5)
+        self.verticalLayout_40.addLayout(self.verticalLayout_38)
         spacerItem14 = QtWidgets.QSpacerItem(117, 81, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_70.addItem(spacerItem14)
+        self.verticalLayout_40.addItem(spacerItem14)
         self.createOval_button = QtWidgets.QPushButton(self.page_5)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3430,7 +3853,7 @@ class Ui_MainWindow(object):
 "    color: white;\n"
 "}")
         self.createOval_button.setObjectName("createOval_button")
-        self.verticalLayout_70.addWidget(self.createOval_button)
+        self.verticalLayout_40.addWidget(self.createOval_button)
         self.listOfFunction.addWidget(self.page_5)
         self.page_6 = QtWidgets.QWidget()
         self.page_6.setObjectName("page_6")
@@ -4597,21 +5020,25 @@ class Ui_MainWindow(object):
         self.gridLayout_75.addWidget(self.width_raz_3, 1, 0, 1, 1)
         self.verticalLayout_18.addWidget(self.frame_18)
         self.verticalLayout_19.addLayout(self.verticalLayout_18)
-        self.frame_20 = QtWidgets.QFrame(self.page_edit_2)
-        self.frame_20.setMinimumSize(QtCore.QSize(120, 72))
-        self.frame_20.setMaximumSize(QtCore.QSize(120, 72))
-        self.frame_20.setStyleSheet("color: rgb(0, 0, 0);\n"
+        self.verticalLayout_49 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_49.setSpacing(0)
+        self.verticalLayout_49.setObjectName("verticalLayout_49")
+        self.frame_62 = QtWidgets.QFrame(self.page_edit_2)
+        self.frame_62.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_62.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_62.setStyleSheet("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);\n"
-"border-radius: 16px\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
 "")
-        self.frame_20.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_20.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_20.setObjectName("frame_20")
-        self.gridLayout_77 = QtWidgets.QGridLayout(self.frame_20)
-        self.gridLayout_77.setContentsMargins(4, 5, 5, 5)
-        self.gridLayout_77.setSpacing(4)
-        self.gridLayout_77.setObjectName("gridLayout_77")
-        self.lineOfY_3 = QtWidgets.QPushButton(self.frame_20)
+        self.frame_62.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_62.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_62.setObjectName("frame_62")
+        self.gridLayout_19 = QtWidgets.QGridLayout(self.frame_62)
+        self.gridLayout_19.setContentsMargins(4, 5, 5, 5)
+        self.gridLayout_19.setSpacing(4)
+        self.gridLayout_19.setObjectName("gridLayout_19")
+        self.lineOfY_3 = QtWidgets.QPushButton(self.frame_62)
         self.lineOfY_3.setEnabled(False)
         self.lineOfY_3.setMinimumSize(QtCore.QSize(28, 28))
         self.lineOfY_3.setMaximumSize(QtCore.QSize(28, 28))
@@ -4628,8 +5055,8 @@ class Ui_MainWindow(object):
         self.lineOfY_3.setIconSize(QtCore.QSize(32, 32))
         self.lineOfY_3.setFlat(False)
         self.lineOfY_3.setObjectName("lineOfY_3")
-        self.gridLayout_77.addWidget(self.lineOfY_3, 1, 3, 1, 1)
-        self.lineOfX_3 = QtWidgets.QPushButton(self.frame_20)
+        self.gridLayout_19.addWidget(self.lineOfY_3, 1, 3, 1, 1)
+        self.lineOfX_3 = QtWidgets.QPushButton(self.frame_62)
         self.lineOfX_3.setEnabled(False)
         self.lineOfX_3.setMinimumSize(QtCore.QSize(28, 28))
         self.lineOfX_3.setMaximumSize(QtCore.QSize(28, 28))
@@ -4646,87 +5073,8 @@ class Ui_MainWindow(object):
         self.lineOfX_3.setIconSize(QtCore.QSize(32, 32))
         self.lineOfX_3.setFlat(False)
         self.lineOfX_3.setObjectName("lineOfX_3")
-        self.gridLayout_77.addWidget(self.lineOfX_3, 1, 1, 1, 1)
-        self.x_button_3 = QtWidgets.QPushButton(self.frame_20)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.x_button_3.sizePolicy().hasHeightForWidth())
-        self.x_button_3.setSizePolicy(sizePolicy)
-        self.x_button_3.setMinimumSize(QtCore.QSize(52, 28))
-        self.x_button_3.setMaximumSize(QtCore.QSize(52, 28))
-        self.x_button_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.x_button_3.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.x_button_3.setObjectName("x_button_3")
-        self.gridLayout_77.addWidget(self.x_button_3, 0, 0, 1, 1)
-        self.y_button_3 = QtWidgets.QPushButton(self.frame_20)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.y_button_3.sizePolicy().hasHeightForWidth())
-        self.y_button_3.setSizePolicy(sizePolicy)
-        self.y_button_3.setMinimumSize(QtCore.QSize(52, 28))
-        self.y_button_3.setMaximumSize(QtCore.QSize(52, 28))
-        self.y_button_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.y_button_3.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.y_button_3.setObjectName("y_button_3")
-        self.gridLayout_77.addWidget(self.y_button_3, 0, 2, 1, 1)
-        self.x_raz_3 = QtWidgets.QPushButton(self.frame_20)
-        self.x_raz_3.setEnabled(True)
-        self.x_raz_3.setMinimumSize(QtCore.QSize(28, 28))
-        self.x_raz_3.setMaximumSize(QtCore.QSize(28, 28))
-        self.x_raz_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.x_raz_3.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.x_raz_3.setIconSize(QtCore.QSize(32, 32))
-        self.x_raz_3.setFlat(False)
-        self.x_raz_3.setObjectName("x_raz_3")
-        self.gridLayout_77.addWidget(self.x_raz_3, 1, 0, 1, 1)
-        self.y_raz_3 = QtWidgets.QPushButton(self.frame_20)
+        self.gridLayout_19.addWidget(self.lineOfX_3, 1, 1, 1, 1)
+        self.y_raz_3 = QtWidgets.QPushButton(self.frame_62)
         self.y_raz_3.setEnabled(True)
         self.y_raz_3.setMinimumSize(QtCore.QSize(28, 28))
         self.y_raz_3.setMaximumSize(QtCore.QSize(28, 28))
@@ -4750,8 +5098,224 @@ class Ui_MainWindow(object):
         self.y_raz_3.setIconSize(QtCore.QSize(32, 32))
         self.y_raz_3.setFlat(False)
         self.y_raz_3.setObjectName("y_raz_3")
-        self.gridLayout_77.addWidget(self.y_raz_3, 1, 2, 1, 1)
-        self.verticalLayout_19.addWidget(self.frame_20)
+        self.gridLayout_19.addWidget(self.y_raz_3, 1, 2, 1, 1)
+        self.y_button_3 = QtWidgets.QPushButton(self.frame_62)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.y_button_3.sizePolicy().hasHeightForWidth())
+        self.y_button_3.setSizePolicy(sizePolicy)
+        self.y_button_3.setMinimumSize(QtCore.QSize(56, 28))
+        self.y_button_3.setMaximumSize(QtCore.QSize(56, 28))
+        self.y_button_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.y_button_3.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.y_button_3.setObjectName("y_button_3")
+        self.gridLayout_19.addWidget(self.y_button_3, 0, 2, 1, 2)
+        self.x_raz_3 = QtWidgets.QPushButton(self.frame_62)
+        self.x_raz_3.setEnabled(True)
+        self.x_raz_3.setMinimumSize(QtCore.QSize(28, 28))
+        self.x_raz_3.setMaximumSize(QtCore.QSize(28, 28))
+        self.x_raz_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.x_raz_3.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.x_raz_3.setIconSize(QtCore.QSize(32, 32))
+        self.x_raz_3.setFlat(False)
+        self.x_raz_3.setObjectName("x_raz_3")
+        self.gridLayout_19.addWidget(self.x_raz_3, 1, 0, 1, 1)
+        self.x_button_3 = QtWidgets.QPushButton(self.frame_62)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.x_button_3.sizePolicy().hasHeightForWidth())
+        self.x_button_3.setSizePolicy(sizePolicy)
+        self.x_button_3.setMinimumSize(QtCore.QSize(56, 28))
+        self.x_button_3.setMaximumSize(QtCore.QSize(56, 28))
+        self.x_button_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.x_button_3.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.x_button_3.setObjectName("x_button_3")
+        self.gridLayout_19.addWidget(self.x_button_3, 0, 0, 1, 2)
+        self.verticalLayout_49.addWidget(self.frame_62)
+        self.frame_63 = QtWidgets.QFrame(self.page_edit_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_63.sizePolicy().hasHeightForWidth())
+        self.frame_63.setSizePolicy(sizePolicy)
+        self.frame_63.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_63.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_63.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"")
+        self.frame_63.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_63.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_63.setObjectName("frame_63")
+        self.verticalLayout_50 = QtWidgets.QVBoxLayout(self.frame_63)
+        self.verticalLayout_50.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_50.setSpacing(0)
+        self.verticalLayout_50.setObjectName("verticalLayout_50")
+        self.frame_64 = QtWidgets.QFrame(self.frame_63)
+        self.frame_64.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_64.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_64.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
+"border-width: 4px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-style: outset;")
+        self.frame_64.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_64.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_64.setObjectName("frame_64")
+        self.gridLayout_102 = QtWidgets.QGridLayout(self.frame_64)
+        self.gridLayout_102.setContentsMargins(4, 4, 4, 4)
+        self.gridLayout_102.setSpacing(4)
+        self.gridLayout_102.setObjectName("gridLayout_102")
+        self.lineOfBorder_13 = QtWidgets.QPushButton(self.frame_64)
+        self.lineOfBorder_13.setEnabled(False)
+        self.lineOfBorder_13.setMinimumSize(QtCore.QSize(64, 28))
+        self.lineOfBorder_13.setMaximumSize(QtCore.QSize(64, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfBorder_13.setFont(font)
+        self.lineOfBorder_13.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfBorder_13.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfBorder_13.setText("")
+        self.lineOfBorder_13.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfBorder_13.setFlat(False)
+        self.lineOfBorder_13.setObjectName("lineOfBorder_13")
+        self.gridLayout_102.addWidget(self.lineOfBorder_13, 1, 1, 1, 1)
+        self.border_button_13 = QtWidgets.QPushButton(self.frame_64)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.border_button_13.sizePolicy().hasHeightForWidth())
+        self.border_button_13.setSizePolicy(sizePolicy)
+        self.border_button_13.setMinimumSize(QtCore.QSize(100, 28))
+        self.border_button_13.setMaximumSize(QtCore.QSize(100, 28))
+        self.border_button_13.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_button_13.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_button_13.setObjectName("border_button_13")
+        self.gridLayout_102.addWidget(self.border_button_13, 0, 0, 1, 2)
+        self.border_raz_13 = QtWidgets.QPushButton(self.frame_64)
+        self.border_raz_13.setEnabled(True)
+        self.border_raz_13.setMinimumSize(QtCore.QSize(28, 28))
+        self.border_raz_13.setMaximumSize(QtCore.QSize(28, 28))
+        self.border_raz_13.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_raz_13.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_raz_13.setIconSize(QtCore.QSize(32, 32))
+        self.border_raz_13.setFlat(False)
+        self.border_raz_13.setObjectName("border_raz_13")
+        self.gridLayout_102.addWidget(self.border_raz_13, 1, 0, 1, 1)
+        self.verticalLayout_50.addWidget(self.frame_64)
+        self.verticalLayout_49.addWidget(self.frame_63)
+        self.plus_vlozh_8 = QtWidgets.QPushButton(self.page_edit_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.plus_vlozh_8.sizePolicy().hasHeightForWidth())
+        self.plus_vlozh_8.setSizePolicy(sizePolicy)
+        self.plus_vlozh_8.setMinimumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_8.setMaximumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_8.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.plus_vlozh_8.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-bottomp-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}")
+        self.plus_vlozh_8.setCheckable(True)
+        self.plus_vlozh_8.setObjectName("plus_vlozh_8")
+        self.verticalLayout_49.addWidget(self.plus_vlozh_8)
+        self.verticalLayout_19.addLayout(self.verticalLayout_49)
         spacerItem17 = QtWidgets.QSpacerItem(179, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_19.addItem(spacerItem17)
         self.frame_21 = QtWidgets.QFrame(self.page_edit_2)
@@ -5185,46 +5749,61 @@ class Ui_MainWindow(object):
         self.height_raz_2.setObjectName("height_raz_2")
         self.gridLayout_71.addWidget(self.height_raz_2, 1, 0, 1, 1)
         self.verticalLayout_9.addWidget(self.frame_14)
-        self.frame_11 = QtWidgets.QFrame(self.page_edit_3)
-        self.frame_11.setMinimumSize(QtCore.QSize(120, 72))
-        self.frame_11.setMaximumSize(QtCore.QSize(120, 72))
-        self.frame_11.setStyleSheet("color: rgb(0, 0, 0);\n"
+        self.verticalLayout_34 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_34.setSpacing(0)
+        self.verticalLayout_34.setObjectName("verticalLayout_34")
+        self.frame_47 = QtWidgets.QFrame(self.page_edit_3)
+        self.frame_47.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_47.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_47.setStyleSheet("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);\n"
-"border-radius: 16px\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
 "")
-        self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_11.setObjectName("frame_11")
-        self.gridLayout_59 = QtWidgets.QGridLayout(self.frame_11)
-        self.gridLayout_59.setContentsMargins(4, 5, 5, 5)
-        self.gridLayout_59.setSpacing(4)
-        self.gridLayout_59.setObjectName("gridLayout_59")
-        self.x_raz_4 = QtWidgets.QPushButton(self.frame_11)
-        self.x_raz_4.setEnabled(True)
-        self.x_raz_4.setMinimumSize(QtCore.QSize(28, 28))
-        self.x_raz_4.setMaximumSize(QtCore.QSize(28, 28))
-        self.x_raz_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.x_raz_4.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
+        self.frame_47.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_47.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_47.setObjectName("frame_47")
+        self.gridLayout_9 = QtWidgets.QGridLayout(self.frame_47)
+        self.gridLayout_9.setContentsMargins(4, 5, 5, 5)
+        self.gridLayout_9.setSpacing(4)
+        self.gridLayout_9.setObjectName("gridLayout_9")
+        self.lineOfY_4 = QtWidgets.QPushButton(self.frame_47)
+        self.lineOfY_4.setEnabled(False)
+        self.lineOfY_4.setMinimumSize(QtCore.QSize(28, 28))
+        self.lineOfY_4.setMaximumSize(QtCore.QSize(28, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfY_4.setFont(font)
+        self.lineOfY_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfY_4.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
 "    border-radius: 12px\n"
 "}")
-        self.x_raz_4.setIconSize(QtCore.QSize(32, 32))
-        self.x_raz_4.setFlat(False)
-        self.x_raz_4.setObjectName("x_raz_4")
-        self.gridLayout_59.addWidget(self.x_raz_4, 1, 0, 1, 1)
-        self.y_raz_4 = QtWidgets.QPushButton(self.frame_11)
+        self.lineOfY_4.setText("")
+        self.lineOfY_4.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfY_4.setFlat(False)
+        self.lineOfY_4.setObjectName("lineOfY_4")
+        self.gridLayout_9.addWidget(self.lineOfY_4, 1, 3, 1, 1)
+        self.lineOfX_4 = QtWidgets.QPushButton(self.frame_47)
+        self.lineOfX_4.setEnabled(False)
+        self.lineOfX_4.setMinimumSize(QtCore.QSize(28, 28))
+        self.lineOfX_4.setMaximumSize(QtCore.QSize(28, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfX_4.setFont(font)
+        self.lineOfX_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfX_4.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfX_4.setText("")
+        self.lineOfX_4.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfX_4.setFlat(False)
+        self.lineOfX_4.setObjectName("lineOfX_4")
+        self.gridLayout_9.addWidget(self.lineOfX_4, 1, 1, 1, 1)
+        self.y_raz_4 = QtWidgets.QPushButton(self.frame_47)
         self.y_raz_4.setEnabled(True)
         self.y_raz_4.setMinimumSize(QtCore.QSize(28, 28))
         self.y_raz_4.setMaximumSize(QtCore.QSize(28, 28))
@@ -5248,71 +5827,8 @@ class Ui_MainWindow(object):
         self.y_raz_4.setIconSize(QtCore.QSize(32, 32))
         self.y_raz_4.setFlat(False)
         self.y_raz_4.setObjectName("y_raz_4")
-        self.gridLayout_59.addWidget(self.y_raz_4, 1, 2, 1, 1)
-        self.lineOfY_4 = QtWidgets.QPushButton(self.frame_11)
-        self.lineOfY_4.setEnabled(False)
-        self.lineOfY_4.setMinimumSize(QtCore.QSize(28, 28))
-        self.lineOfY_4.setMaximumSize(QtCore.QSize(28, 28))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        self.lineOfY_4.setFont(font)
-        self.lineOfY_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lineOfY_4.setStyleSheet("QPushButton {\n"
-"    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 12px\n"
-"}")
-        self.lineOfY_4.setText("")
-        self.lineOfY_4.setIconSize(QtCore.QSize(32, 32))
-        self.lineOfY_4.setFlat(False)
-        self.lineOfY_4.setObjectName("lineOfY_4")
-        self.gridLayout_59.addWidget(self.lineOfY_4, 1, 3, 1, 1)
-        self.lineOfX_4 = QtWidgets.QPushButton(self.frame_11)
-        self.lineOfX_4.setEnabled(False)
-        self.lineOfX_4.setMinimumSize(QtCore.QSize(28, 28))
-        self.lineOfX_4.setMaximumSize(QtCore.QSize(28, 28))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        self.lineOfX_4.setFont(font)
-        self.lineOfX_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lineOfX_4.setStyleSheet("QPushButton {\n"
-"    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 12px\n"
-"}")
-        self.lineOfX_4.setText("")
-        self.lineOfX_4.setIconSize(QtCore.QSize(32, 32))
-        self.lineOfX_4.setFlat(False)
-        self.lineOfX_4.setObjectName("lineOfX_4")
-        self.gridLayout_59.addWidget(self.lineOfX_4, 1, 1, 1, 1)
-        self.x_button_4 = QtWidgets.QPushButton(self.frame_11)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.x_button_4.sizePolicy().hasHeightForWidth())
-        self.x_button_4.setSizePolicy(sizePolicy)
-        self.x_button_4.setMinimumSize(QtCore.QSize(52, 28))
-        self.x_button_4.setMaximumSize(QtCore.QSize(52, 28))
-        self.x_button_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.x_button_4.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.x_button_4.setObjectName("x_button_4")
-        self.gridLayout_59.addWidget(self.x_button_4, 0, 0, 1, 1)
-        self.y_button_4 = QtWidgets.QPushButton(self.frame_11)
+        self.gridLayout_9.addWidget(self.y_raz_4, 1, 2, 1, 1)
+        self.y_button_4 = QtWidgets.QPushButton(self.frame_47)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -5338,8 +5854,197 @@ class Ui_MainWindow(object):
 "    border-radius: 12px\n"
 "}")
         self.y_button_4.setObjectName("y_button_4")
-        self.gridLayout_59.addWidget(self.y_button_4, 0, 2, 1, 1)
-        self.verticalLayout_9.addWidget(self.frame_11)
+        self.gridLayout_9.addWidget(self.y_button_4, 0, 2, 1, 2)
+        self.x_raz_4 = QtWidgets.QPushButton(self.frame_47)
+        self.x_raz_4.setEnabled(True)
+        self.x_raz_4.setMinimumSize(QtCore.QSize(28, 28))
+        self.x_raz_4.setMaximumSize(QtCore.QSize(28, 28))
+        self.x_raz_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.x_raz_4.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.x_raz_4.setIconSize(QtCore.QSize(32, 32))
+        self.x_raz_4.setFlat(False)
+        self.x_raz_4.setObjectName("x_raz_4")
+        self.gridLayout_9.addWidget(self.x_raz_4, 1, 0, 1, 1)
+        self.x_button_4 = QtWidgets.QPushButton(self.frame_47)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.x_button_4.sizePolicy().hasHeightForWidth())
+        self.x_button_4.setSizePolicy(sizePolicy)
+        self.x_button_4.setMinimumSize(QtCore.QSize(56, 28))
+        self.x_button_4.setMaximumSize(QtCore.QSize(56, 28))
+        self.x_button_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.x_button_4.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.x_button_4.setObjectName("x_button_4")
+        self.gridLayout_9.addWidget(self.x_button_4, 0, 0, 1, 2)
+        self.verticalLayout_34.addWidget(self.frame_47)
+        self.frame_48 = QtWidgets.QFrame(self.page_edit_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_48.sizePolicy().hasHeightForWidth())
+        self.frame_48.setSizePolicy(sizePolicy)
+        self.frame_48.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_48.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_48.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"")
+        self.frame_48.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_48.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_48.setObjectName("frame_48")
+        self.verticalLayout_35 = QtWidgets.QVBoxLayout(self.frame_48)
+        self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_35.setSpacing(0)
+        self.verticalLayout_35.setObjectName("verticalLayout_35")
+        self.frame_49 = QtWidgets.QFrame(self.frame_48)
+        self.frame_49.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_49.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_49.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
+"border-width: 4px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-style: outset;")
+        self.frame_49.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_49.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_49.setObjectName("frame_49")
+        self.gridLayout_97 = QtWidgets.QGridLayout(self.frame_49)
+        self.gridLayout_97.setContentsMargins(4, 4, 4, 4)
+        self.gridLayout_97.setSpacing(4)
+        self.gridLayout_97.setObjectName("gridLayout_97")
+        self.lineOfBorder_6 = QtWidgets.QPushButton(self.frame_49)
+        self.lineOfBorder_6.setEnabled(False)
+        self.lineOfBorder_6.setMinimumSize(QtCore.QSize(64, 28))
+        self.lineOfBorder_6.setMaximumSize(QtCore.QSize(64, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfBorder_6.setFont(font)
+        self.lineOfBorder_6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfBorder_6.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfBorder_6.setText("")
+        self.lineOfBorder_6.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfBorder_6.setFlat(False)
+        self.lineOfBorder_6.setObjectName("lineOfBorder_6")
+        self.gridLayout_97.addWidget(self.lineOfBorder_6, 1, 1, 1, 1)
+        self.border_button_6 = QtWidgets.QPushButton(self.frame_49)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.border_button_6.sizePolicy().hasHeightForWidth())
+        self.border_button_6.setSizePolicy(sizePolicy)
+        self.border_button_6.setMinimumSize(QtCore.QSize(100, 28))
+        self.border_button_6.setMaximumSize(QtCore.QSize(100, 28))
+        self.border_button_6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_button_6.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_button_6.setObjectName("border_button_6")
+        self.gridLayout_97.addWidget(self.border_button_6, 0, 0, 1, 2)
+        self.border_raz_6 = QtWidgets.QPushButton(self.frame_49)
+        self.border_raz_6.setEnabled(True)
+        self.border_raz_6.setMinimumSize(QtCore.QSize(28, 28))
+        self.border_raz_6.setMaximumSize(QtCore.QSize(28, 28))
+        self.border_raz_6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_raz_6.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_raz_6.setIconSize(QtCore.QSize(32, 32))
+        self.border_raz_6.setFlat(False)
+        self.border_raz_6.setObjectName("border_raz_6")
+        self.gridLayout_97.addWidget(self.border_raz_6, 1, 0, 1, 1)
+        self.verticalLayout_35.addWidget(self.frame_49)
+        self.verticalLayout_34.addWidget(self.frame_48)
+        self.plus_vlozh_3 = QtWidgets.QPushButton(self.page_edit_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.plus_vlozh_3.sizePolicy().hasHeightForWidth())
+        self.plus_vlozh_3.setSizePolicy(sizePolicy)
+        self.plus_vlozh_3.setMinimumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_3.setMaximumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.plus_vlozh_3.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-bottomp-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}")
+        self.plus_vlozh_3.setCheckable(True)
+        self.plus_vlozh_3.setObjectName("plus_vlozh_3")
+        self.verticalLayout_34.addWidget(self.plus_vlozh_3)
+        self.verticalLayout_9.addLayout(self.verticalLayout_34)
         spacerItem18 = QtWidgets.QSpacerItem(179, 258, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_9.addItem(spacerItem18)
         self.frame_10 = QtWidgets.QFrame(self.page_edit_3)
@@ -6494,10 +7199,10 @@ class Ui_MainWindow(object):
         self.listOfFunction.addWidget(self.page_edit_4)
         self.page_edit_5 = QtWidgets.QWidget()
         self.page_edit_5.setObjectName("page_edit_5")
-        self.verticalLayout_74 = QtWidgets.QVBoxLayout(self.page_edit_5)
-        self.verticalLayout_74.setContentsMargins(15, 15, 15, 15)
-        self.verticalLayout_74.setSpacing(10)
-        self.verticalLayout_74.setObjectName("verticalLayout_74")
+        self.verticalLayout_43 = QtWidgets.QVBoxLayout(self.page_edit_5)
+        self.verticalLayout_43.setContentsMargins(15, 15, 15, 15)
+        self.verticalLayout_43.setSpacing(10)
+        self.verticalLayout_43.setObjectName("verticalLayout_43")
         self.pushButton_31 = QtWidgets.QPushButton(self.page_edit_5)
         self.pushButton_31.setMinimumSize(QtCore.QSize(120, 50))
         self.pushButton_31.setMaximumSize(QtCore.QSize(120, 16777215))
@@ -6513,7 +7218,7 @@ class Ui_MainWindow(object):
 "border-radius: 16px;\n"
 "font-size: 16pt;")
         self.pushButton_31.setObjectName("pushButton_31")
-        self.verticalLayout_74.addWidget(self.pushButton_31)
+        self.verticalLayout_43.addWidget(self.pushButton_31)
         self.frame_132 = QtWidgets.QFrame(self.page_edit_5)
         self.frame_132.setMinimumSize(QtCore.QSize(120, 72))
         self.frame_132.setMaximumSize(QtCore.QSize(120, 72))
@@ -6603,7 +7308,7 @@ class Ui_MainWindow(object):
         self.width_raz_21.setFlat(False)
         self.width_raz_21.setObjectName("width_raz_21")
         self.gridLayout_163.addWidget(self.width_raz_21, 1, 0, 1, 1)
-        self.verticalLayout_74.addWidget(self.frame_132)
+        self.verticalLayout_43.addWidget(self.frame_132)
         self.frame_133 = QtWidgets.QFrame(self.page_edit_5)
         self.frame_133.setMinimumSize(QtCore.QSize(120, 72))
         self.frame_133.setMaximumSize(QtCore.QSize(120, 72))
@@ -6693,7 +7398,7 @@ class Ui_MainWindow(object):
         self.height_raz_15.setFlat(False)
         self.height_raz_15.setObjectName("height_raz_15")
         self.gridLayout_164.addWidget(self.height_raz_15, 1, 0, 1, 1)
-        self.verticalLayout_74.addWidget(self.frame_133)
+        self.verticalLayout_43.addWidget(self.frame_133)
         self.verticalLayout_72 = QtWidgets.QVBoxLayout()
         self.verticalLayout_72.setSpacing(0)
         self.verticalLayout_72.setObjectName("verticalLayout_72")
@@ -6798,7 +7503,7 @@ class Ui_MainWindow(object):
         self.title_btn_67.setObjectName("title_btn_67")
         self.gridLayout_166.addWidget(self.title_btn_67, 1, 0, 1, 1)
         self.verticalLayout_72.addWidget(self.frame_135)
-        self.verticalLayout_74.addLayout(self.verticalLayout_72)
+        self.verticalLayout_43.addLayout(self.verticalLayout_72)
         self.verticalLayout_73 = QtWidgets.QVBoxLayout()
         self.verticalLayout_73.setSpacing(0)
         self.verticalLayout_73.setObjectName("verticalLayout_73")
@@ -6914,7 +7619,7 @@ class Ui_MainWindow(object):
         self.border_raz_8.setObjectName("border_raz_8")
         self.gridLayout_167.addWidget(self.border_raz_8, 1, 0, 1, 1)
         self.verticalLayout_73.addWidget(self.frame_136)
-        self.verticalLayout_74.addLayout(self.verticalLayout_73)
+        self.verticalLayout_43.addLayout(self.verticalLayout_73)
         self.verticalLayout_71 = QtWidgets.QVBoxLayout()
         self.verticalLayout_71.setSpacing(0)
         self.verticalLayout_71.setObjectName("verticalLayout_71")
@@ -7019,67 +7724,26 @@ class Ui_MainWindow(object):
         self.title_btn_66.setObjectName("title_btn_66")
         self.gridLayout_165.addWidget(self.title_btn_66, 1, 0, 1, 1)
         self.verticalLayout_71.addWidget(self.frame_134)
-        self.verticalLayout_74.addLayout(self.verticalLayout_71)
-        self.frame_131 = QtWidgets.QFrame(self.page_edit_5)
-        self.frame_131.setMinimumSize(QtCore.QSize(120, 72))
-        self.frame_131.setMaximumSize(QtCore.QSize(120, 72))
-        self.frame_131.setStyleSheet("color: rgb(0, 0, 0);\n"
+        self.verticalLayout_43.addLayout(self.verticalLayout_71)
+        self.verticalLayout_41 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_41.setSpacing(0)
+        self.verticalLayout_41.setObjectName("verticalLayout_41")
+        self.frame_56 = QtWidgets.QFrame(self.page_edit_5)
+        self.frame_56.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_56.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_56.setStyleSheet("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);\n"
-"border-radius: 16px\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
 "")
-        self.frame_131.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_131.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_131.setObjectName("frame_131")
-        self.gridLayout_162 = QtWidgets.QGridLayout(self.frame_131)
-        self.gridLayout_162.setContentsMargins(4, 5, 5, 5)
-        self.gridLayout_162.setSpacing(4)
-        self.gridLayout_162.setObjectName("gridLayout_162")
-        self.lineOfX_20 = QtWidgets.QPushButton(self.frame_131)
-        self.lineOfX_20.setEnabled(False)
-        self.lineOfX_20.setMinimumSize(QtCore.QSize(28, 28))
-        self.lineOfX_20.setMaximumSize(QtCore.QSize(28, 28))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        self.lineOfX_20.setFont(font)
-        self.lineOfX_20.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lineOfX_20.setStyleSheet("QPushButton {\n"
-"    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 12px\n"
-"}")
-        self.lineOfX_20.setText("")
-        self.lineOfX_20.setIconSize(QtCore.QSize(32, 32))
-        self.lineOfX_20.setFlat(False)
-        self.lineOfX_20.setObjectName("lineOfX_20")
-        self.gridLayout_162.addWidget(self.lineOfX_20, 1, 1, 1, 1)
-        self.x_button_20 = QtWidgets.QPushButton(self.frame_131)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.x_button_20.sizePolicy().hasHeightForWidth())
-        self.x_button_20.setSizePolicy(sizePolicy)
-        self.x_button_20.setMinimumSize(QtCore.QSize(56, 28))
-        self.x_button_20.setMaximumSize(QtCore.QSize(56, 28))
-        self.x_button_20.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.x_button_20.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.x_button_20.setObjectName("x_button_20")
-        self.gridLayout_162.addWidget(self.x_button_20, 0, 0, 1, 1)
-        self.lineOfY_20 = QtWidgets.QPushButton(self.frame_131)
+        self.frame_56.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_56.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_56.setObjectName("frame_56")
+        self.gridLayout_17 = QtWidgets.QGridLayout(self.frame_56)
+        self.gridLayout_17.setContentsMargins(4, 5, 5, 5)
+        self.gridLayout_17.setSpacing(4)
+        self.gridLayout_17.setObjectName("gridLayout_17")
+        self.lineOfY_20 = QtWidgets.QPushButton(self.frame_56)
         self.lineOfY_20.setEnabled(False)
         self.lineOfY_20.setMinimumSize(QtCore.QSize(28, 28))
         self.lineOfY_20.setMaximumSize(QtCore.QSize(28, 28))
@@ -7096,8 +7760,51 @@ class Ui_MainWindow(object):
         self.lineOfY_20.setIconSize(QtCore.QSize(32, 32))
         self.lineOfY_20.setFlat(False)
         self.lineOfY_20.setObjectName("lineOfY_20")
-        self.gridLayout_162.addWidget(self.lineOfY_20, 1, 3, 1, 1)
-        self.y_button_20 = QtWidgets.QPushButton(self.frame_131)
+        self.gridLayout_17.addWidget(self.lineOfY_20, 1, 3, 1, 1)
+        self.lineOfX_20 = QtWidgets.QPushButton(self.frame_56)
+        self.lineOfX_20.setEnabled(False)
+        self.lineOfX_20.setMinimumSize(QtCore.QSize(28, 28))
+        self.lineOfX_20.setMaximumSize(QtCore.QSize(28, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfX_20.setFont(font)
+        self.lineOfX_20.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfX_20.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfX_20.setText("")
+        self.lineOfX_20.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfX_20.setFlat(False)
+        self.lineOfX_20.setObjectName("lineOfX_20")
+        self.gridLayout_17.addWidget(self.lineOfX_20, 1, 1, 1, 1)
+        self.y_raz_20 = QtWidgets.QPushButton(self.frame_56)
+        self.y_raz_20.setEnabled(True)
+        self.y_raz_20.setMinimumSize(QtCore.QSize(28, 28))
+        self.y_raz_20.setMaximumSize(QtCore.QSize(28, 28))
+        self.y_raz_20.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.y_raz_20.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.y_raz_20.setIconSize(QtCore.QSize(32, 32))
+        self.y_raz_20.setFlat(False)
+        self.y_raz_20.setObjectName("y_raz_20")
+        self.gridLayout_17.addWidget(self.y_raz_20, 1, 2, 1, 1)
+        self.y_button_20 = QtWidgets.QPushButton(self.frame_56)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -7123,8 +7830,8 @@ class Ui_MainWindow(object):
 "    border-radius: 12px\n"
 "}")
         self.y_button_20.setObjectName("y_button_20")
-        self.gridLayout_162.addWidget(self.y_button_20, 0, 2, 1, 1)
-        self.x_raz_20 = QtWidgets.QPushButton(self.frame_131)
+        self.gridLayout_17.addWidget(self.y_button_20, 0, 2, 1, 2)
+        self.x_raz_20 = QtWidgets.QPushButton(self.frame_56)
         self.x_raz_20.setEnabled(True)
         self.x_raz_20.setMinimumSize(QtCore.QSize(28, 28))
         self.x_raz_20.setMaximumSize(QtCore.QSize(28, 28))
@@ -7148,13 +7855,17 @@ class Ui_MainWindow(object):
         self.x_raz_20.setIconSize(QtCore.QSize(32, 32))
         self.x_raz_20.setFlat(False)
         self.x_raz_20.setObjectName("x_raz_20")
-        self.gridLayout_162.addWidget(self.x_raz_20, 1, 0, 1, 1)
-        self.y_raz_20 = QtWidgets.QPushButton(self.frame_131)
-        self.y_raz_20.setEnabled(True)
-        self.y_raz_20.setMinimumSize(QtCore.QSize(28, 28))
-        self.y_raz_20.setMaximumSize(QtCore.QSize(28, 28))
-        self.y_raz_20.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.y_raz_20.setStyleSheet("QPushButton {\n"
+        self.gridLayout_17.addWidget(self.x_raz_20, 1, 0, 1, 1)
+        self.x_button_20 = QtWidgets.QPushButton(self.frame_56)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.x_button_20.sizePolicy().hasHeightForWidth())
+        self.x_button_20.setSizePolicy(sizePolicy)
+        self.x_button_20.setMinimumSize(QtCore.QSize(56, 28))
+        self.x_button_20.setMaximumSize(QtCore.QSize(56, 28))
+        self.x_button_20.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.x_button_20.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(0, 0, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
@@ -7170,13 +7881,148 @@ class Ui_MainWindow(object):
 "    background-color: rgb(116, 116, 116);\n"
 "    border-radius: 12px\n"
 "}")
-        self.y_raz_20.setIconSize(QtCore.QSize(32, 32))
-        self.y_raz_20.setFlat(False)
-        self.y_raz_20.setObjectName("y_raz_20")
-        self.gridLayout_162.addWidget(self.y_raz_20, 1, 2, 1, 1)
-        self.verticalLayout_74.addWidget(self.frame_131)
+        self.x_button_20.setObjectName("x_button_20")
+        self.gridLayout_17.addWidget(self.x_button_20, 0, 0, 1, 2)
+        self.verticalLayout_41.addWidget(self.frame_56)
+        self.frame_57 = QtWidgets.QFrame(self.page_edit_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_57.sizePolicy().hasHeightForWidth())
+        self.frame_57.setSizePolicy(sizePolicy)
+        self.frame_57.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_57.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_57.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"")
+        self.frame_57.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_57.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_57.setObjectName("frame_57")
+        self.verticalLayout_42 = QtWidgets.QVBoxLayout(self.frame_57)
+        self.verticalLayout_42.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_42.setSpacing(0)
+        self.verticalLayout_42.setObjectName("verticalLayout_42")
+        self.frame_58 = QtWidgets.QFrame(self.frame_57)
+        self.frame_58.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_58.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_58.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-top-left-radius: 16px;\n"
+"border-top-right-radius: 16px;\n"
+"border-width: 4px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-style: outset;")
+        self.frame_58.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_58.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_58.setObjectName("frame_58")
+        self.gridLayout_100 = QtWidgets.QGridLayout(self.frame_58)
+        self.gridLayout_100.setContentsMargins(4, 4, 4, 4)
+        self.gridLayout_100.setSpacing(4)
+        self.gridLayout_100.setObjectName("gridLayout_100")
+        self.lineOfBorder_11 = QtWidgets.QPushButton(self.frame_58)
+        self.lineOfBorder_11.setEnabled(False)
+        self.lineOfBorder_11.setMinimumSize(QtCore.QSize(64, 28))
+        self.lineOfBorder_11.setMaximumSize(QtCore.QSize(64, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfBorder_11.setFont(font)
+        self.lineOfBorder_11.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfBorder_11.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfBorder_11.setText("")
+        self.lineOfBorder_11.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfBorder_11.setFlat(False)
+        self.lineOfBorder_11.setObjectName("lineOfBorder_11")
+        self.gridLayout_100.addWidget(self.lineOfBorder_11, 1, 1, 1, 1)
+        self.border_button_11 = QtWidgets.QPushButton(self.frame_58)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.border_button_11.sizePolicy().hasHeightForWidth())
+        self.border_button_11.setSizePolicy(sizePolicy)
+        self.border_button_11.setMinimumSize(QtCore.QSize(100, 28))
+        self.border_button_11.setMaximumSize(QtCore.QSize(100, 28))
+        self.border_button_11.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_button_11.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_button_11.setObjectName("border_button_11")
+        self.gridLayout_100.addWidget(self.border_button_11, 0, 0, 1, 2)
+        self.border_raz_11 = QtWidgets.QPushButton(self.frame_58)
+        self.border_raz_11.setEnabled(True)
+        self.border_raz_11.setMinimumSize(QtCore.QSize(28, 28))
+        self.border_raz_11.setMaximumSize(QtCore.QSize(28, 28))
+        self.border_raz_11.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.border_raz_11.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.border_raz_11.setIconSize(QtCore.QSize(32, 32))
+        self.border_raz_11.setFlat(False)
+        self.border_raz_11.setObjectName("border_raz_11")
+        self.gridLayout_100.addWidget(self.border_raz_11, 1, 0, 1, 1)
+        self.verticalLayout_42.addWidget(self.frame_58)
+        self.verticalLayout_41.addWidget(self.frame_57)
+        self.plus_vlozh_6 = QtWidgets.QPushButton(self.page_edit_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.plus_vlozh_6.sizePolicy().hasHeightForWidth())
+        self.plus_vlozh_6.setSizePolicy(sizePolicy)
+        self.plus_vlozh_6.setMinimumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_6.setMaximumSize(QtCore.QSize(120, 24))
+        self.plus_vlozh_6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.plus_vlozh_6.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-bottom-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-bottomp-left-radius: 16px;\n"
+"    border-bottom-right-radius: 16px;\n"
+"}")
+        self.plus_vlozh_6.setCheckable(True)
+        self.plus_vlozh_6.setObjectName("plus_vlozh_6")
+        self.verticalLayout_41.addWidget(self.plus_vlozh_6)
+        self.verticalLayout_43.addLayout(self.verticalLayout_41)
         spacerItem20 = QtWidgets.QSpacerItem(117, 33, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_74.addItem(spacerItem20)
+        self.verticalLayout_43.addItem(spacerItem20)
         self.frame_137 = QtWidgets.QFrame(self.page_edit_5)
         self.frame_137.setMinimumSize(QtCore.QSize(120, 72))
         self.frame_137.setMaximumSize(QtCore.QSize(120, 72))
@@ -7255,7 +8101,7 @@ class Ui_MainWindow(object):
         self.title_btn_68.setFlat(False)
         self.title_btn_68.setObjectName("title_btn_68")
         self.gridLayout_41.addWidget(self.title_btn_68, 2, 0, 1, 1)
-        self.verticalLayout_74.addWidget(self.frame_137)
+        self.verticalLayout_43.addWidget(self.frame_137)
         self.horizontalLayout_19 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
         self.editBut_13 = QtWidgets.QPushButton(self.page_edit_5)
@@ -7336,7 +8182,7 @@ class Ui_MainWindow(object):
 "}")
         self.deleteBut_13.setObjectName("deleteBut_13")
         self.horizontalLayout_19.addWidget(self.deleteBut_13)
-        self.verticalLayout_74.addLayout(self.horizontalLayout_19)
+        self.verticalLayout_43.addLayout(self.horizontalLayout_19)
         self.listOfFunction.addWidget(self.page_edit_5)
         self.page_edit_6 = QtWidgets.QWidget()
         self.page_edit_6.setObjectName("page_edit_6")
@@ -7570,7 +8416,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_6 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 150, 543))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 150, 497))
         self.scrollAreaWidgetContents_6.setObjectName("scrollAreaWidgetContents_6")
         self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_30.setContentsMargins(0, 10, 0, 10)
@@ -7911,7 +8757,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.TwoMainWindow.setCurrentIndex(0)
-        self.listOfFunction.setCurrentIndex(9)
+        self.listOfFunction.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -7937,10 +8783,13 @@ class Ui_MainWindow(object):
         self.plus_width_text.setText(_translate("MainWindow", "+Ширина"))
         self.width_button.setText(_translate("MainWindow", "Ширина"))
         self.width_raz.setText(_translate("MainWindow", "%"))
-        self.x_button.setText(_translate("MainWindow", "X"))
+        self.y_raz.setText(_translate("MainWindow", "%"))
         self.y_button.setText(_translate("MainWindow", "Y"))
         self.x_raz.setText(_translate("MainWindow", "%"))
-        self.y_raz.setText(_translate("MainWindow", "%"))
+        self.x_button.setText(_translate("MainWindow", "X"))
+        self.border_button_12.setText(_translate("MainWindow", "Действие"))
+        self.border_raz_12.setText(_translate("MainWindow", "№"))
+        self.plus_vlozh_7.setText(_translate("MainWindow", "+Вложенность"))
         self.pushButton_5.setText(_translate("MainWindow", "Изображение"))
         self.source_button.setText(_translate("MainWindow", "Источник"))
         self.title_btn_21.setText(_translate("MainWindow", ":/"))
@@ -7948,10 +8797,13 @@ class Ui_MainWindow(object):
         self.width_raz_2.setText(_translate("MainWindow", "%"))
         self.height_button.setText(_translate("MainWindow", "Высота"))
         self.height_raz.setText(_translate("MainWindow", "%"))
-        self.x_button_2.setText(_translate("MainWindow", "X"))
-        self.x_raz_2.setText(_translate("MainWindow", "%"))
         self.y_raz_2.setText(_translate("MainWindow", "%"))
         self.y_button_2.setText(_translate("MainWindow", "Y"))
+        self.x_raz_2.setText(_translate("MainWindow", "%"))
+        self.x_button_2.setText(_translate("MainWindow", "X"))
+        self.border_button_9.setText(_translate("MainWindow", "Действие"))
+        self.border_raz_9.setText(_translate("MainWindow", "№"))
+        self.plus_vlozh_4.setText(_translate("MainWindow", "-Вложенность"))
         self.createImage_button.setText(_translate("MainWindow", "Создать"))
         self.pushButton_11.setText(_translate("MainWindow", "Прямоугольник"))
         self.width_button_5.setText(_translate("MainWindow", "Ширина"))
@@ -7989,10 +8841,13 @@ class Ui_MainWindow(object):
         self.plus_colorofborder_oval.setText(_translate("MainWindow", "+Цвет окантовки"))
         self.color_button_21.setText(_translate("MainWindow", "Цвет окантовки"))
         self.title_btn_65.setText(_translate("MainWindow", "#"))
-        self.x_button_19.setText(_translate("MainWindow", "X"))
+        self.y_raz_19.setText(_translate("MainWindow", "%"))
         self.y_button_19.setText(_translate("MainWindow", "Y"))
         self.x_raz_19.setText(_translate("MainWindow", "%"))
-        self.y_raz_19.setText(_translate("MainWindow", "%"))
+        self.x_button_19.setText(_translate("MainWindow", "X"))
+        self.border_button_10.setText(_translate("MainWindow", "Действие"))
+        self.border_raz_10.setText(_translate("MainWindow", "№"))
+        self.plus_vlozh_5.setText(_translate("MainWindow", "+Вложенность"))
         self.createOval_button.setText(_translate("MainWindow", "Создать"))
         self.pushButton_22.setText(_translate("MainWindow", "Перо"))
         self.width_button_14.setText(_translate("MainWindow", "Ширина"))
@@ -8024,10 +8879,13 @@ class Ui_MainWindow(object):
         self.plus_width_text_2.setText(_translate("MainWindow", "+Ширина"))
         self.width_button_3.setText(_translate("MainWindow", "Ширина"))
         self.width_raz_3.setText(_translate("MainWindow", "%"))
-        self.x_button_3.setText(_translate("MainWindow", "X"))
+        self.y_raz_3.setText(_translate("MainWindow", "%"))
         self.y_button_3.setText(_translate("MainWindow", "Y"))
         self.x_raz_3.setText(_translate("MainWindow", "%"))
-        self.y_raz_3.setText(_translate("MainWindow", "%"))
+        self.x_button_3.setText(_translate("MainWindow", "X"))
+        self.border_button_13.setText(_translate("MainWindow", "Действие"))
+        self.border_raz_13.setText(_translate("MainWindow", "№"))
+        self.plus_vlozh_8.setText(_translate("MainWindow", "+Вложенность"))
         self.icon_button_4.setText(_translate("MainWindow", "Название действия"))
         self.title_btn_13.setText(_translate("MainWindow", "T"))
         self.editBut_2.setText(_translate("MainWindow", "Изменить"))
@@ -8039,10 +8897,13 @@ class Ui_MainWindow(object):
         self.width_raz_4.setText(_translate("MainWindow", "%"))
         self.height_button_2.setText(_translate("MainWindow", "Высота"))
         self.height_raz_2.setText(_translate("MainWindow", "%"))
-        self.x_raz_4.setText(_translate("MainWindow", "%"))
         self.y_raz_4.setText(_translate("MainWindow", "%"))
-        self.x_button_4.setText(_translate("MainWindow", "X"))
         self.y_button_4.setText(_translate("MainWindow", "Y"))
+        self.x_raz_4.setText(_translate("MainWindow", "%"))
+        self.x_button_4.setText(_translate("MainWindow", "X"))
+        self.border_button_6.setText(_translate("MainWindow", "Действие"))
+        self.border_raz_6.setText(_translate("MainWindow", "№"))
+        self.plus_vlozh_3.setText(_translate("MainWindow", "-Вложенность"))
         self.icon_button_5.setText(_translate("MainWindow", "Название действия"))
         self.title_btn_14.setText(_translate("MainWindow", "Т"))
         self.editBut_3.setText(_translate("MainWindow", "Изменить"))
@@ -8086,10 +8947,13 @@ class Ui_MainWindow(object):
         self.plus_colorofborder_oval_2.setText(_translate("MainWindow", "+Цвет окантовки"))
         self.color_button_22.setText(_translate("MainWindow", "Цвет окантовки"))
         self.title_btn_66.setText(_translate("MainWindow", "#"))
-        self.x_button_20.setText(_translate("MainWindow", "X"))
+        self.y_raz_20.setText(_translate("MainWindow", "%"))
         self.y_button_20.setText(_translate("MainWindow", "Y"))
         self.x_raz_20.setText(_translate("MainWindow", "%"))
-        self.y_raz_20.setText(_translate("MainWindow", "%"))
+        self.x_button_20.setText(_translate("MainWindow", "X"))
+        self.border_button_11.setText(_translate("MainWindow", "Действие"))
+        self.border_raz_11.setText(_translate("MainWindow", "№"))
+        self.plus_vlozh_6.setText(_translate("MainWindow", "+Вложенность"))
         self.icon_button_19.setText(_translate("MainWindow", "Название действия"))
         self.title_btn_68.setText(_translate("MainWindow", "Т"))
         self.editBut_13.setText(_translate("MainWindow", "Изменить"))

@@ -13,15 +13,20 @@ figure_bracket_close = '}'
 
 
 class Paragraph:
-    def __init__(self, text, x, y, width, color, font, font_size, index, links, name, start_obj=None):
+    def __init__(self, text, x, y, width, color, font, font_size, index, links, name, start_obj=None, rel=-1):
         self.main_code = []
         self.type = 'element'
         self.style = []
+        self.rel = rel
         self.cipher = ''
         self.text = text
+        self.text_code = text
         self.x = [x[0], x[1]]
         self.y = [y[0], y[1]]
+        self.x_code = [x[0], x[1]]
+        self.y_code = [y[0], y[1]]
         self.width = width
+        self.width_code = width
         self.color = color
         self.font = font
         self.font_size = font_size
@@ -31,6 +36,7 @@ class Paragraph:
         self.start_obj = start_obj
 
     def edit_text(self):
+        self.text = self.text_code
         for link in self.links:
             symbols = []
             d = len(link[0])
@@ -48,10 +54,12 @@ class Paragraph:
         param = []
         param.append(f'\tposition:absolute;\n')
         if self.start_obj is not None:
-            self.x[0] = f'calc({self.x[0]}{self.x[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
-            self.x[1] = '/*comment*/'
-            self.y[0] = f'calc({self.y[0]}{self.y[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
-            self.y[1] = '/*comment*/'
+            self.x[0] = f'calc({self.x_code[0]}{self.x_code[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
+            self.x[1] = ''
+            self.y[0] = f'calc({self.y_code[0]}{self.y_code[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
+            self.y[1] = ''
+        if self. width_code == ['', '']:
+            self.width = [f'calc(100vw - {self.x[0]}{self.x[1]})', '']
         param.append(f'\tleft:{self.x[0]}{self.x[1]};\n')
         param.append(f'\ttop:{self.y[0]}{self.y[1]};\n')
         param.append('\ttext-align:justify;\n')
@@ -68,11 +76,15 @@ class Paragraph:
 
     def cryptographer(self):
         self.cipher = f'{paragraph_mark}&' + \
-                      f'{str(self.x[0])}^{self.x[1]}&' + \
-                      f'{str(self.y[0])}^{self.y[1]}&' + \
-            f'{self.width[0]}^{self.width[1]}' + \
-            f'&{self.color}&{self.font}&{self.font_size[0]}^{self.font_size[1]}&{self.name}'
+                      f'{str(self.x_code[0])}^{self.x_code[1]}&' + \
+                      f'{str(self.y_code[0])}^{self.y_code[1]}&' + \
+            f'{self.width_code[0]}^{self.width_code[1]}' + \
+            f'&{self.color}&{self.font}&{self.font_size[0]}^{self.font_size[1]}&{self.name}&{self.rel}'
         self.cipher = '\t\t<!--' + self.cipher + '-->\n' + '\t\t<!--' + self.text + '-->\n'
+        links = ''
+        for p in self.links:
+            links += f'{p[0]}^{p[1]}&'
+        self.cipher += '\t\t<!--' + links[:-1] + '-->\n'
         self.main_code = [self.cipher] + self.main_code
 
     def set_code(self):
@@ -82,14 +94,17 @@ class Paragraph:
 
 
 class Image:
-    def __init__(self, src, x, y, width, height, index, alt, name, start_obj=None):
+    def __init__(self, src, x, y, width, height, index, alt, name, start_obj=None, rel=-1):
         self.type = 'element'
+        self.rel = rel
         self.main_code = []
         self.style = []
         self.position = ''
         self.src = src
         self.x = [x[0], x[1]]
         self.y = [y[0], y[1]]
+        self.x_code = [x[0], x[1]]
+        self.y_code = [x[0], x[1]]
         self.width = width
         self.height = height
         self.index = index
@@ -100,9 +115,9 @@ class Image:
 
     def cryptographer(self):
         self.cipher = f'{image_mark} {self.src}&' + \
-                      f'{str(self.x[0])}^{self.x[1]}&' + \
-                      f'{str(self.y[0])}^{self.y[1]}&' + \
-            f'{self.width[0]}^{self.width[1]}&{self.height[0]}^{self.height[1]}&{self.alt}&{self.name}'
+                      f'{str(self.x_code[0])}^{self.x_code[1]}&' + \
+                      f'{str(self.y_code[0])}^{self.y_code[1]}&' + \
+            f'{self.width[0]}^{self.width[1]}&{self.height[0]}^{self.height[1]}&{self.alt}&{self.name}&{self.rel}'
         self.cipher = '\t\t<!--' + self.cipher + '-->\n'
         self.main_code = [self.cipher] + self.main_code
 
@@ -112,10 +127,10 @@ class Image:
         param = []
         param.append(f'position:absolute;\n')
         if self.start_obj is not None:
-            self.x[0] = f'calc({self.x[0]}{self.x[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
-            self.x[1] = '/*comment*/'
-            self.y[0] = f'calc({self.y[0]}{self.y[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
-            self.y[1] = '/*comment*/'
+            self.x[0] = f'calc({self.x_code[0]}{self.x_code[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
+            self.x[1] = ''
+            self.y[0] = f'calc({self.y_code[0]}{self.y_code[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
+            self.y[1] = ''
         param.append(f'left:{self.x[0]}{self.x[1]};\n')
         param.append(f'top:{self.y[0]}{self.y[1]};\n')
         if self.position != '':
@@ -135,10 +150,13 @@ class Image:
 
 
 class Rect:
-    def __init__(self, x, y, width, height, border, border_color, color, index, name, start_obj):
+    def __init__(self, x, y, width, height, border, border_color, color, index, name, start_obj=None, rel=-1):
         self.type = 'element'
+        self.rel = rel
         self.x = [x[0], x[1]]
         self.y = [y[0], y[1]]
+        self.x_code = [x[0], x[1]]
+        self.y_code = [y[0], y[1]]
         self.w = width
         self.h = height
         self.border = border
@@ -152,12 +170,12 @@ class Rect:
         self.start_obj = start_obj
 
     def cryptographer(self):
-        print(self.x)
         self.cipher = f'{rect_mark}&' + \
-                      f'{str(self.x[0])}^{self.x[1]}&' + \
-                      f'{str(self.y[0])}^{self.y[1]}&' + \
+                      f'{str(self.x_code[0])}^{self.x_code[1]}&' + \
+                      f'{str(self.y_code[0])}^{self.y_code[1]}&' + \
                       f'{self.w[0]}^{self.w[1]}&' + \
             f'{self.h[0]}^{self.h[1]}&{self.border[0]}^{self.border[1]}&{self.border_color}&{self.color}&{self.name}'
+        self.cipher += f'&{self.rel}'
         self.cipher = '\t\t<!--' + self.cipher + '-->\n'
         self.main_code = [self.cipher] + self.main_code
 
@@ -167,10 +185,10 @@ class Rect:
         close = '}\n'
         param.append(f'position:absolute;\n')
         if self.start_obj is not None:
-            self.x[0] = f'calc({self.x[0]}{self.x[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
-            self.x[1] = '/*comment*/'
-            self.y[0] = f'calc({self.y[0]}{self.y[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
-            self.y[1] = '/*comment*/'
+            self.x[0] = f'calc({self.x_code[0]}{self.x_code[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
+            self.x[1] = ''
+            self.y[0] = f'calc({self.y_code[0]}{self.y_code[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
+            self.y[1] = ''
         param.append(f'left:{self.x[0]}{self.x[1]};\n')
         param.append(f'top:{self.y[0]}{self.y[1]};\n')
         param.append(f'width:{self.w[0]}{self.w[1]};\n')
@@ -190,9 +208,12 @@ class Rect:
 
 
 class Oval:
-    def __init__(self, x, y, width, height, border, border_color, color, index, name, start_obj):
+    def __init__(self, x, y, width, height, border, border_color, color, index, name, start_obj, rel):
         self.x = [x[0], x[1]]
         self.y = [y[0], y[1]]
+        self.rel = rel
+        self.x_code = [x[0], x[1]]
+        self.y_code = [y[0], y[1]]
         self.w = width
         self.h = height
         self.border = border
@@ -208,11 +229,12 @@ class Oval:
         self.start_obj = start_obj
 
     def cryptographer(self):
-        self.cipher = f'{rect_mark}&' + \
-                      f'{str(self.x[0])}^{self.x[1]}&' + \
-                      f'{str(self.y[0])}^{self.y[1]}&' + \
+        self.cipher = f'{oval_mark}&' + \
+                      f'{str(self.x_code[0])}^{self.x_code[1]}&' + \
+                      f'{str(self.y_code[0])}^{self.y_code[1]}&' + \
                       f'{self.w[0]}^{self.w[1]}&' + \
             f'{self.h[0]}^{self.h[1]}&{self.border[0]}^{self.border[1]}&{self.border_color}&{self.color}&{self.name}'
+        self.cipher += f'&{self.rel}'
         self.cipher = '\t\t<!--' + self.cipher + '-->\n'
         self.main_code = [self.cipher] + self.main_code
 
@@ -222,10 +244,10 @@ class Oval:
         close = '}\n'
         param.append(f'position:absolute;\n')
         if self.start_obj is not None:
-            self.x[0] = f'calc({self.x[0]}{self.x[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
-            self.x[1] = '/*comment*/'
-            self.y[0] = f'calc({self.y[0]}{self.y[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
-            self.y[1] = '/*comment*/'
+            self.x[0] = f'calc({self.x_code[0]}{self.x_code[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
+            self.x[1] = ''
+            self.y[0] = f'calc({self.y_code[0]}{self.y_code[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
+            self.y[1] = ''
         param.append(f'left:{self.x[0]}{self.x[1]};\n')
         param.append(f'top:{self.y[0]}{self.y[1]};\n')
         param.append(f'width:{self.w[0]}{self.w[1]};\n')
@@ -246,9 +268,11 @@ class Oval:
 
 
 class Pen:
-    def __init__(self, points, width, color, index, name, start_obj):
+    def __init__(self, points, width, color, index, name, start_obj, rel):
         self.type = 'lines'
+        self.rel = rel
         self.points = points
+        self.p2 = points
         self.width = width
         self.color = color
         self.index = index
@@ -259,9 +283,9 @@ class Pen:
         self.start_obj = start_obj
 
     def cryptographer(self):
-        self.cipher = f'\t\t<!--{line_mark}&{self.width}&{self.color}&{self.name}-->\n'
+        self.cipher = f'\t\t<!--{line_mark}&{self.width}&{self.color}&{self.name}&{self.rel}-->\n'
         st = ''
-        for p in self.points:
+        for p in self.p2:
             st += f'{p[0]}^{p[1]}&'
         self.cipher += '\t\t<!--' + st[0:-1] + '-->\n'
         self.main_code = [self.cipher] + self.main_code
@@ -279,17 +303,17 @@ class Pen:
                 dx = f'{dx / 100}*window.innerWidth'
             if x[1] == 'vh':
                 dx = f'{dx / 100}*window.innerHeight'
-            if x[1] == '/*comment*/':
+            if x[1] == '':
                 dx = Pen.translate(dx)
             if y[1] == 'vw':
                 dy = f'{dy / 100}*window.innerWidth'
             if y[1] == 'vh':
                 dy = f'{dy / 100}*window.innerHeight'
-            if y[1] == '/*comment*/':
+            if y[1] == '':
                 dy = Pen.translate(dy)
-            self.points = list(map(lambda p: [f'{dx}+{p[0]}', f'{dy}+{p[1]}'], self.points))
+            self.points = list(map(lambda p: [f'{dx}+{p[0]}', f'{dy}+{p[1]}'], self.p2))
         self.main_code = [f'\t\t<div class = "c{self.index}">', '<script>\n']
-        self.main_code +=[f'\t\t\tctx.beginPath();\n']
+        self.main_code += [f'\t\t\tctx.beginPath();\n']
         self.main_code += [f'\t\t\tif({self.points[0][0]} > canvas.width)canvas.width = {self.points[0][0]};\n']
         self.main_code += [f'\t\t\tif({self.points[0][1]} > canvas.height)canvas.height = {self.points[0][1]};\n']
         self.main_code.append(f'\t\t\tctx.moveTo({self.points[0][0]}, {self.points[0][1]});\n')
@@ -312,42 +336,39 @@ class Pen:
         if len(s1) == 1:
             if s1[0][-2] == 'h':
                 s1[0] = f'{int(s1[0][0:-3]) / 100}*window.innerHeight'
-            if s1[0][-2] == 'w':
+            elif s1[0][-2] == 'w':
                 s1[0] = f'{int(s1[0][0:-3]) / 100}*window.innerWidth'
-            if s1[0][-2] == 'x':
+            elif s1[0][-2] == 'x':
                 s1[0] = s1[0][0:-3]
-            if s1[0][-2] == 't':
+            elif s1[0][-2] == 't':
                 s1[0] = str(int(s1[0][0:-3])*4/3)
             return s1
         if len(s1) == 2:
             if s1[0][-2] == 'h':
                 s1[0] = f'{int(s1[0][0:-3]) / 100}*window.innerHeight'
-            if s1[0][-2] == 'w':
+            elif s1[0][-2] == 'w':
                 s1[0] = f'{int(s1[0][0:-3]) / 100}*window.innerWidth'
-            if s1[0][-2] == 'x':
+            elif s1[0][-2] == 'x':
                 s1[0] = s1[0][0:-3]
-            if s1[0][-2] == 't':
+            elif s1[0][-2] == 't':
                 s1[0] = str(int(s1[0][0:-3])*4/3)
             if s1[1][-1] == 'h':
                 s1[1] = f'{int(s1[1][1:-2]) / 100}*window.innerHeight'
-            if s1[1][-1] == 'w':
+            elif s1[1][-1] == 'w':
                 s1[1] = f'{int(s1[1][1:-2]) / 100}*window.innerWidth'
-            if s1[1][-1] == 'x':
+            elif s1[1][-1] == 'x':
                 s1[1] = s1[1][1:-2]
-            if s1[1][-1] == 't':
+            elif s1[1][-1] == 't':
                 s1[1] = str(int(s1[1][1:-2])*4/3)
-            print(s1)
             return f'{s1[0]}+{s1[1]}'
-        a = ''
-        for i in range(1, len(s1)):
-            a += s1[i]
+
         if s1[0][-2] == 'h':
             s1[0] = f'{int(s1[0][0:-3]) / 100}*window.innerHeight'
         if s1[0][-2] == 'w':
             s1[0] = f'{int(s1[0][0:-3]) / 100}*window.innerWidth'
         if s1[0][-2] == 'x':
             s1[0] = s1[0][0:-3]
-        return f'{s1[0]}+{Pen.translate(a)}'
+        return f'{s1[0]}+{Pen.translate(s[len(s1[0]) + 5:])}'
 
 
 class Icon:
@@ -390,6 +411,7 @@ class SiteBuilder:
         self.code = []
         self.prev = []
         self.ind_class = int(0)
+        self.parent_index = []
         self.page_icon = []
         self.page_title = []
         self.canvas = ['<canvas id="example"></canvas>\n', '<script>\n',
@@ -404,23 +426,25 @@ class SiteBuilder:
             return
         comments = SiteBuilder.open_proj(f'{file}.html')
         if comments[0] != heading_mark:
-            print(heading_mark)
-            print(comments[0])
             return
         t = False
+        t2 = False
         for i in range(0, len(comments)):
             if t is True:
                 t = False
                 continue
+            if t2 is True:
+                t2 = False
+                continue
             com = str(comments[i])
-            # print(com)
             com = com[4:-3]
             words = com.split('&')
-            # print(words)
             if words[0] == paragraph_mark:
                 text = comments[i+1][4:-3]
-                self.read_paragraph(words=words[1:], text=text)
+                links = comments[i+2][4:-3]
+                self.read_paragraph(words=words[1:], text=text, links=links)
                 t = True
+                t2 = True
             if words[0] == image_mark:
                 self.read_image(words[1:])
             if words[0] == rect_mark:
@@ -446,20 +470,19 @@ class SiteBuilder:
             cipher = list(map(lambda x: x.strip(),
                               filter(lambda x: x if '<!--' in x and '-->' in x else None, file.readlines())))
 
-        # print(cipher)
         return cipher
 
-    def read_paragraph(self, words, text):
+    def read_paragraph(self, words, text, links):
         x = words[0].split('^')
         y = words[1].split('^')
         font_size = words[5].split('^')
         font = words[4]
         color = words[3]
         width = words[2].split('^')
-        name = ''
-        for i in range(6, len(words)):
-            name += words[i]
-        self.paragraph(text=text, x=x, y=y, width=width, font_size=font_size, font=font, color=color, name=name)
+        name = words[6]
+        rel = int(words[7])
+        self.paragraph(text=text, x=x, y=y, width=width, font_size=font_size, font=font, color=color, name=name,
+                       rel_index=rel, links=links)
 
     def read_image(self, words):
         src = words[0]
@@ -468,10 +491,9 @@ class SiteBuilder:
         w = words[3].split('^')
         h = words[4].split('^')
         alt = words[5]
-        name = ''
-        for i in range(6, len(words)):
-            name += words[i]
-        self.image(src=src, width=w, height=h, x=x, y=y, alt=alt, name=name)
+        name = words[6]
+        rel = int(words[7])
+        self.image(src=src, width=w, height=h, x=x, y=y, alt=alt, name=name, rel_index=rel)
 
     def read_rect(self, words):
         x = words[0].split('^')
@@ -481,10 +503,10 @@ class SiteBuilder:
         border = words[4].split('^')
         b_c = words[5]
         color = words[6]
-        name = ''
-        for i in range(7, len(words)):
-            name += words[i]
-        self.square(x=x,  y=y, width=w, height=h, border_color=b_c,  border=border, color=color, name=name)
+        name = words[7]
+        rel = int(words[8])
+        self.square(x=x, y=y, width=w, height=h, border_color=b_c,  border=border, color=color, name=name,
+                    rel_index=rel)
 
     def read_oval(self, words):
         x = words[0].split('^')
@@ -494,10 +516,9 @@ class SiteBuilder:
         border = words[4].split('^')
         b_c = words[5]
         color = words[6]
-        name = ''
-        for i in range(7, len(words)):
-            name += words[i]
-        self.oval(x=x,  y=y, width=w, height=h, border_color=b_c,  border=border, color=color, name=name)
+        name = words[7]
+        rel = int(words[8])
+        self.oval(x=x, y=y, width=w, height=h, border_color=b_c,  border=border, color=color, name=name, rel_index=rel)
 
     def read_caption(self, words):
         p_n = words[0]
@@ -508,10 +529,9 @@ class SiteBuilder:
         w = (words[0], 'px')
         color = words[1]
         p = list(map(lambda x: [x[0], 'px', x[1], 'px'], map(lambda x: x.split('^'), points.split('&'))))
-        name = ''
-        for i in range(2, len(words)):
-            name += words[i]
-        self.pen(points=p, width=w, color=color, name=name)
+        name = words[2]
+        rel = int(words[3])
+        self.pen(points=p, width=w, color=color, name=name, rel_index=rel)
 
     def determine(self):
         self.code = [heading_mark + '\n', '<!DOCTYPE html>\n', '<html>\n', "\t<head>\n", self.page_icon,
@@ -533,34 +553,41 @@ class SiteBuilder:
         s.set_code()
         self.page_title = s.main_code
 
-    def paragraph(self, text, font_size, x, y, width, font, name, links=[], num=-1, color='black', rel_index=-1):
+    def paragraph(self, text, font_size, x, y, width, font, name, links=[], num=-1, color='black', rel_index=-1,
+                  change=False):
         w = [width[0], width[1]]
-        if width == ('', ''):
-            w = [f'calc(100vw-{x[0]}{x[1]})', '*1px']
+
         start_obj = None
         if rel_index > -1:
             start_obj = self.prev[rel_index]
         s = Paragraph(text=text, font_size=font_size, x=x,
                       y=y, width=w, color=color, font=font,
-                      index=self.ind_class, links=links, name=name, start_obj=start_obj)
+                      index=self.ind_class, links=links, name=name, start_obj=start_obj, rel=rel_index)
 
+        if change is True:
+            self.insert(s, num)
+            return
         self.prev.append(s)
+        self.parent_index.append(rel_index)
         self.ind_class += 1
         self.replace(from_index=-1, to_index=num)
 
-    def image(self, src, width, height, x, y, name, alt='picture', num=-1, rel_index=-1):
+    def image(self, src, width, height, x, y, name, alt='picture', num=-1, rel_index=-1, change=False):
         start_obj = None
         if rel_index > -1:
             start_obj = self.prev[rel_index]
         s = Image(src=src, x=x, y=y, width=width, height=height, index=self.ind_class, alt=alt, name=name,
-                  start_obj=start_obj)
+                  start_obj=start_obj, rel=rel_index)
 
+        if change is True:
+            self.insert(s, num)
+            return
         self.prev.append(s)
-
+        self.parent_index.append(rel_index)
         self.ind_class += 1
         self.replace(from_index=-1, to_index=num)
 
-    def square(self, x, y, width, height, border, name, color='', border_color='', num=-1, rel_index=-1):
+    def square(self, x, y, width, height, border, name, color='', border_color='', num=-1, rel_index=-1, change=False):
         if color == '':
             color = 'black'
         if border_color == '':
@@ -573,13 +600,17 @@ class SiteBuilder:
         if rel_index > -1:
             start_obj = self.prev[rel_index]
         s = Rect(x=x, y=y, width=width, height=height, border=b, border_color=border_color, color=color,
-                 index=self.ind_class, name=name, start_obj=start_obj)
+                 index=self.ind_class, name=name, start_obj=start_obj, rel=rel_index)
 
+        if change is True:
+            self.insert(s, num)
+            return
         self.ind_class = 1 + int(self.ind_class)
         self.prev.append(s)
+        self.parent_index.append(rel_index)
         self.replace(from_index=-1, to_index=num)
 
-    def oval(self, x, y, width, height, border, color, name, border_color='', num=-1, rel_index=-1):
+    def oval(self, x, y, width, height, border, color, name, border_color='', num=-1, rel_index=-1, change=False):
         if color == '':
             color = 'black'
         if border_color == '':
@@ -591,14 +622,17 @@ class SiteBuilder:
         if rel_index > -1:
             start_obj = self.prev[rel_index]
         s = Oval(x=x, y=y, width=width, height=height, border=b, border_color=border_color, color=color,
-                 index=self.ind_class, name=name, start_obj=start_obj)
+                 index=self.ind_class, name=name, start_obj=start_obj, rel=rel_index)
 
+        if change is True:
+            self.insert(s, num)
+            return
         self.ind_class += 1
         self.prev.append(s)
-
+        self.parent_index.append(rel_index)
         self.replace(from_index=-1, to_index=num)
 
-    def pen(self, points, width, color, name, num=-1, rel_index=-1):
+    def pen(self, points, width, color, name, num=-1, rel_index=-1, change=False):
         start_obj = None
         if color == '':
             color = 'black'
@@ -618,11 +652,14 @@ class SiteBuilder:
             if points[i][3] != 'px':
                 y = f'{y/100}*window.innerHeight'
             p += [(x, y)]
-        s = Pen(points=p, width=w, color=color, index=self.ind_class, name=name, start_obj=start_obj)
+        s = Pen(points=p, width=w, color=color, index=self.ind_class, name=name, start_obj=start_obj, rel=rel_index)
 
+        if change is True:
+            self.insert(s, num)
+            return
         self.ind_class += 1
         self.prev.append(s)
-
+        self.parent_index.append(rel_index)
         self.replace(from_index=-1, to_index=num)
 
     def print_code(self):
@@ -634,6 +671,8 @@ class SiteBuilder:
         for i in range(0, len(self.prev)):
             if self.prev[i].type == 'heading':
                 continue
+            if self.parent_index[i] > -1:
+                self.prev[i].start_obj = self.prev[self.parent_index[i]]
             self.prev[i].set_style()
             self.prev[i].set_code()
             styles.append(self.prev[i].style)
@@ -656,6 +695,22 @@ class SiteBuilder:
         step = self.prev[from_index]
         del self.prev[from_index]
         self.prev = self.prev[0:to_index] + [step] + self.prev[to_index:]
+        step = self.parent_index[from_index]
+        del self.parent_index[from_index]
+        self.parent_index = self.parent_index[0:to_index] + [step] + self.parent_index[to_index:]
 
     def undo(self, index):
+        if index < 0:
+            index += len(self.prev)
+        for i in range(len(self.prev)-1, -1, -1):
+            if self.parent_index[i] == index:
+                self.undo(i)
         del self.prev[index]
+        del self.parent_index[index]
+
+    def insert(self, action, num):
+        if action.__class__.__name__ != self.prev[num].__class__.__name__:
+            raise Exception('Another class')
+        self.prev[num] = action
+        self.parent_index[num] = action.rel
+        self.ind_class += 1

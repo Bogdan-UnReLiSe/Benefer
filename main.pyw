@@ -35,6 +35,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.patternBut.clicked.connect(self.openProj)
 
         self.lineOfWidth_14.setText('5')
+        self.pero_index = None
 
 
         # Найстрока двух основных сцен программы(Начальной и Главной)
@@ -71,6 +72,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.x_button.clicked.connect(self.textSettings)
         self.y_button.clicked.connect(self.textSettings)
         self.createText_button.clicked.connect(self.textSettings)
+        self.border_button_12.clicked.connect(self.textSettings)
 
         self.width_raz.clicked.connect(self.textSettings)
         self.size_raz.clicked.connect(self.textSettings)
@@ -91,6 +93,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.y_button_2.clicked.connect(self.imageSettings)
         self.createImage_button.clicked.connect(self.imageSettings)
         self.createImage_button.clicked.connect(self.player.play)
+        self.border_button_9.clicked.connect(self.imageSettings)
 
         self.width_raz_2.clicked.connect(self.imageSettings)
         self.height_raz.clicked.connect(self.imageSettings)
@@ -126,6 +129,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.y_button_19.clicked.connect(self.ovalSettings)
         self.createOval_button.clicked.connect(self.ovalSettings)
         self.createOval_button.clicked.connect(self.player.play)
+        self.border_button_10.clicked.connect(self.ovalSettings)
 
         self.width_raz_13.clicked.connect(self.ovalSettings)
         self.height_raz_9.clicked.connect(self.ovalSettings)
@@ -147,7 +151,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.color_button_2.clicked.connect(self.textChange)
         self.width_button_3.clicked.connect(self.textChange)
         self.size_button_2.clicked.connect(self.textChange)
-        self.shrift_button_2.clicked.connect(self.textChange)
         self.width_raz_3.clicked.connect(self.textChange)
         self.size_raz_2.clicked.connect(self.textChange)
         self.x_button_3.clicked.connect(self.textChange)
@@ -155,6 +158,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.x_raz_3.clicked.connect(self.textChange)
         self.y_raz_3.clicked.connect(self.textChange)
         self.editBut_2.clicked.connect(self.textChange)
+        self.border_button_13.clicked.connect(self.textChange)
         self.deleteBut_2.clicked.connect(self.textChange)
         self.deleteBut_2.clicked.connect(self.hideListOfFunction)
 
@@ -170,6 +174,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.editBut_3.clicked.connect(self.imageChange)
         self.deleteBut_3.clicked.connect(self.imageChange)
         self.deleteBut_3.clicked.connect(self.hideListOfFunction)
+        self.border_button_6.clicked.connect(self.imageChange)
 
         self.width_button_7.clicked.connect(self.rectChange)
         self.height_button_5.clicked.connect(self.rectChange)
@@ -203,6 +208,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.border_raz_8.clicked.connect(self.ovalChange)
         self.x_raz_20.clicked.connect(self.ovalChange)
         self.y_raz_20.clicked.connect(self.ovalChange)
+        self.border_button_11.clicked.connect(self.ovalChange)
 
         self.width_button_15.clicked.connect(self.peroChange)
         self.width_raz_15.clicked.connect(self.peroChange)
@@ -226,6 +232,9 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.plus_border_oval.clicked.connect(self.plusArguments)
         self.plus_colorofborder_oval.clicked.connect(self.plusArguments)
         self.plus_vlozh.clicked.connect(self.plusArguments)
+        self.plus_vlozh_4.clicked.connect(self.plusArguments)
+        self.plus_vlozh_5.clicked.connect(self.plusArguments)
+        self.plus_vlozh_7.clicked.connect(self.plusArguments)
 
         self.plus_shrift_text_2.clicked.connect(self.plusArguments)
         self.plus_color_text_3.clicked.connect(self.plusArguments)
@@ -237,6 +246,9 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.plus_border_color_2.clicked.connect(self.plusArguments)
         self.plus_colorofborder_oval_2.clicked.connect(self.plusArguments)
         self.plus_vlozh_2.clicked.connect(self.plusArguments)
+        self.plus_vlozh_3.clicked.connect(self.plusArguments)
+        self.plus_vlozh_6.clicked.connect(self.plusArguments)
+        self.plus_vlozh_8.clicked.connect(self.plusArguments)
 
         self.plus_color_pero.clicked.connect(self.plusArguments)
         self.plus_color_pero_2.clicked.connect(self.plusArguments)
@@ -254,6 +266,13 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.frame_128.hide()
         self.frame_129.hide()
         self.frame_45.hide()
+        self.frame_51.hide()
+        self.frame_48.hide()
+        self.frame_57.hide()
+        self.frame_54.hide()
+        self.frame_54.hide()
+        self.frame_60.hide()
+        self.frame_63.hide()
 
         self.newPero.hide()
         self.newPero.clicked.connect(self.peroSettings)
@@ -278,7 +297,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 for f in files:
                     name = f.split("img")[-1][1:]
                     shutil.copy(f, f'static/img/{name}')
-                self.site = SiteBuilder('base')
+                self.site = SiteBuilder(r'templates/base')
                 for elem in self.site.prev:
                     if elem.__class__.__name__ == 'Tab':
                         mode = 'Tab'
@@ -293,7 +312,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                     'font_size': elem.font_size,
                                     'x': elem.x,
                                     'y': elem.y,
-                                    'name': elem.name}
+                                    'name': elem.name,
+                                    'relativity': elem.rel}
                     elif elem.__class__.__name__ == 'Image':
                         mode = 'Image'
                         settings = {'src': elem.src,
@@ -301,7 +321,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                     'height': elem.height,
                                     'x': elem.x,
                                     'y': elem.y,
-                                    'name': elem.name}
+                                    'name': elem.name,
+                                    'relativity': elem.rel}
                     elif elem.__class__.__name__ == 'Rect':
                         mode = 'Rect'
                         settings = {'width': elem.w,
@@ -311,7 +332,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                     'color': elem.color,
                                     'x': elem.x,
                                     'y': elem.y,
-                                    'name': elem.name}
+                                    'name': elem.name,
+                                    'relativity': elem.rel}
                     elif elem.__class__.__name__ == 'Oval':
                         mode = 'Oval'
                         settings = {'width': elem.w,
@@ -321,7 +343,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                     'color': elem.color,
                                     'x': elem.x,
                                     'y': elem.y,
-                                    'name': elem.name}
+                                    'name': elem.name,
+                                    'relativity': elem.rel}
                     self.newAction(mode, settings)
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
                 self.toMainWidget()
@@ -450,11 +473,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if ok_pressed:
                 self.lineOfWidth.setText(str(name))
         elif self.sender() == self.x_button:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfX.setText(str(name))
         elif self.sender() == self.y_button:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfY.setText(str(name))
         elif self.sender() == self.size_raz:
@@ -477,6 +500,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                     ("px", "%", "vw", "vh"), 1, False)
             if ok_pressed:
                 self.y_raz.setText(name)
+        elif self.sender() == self.border_button_12:
+            name, ok_pressed = QInputDialog.getItem(self, "Вложенность",
+                                                    "Выберете действие, относительно которого будет реализованна вложенность:",
+                                                    set([elem[1].text() for elem in self.actions]), 1, False)
+            if ok_pressed:
+                self.lineOfBorder_12.setText(name)
         elif self.sender() == self.createText_button:
             try:
                 excep, settings = False, {}
@@ -531,6 +560,21 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                         self.lineOfWidth.setStyleSheet(norm)
                 else:
                     settings['width'] = ('', '')
+                if self.plus_vlozh_7.isChecked():
+                    if self.lineOfBorder_12.text() == '':
+                        self.lineOfBorder_12.setStyleSheet(exception)
+                        excep = True
+                    else:
+                        for i in range(len(self.actions)):
+                            if self.actions[i][1].text() == self.lineOfBorder_12.text():
+                                settings['relativity'] = i
+                                self.lineOfBorder_12.setStyleSheet(norm)
+                                break
+                            elif i == len(self.actions):
+                                self.lineOfBorder_12.setStyleSheet(exception)
+                                excep = True
+                else:
+                    settings['relativity'] = -1
                 if excep:
                     raise Exception
                 self.newAction('Text', settings)
@@ -541,7 +585,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                     font=settings['font'],
                                     y=settings['y'],
                                     x=settings['x'],
-                                    name=self.actions[-1][1].text())
+                                    name=self.actions[-1][1].text(),
+                                    rel_index=settings['relativity'])
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             except Exception as e:
@@ -581,11 +626,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if ok_pressed:
                 self.lineOfWidth_2.setText(str(name))
         elif self.sender() == self.x_button_2:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 1200, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfX_2.setText(str(name))
         elif self.sender() == self.y_button_2:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 1200, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfY_2.setText(str(name))
         elif self.sender() == self.width_raz_2:
@@ -608,6 +653,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                     ("px", "%", "vw", "vh"), 1, False)
             if ok_pressed:
                 self.y_raz_2.setText(name)
+        elif self.sender() == self.border_button_9:
+            name, ok_pressed = QInputDialog.getItem(self, "Вложенность", "Выберете действие, относительно которого будет реализованна вложенность:",
+                                                    set([elem[1].text() for elem in self.actions]), 1, False)
+            if ok_pressed:
+                self.lineOfBorder_9.setText(name)
         elif self.sender() == self.createImage_button:
             try:
                 excep, settings = False, {}
@@ -638,6 +688,21 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 else:
                     settings['height'] = (int(self.lineOfHeight.text()), self.height_raz.text())
                     self.lineOfHeight.setStyleSheet(norm)
+                if self.plus_vlozh_4.isChecked():
+                    if self.lineOfBorder_9.text() == '':
+                        self.lineOfBorder_9.setStyleSheet(exception)
+                        excep = True
+                    else:
+                        for i in range(len(self.actions)):
+                            if self.actions[i][1].text() == self.lineOfBorder_9.text():
+                                settings['relativity'] = i
+                                self.lineOfBorder_9.setStyleSheet(norm)
+                                break
+                            elif i == len(self.actions):
+                                self.lineOfBorder_9.setStyleSheet(exception)
+                                excep = True
+                else:
+                    settings['relativity'] = -1
                 if excep:
                     raise Exception
                 name = self.lineOfSource.text().split('/')[-1]
@@ -646,16 +711,17 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 settings['y'] = (int(self.lineOfY_2.text()), self.y_raz_2.text())
                 settings['x'] = (int(self.lineOfX_2.text()), self.x_raz_2.text())
                 self.newAction('Image', settings)
-                self.site.image(src=f"{f'static/img/' + name}".replace('/', chr(92)),
+                self.site.image(src=f"{f'/static/img/' + name}".replace('/', chr(92)),
                                 width=settings['width'],
                                 height=settings['height'],
                                 y=settings['y'],
                                 x=settings['x'],
-                                name=self.actions[-1][1])
+                                name=self.actions[-1][1],
+                                rel_index=settings['relativity'])
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             except Exception as e:
-                pass
+                print(e)
 
     def rectSettings(self):
         if self.sender() == self.width_button_5:
@@ -679,11 +745,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if color.isValid():
                 self.lineOfColor_4.setText(color.name())
         elif self.sender() == self.x_button_5:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 1200, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfX_5.setText(str(name))
         elif self.sender() == self.y_button_5:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfY_5.setText(str(name))
         elif self.sender() == self.border_button_5:
@@ -824,11 +890,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if color.isValid():
                 self.lineOfColor_21.setText(color.name())
         elif self.sender() == self.x_button_19:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 9999, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfX_19.setText(str(name))
         elif self.sender() == self.y_button_19:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 9999, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfY_19.setText(str(name))
         elif self.sender() == self.width_raz_13:
@@ -856,6 +922,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                     ("px", "%", "vw", "vh"), 1, False)
             if ok_pressed:
                 self.y_raz_19.setText(name)
+        elif self.sender() == self.border_button_10:
+            name, ok_pressed = QInputDialog.getItem(self, "Вложенность", "Выберете действие, относительно которого будет реализованна вложенность:",
+                                                    set([elem[1].text() for elem in self.actions]), 1, False)
+            if ok_pressed:
+                self.lineOfBorder_10.setText(name)
         elif self.sender() == self.createOval_button:
             excep, settings = False, {}
             try:
@@ -910,6 +981,21 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                         self.lineOfColor_21.setStyleSheet(norm)
                 else:
                     settings['border_color'] = ''
+                if self.plus_vlozh_5.isChecked():
+                    if self.lineOfBorder_10.text() == '':
+                        self.lineOfBorder_10.setStyleSheet(exception)
+                        excep = True
+                    else:
+                        for i in range(len(self.actions)):
+                            if self.actions[i][1].text() == self.lineOfBorder_10.text():
+                                settings['relativity'] = i
+                                self.lineOfBorder_10.setStyleSheet(norm)
+                                break
+                            elif i == len(self.actions):
+                                self.lineOfBorder_10.setStyleSheet(exception)
+                                excep = True
+                else:
+                    settings['relativity'] = -1
                 if excep:
                     logging.warning(1)
                 self.newAction('Oval', settings)
@@ -920,7 +1006,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                border_color=settings['border_color'],
                                y=settings['y'],
                                x=settings['x'],
-                               name=self.actions[-1][1].text())
+                               name=self.actions[-1][1].text(),
+                               rel_index=settings['relativity'])
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             except Exception as e:
@@ -960,8 +1047,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                     self.newPero.hide()
                     self.pero_index = None
                 self.delActions(-1)
-            except IndexError as e:
-                pass
+            except Exception as e:
+                print(e)
         elif event.key() == Qt.Key_Escape:
             self.TwoMainWindow.setCurrentWidget(self.Intro)
 
@@ -1156,6 +1243,15 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.plus_width_text_2.setText("-Ширина")
                 self.plus_width_text_2.setStyleSheet(hat)
                 self.plus_width_text_2.setChecked(True)
+            if self.actions[self.index][5]['relativity'] == -1:
+                self.frame_63.hide()
+                self.plus_vlozh_8.setText("+Вложенность")
+                self.plus_vlozh_8.setChecked(False)
+            else:
+                self.frame_63.show()
+                self.lineOfBorder_13.setText(self.actions[self.actions[self.index][5]['relativity']][1].text())
+                self.plus_vlozh_8.setText("-Вложенность")
+                self.plus_vlozh_8.setChecked(True)
             self.lineOfX_3.setText(self.actions[self.index][5]['x'][0])
             self.lineOfY_3.setText(self.actions[self.index][5]['y'][0])
 
@@ -1177,6 +1273,15 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.sender() in self.actions[i]:
                     self.index = i
                     break
+            if self.actions[self.index][5]['relativity'] == -1:
+                self.frame_48.hide()
+                self.plus_vlozh_3.setText("+Вложенность")
+                self.plus_vlozh_3.setChecked(False)
+            else:
+                self.frame_48.show()
+                self.lineOfBorder_6.setText(self.actions[self.actions[self.index][5]['relativity']][1].text())
+                self.plus_vlozh_3.setText("-Вложенность")
+                self.plus_vlozh_3.setChecked(True)
             self.lineOfName_3.setText(self.actions[self.index][1].text())
             self.lineOfSource_2.setText(self.actions[self.index][5]['src'])
             self.lineOfWidth_4.setText(str(self.actions[self.index][5]['width'][0]))
@@ -1310,6 +1415,15 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.plus_colorofborder_oval_2.setText("-Цвет окантовки")
             self.plus_colorofborder_oval_2.setStyleSheet(hat)
             self.plus_colorofborder_oval_2.setChecked(True)
+        if self.actions[self.index][5]['relativity'] == -1:
+            self.frame_57.hide()
+            self.plus_vlozh_6.setText("+Вложенность")
+            self.plus_vlozh_6.setChecked(False)
+        else:
+            self.frame_57.show()
+            self.lineOfBorder_11.setText(self.actions[self.actions[self.index][5]['relativity']][1].text())
+            self.plus_vlozh_6.setText("-Вложенность")
+            self.plus_vlozh_6.setChecked(True)
         self.lineOfX_20.setText(str(self.actions[self.index][5]['x'][0]))
         self.lineOfY_20.setText(str(self.actions[self.index][5]['y'][0]))
 
@@ -1370,11 +1484,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             name, ok_pressed = QInputDialog.getInt(self, "Размер", "Введите размер шрифта:", 5, 1, 1000, 1)
             if ok_pressed:
                 self.lineOfSize_2.setText(str(name))
-        elif self.sender() == self.shrift_button_2:
-            name, ok_pressed = QInputDialog.getItem(self, "Шрифт", "Выберете шрифт:",
-                                                    ("Arial", "Times New Roman"), 1, False)
-            if ok_pressed:
-                self.lineOfShrift_2.setText(name)
         elif self.sender() == self.width_raz_3:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность:",
                                                     ("px", "%", "vw"), 1, False)
@@ -1386,11 +1495,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if ok_pressed:
                 self.size_raz_2.setText(name)
         elif self.sender() == self.x_button_3:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 1200, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfX_3.setText(str(name))
         elif self.sender() == self.y_button_3:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfY_3.setText(str(name))
         elif self.sender() == self.x_raz_3:
@@ -1403,13 +1512,24 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                     ("px", "%"), 1, False)
             if ok_pressed:
                 self.y_raz_3.setText(name)
+        elif self.sender() == self.border_button_11:
+            name, ok_pressed = QInputDialog.getItem(self, "Вложенность", "Выберете действие, относительно которого будет реализованна вложенность:",
+                                                    set([elem[1].text() for elem in self.actions]), 1, False)
+            if ok_pressed:
+                self.border_button_11.setText(name)
+        elif self.sender() == self.border_button_13:
+            name, ok_pressed = QInputDialog.getItem(self, "Вложенность",
+                                                    "Выберете действие, относительно которого будет реализованна вложенность:",
+                                                    set([elem[1].text() for elem in self.actions]), 1, False)
+            if ok_pressed:
+                self.lineOfBorder_13.setText(name)
         elif self.sender() == self.editBut_2:
             try:
                 settings = {'text': self.lineOfSoderzhanie_2.text(),
                             'font_size': (self.lineOfSize_2.text(), self.size_raz_2.text()),
                             'y': (self.lineOfY_3.text(), self.y_raz_3.text()),
                             'x': (self.lineOfX_3.text(), self.x_raz_3.text()),
-                            'name': self.lineOfName_2.text()
+                            'name': self.lineOfName_2.text(),
                             }
                 excep = False
                 if self.plus_shrift_text_2.isChecked():
@@ -1439,10 +1559,24 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                         self.lineOfWidth_3.setStyleSheet(norm)
                 else:
                     settings['width'] = ('', '')
+                if self.plus_vlozh_8.isChecked():
+                    if self.lineOfBorder_13.text() == '':
+                        self.lineOfBorder_13.setStyleSheet(exception)
+                        excep = True
+                    else:
+                        for i in range(len(self.actions)):
+                            if self.actions[i][1].text() == self.lineOfBorder_13.text():
+                                settings['relativity'] = i
+                                self.lineOfBorder_13.setStyleSheet(norm)
+                                break
+                            elif i == len(self.actions):
+                                self.lineOfBorder_13.setStyleSheet(exception)
+                                excep = True
+                else:
+                    settings['relativity'] = -1
                 if excep:
                     raise Exception
-                self.site.undo(self.index)
-                self.actions[self.index][4] = settings
+                self.actions[self.index][5] = settings
                 self.actions[self.index][1].setText(self.lineOfName_2.text())
                 self.site.paragraph(text=settings['text'],
                                     width=settings['width'],
@@ -1450,16 +1584,22 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                     color=settings['color'],
                                     font=settings['font'],
                                     y=settings['y'],
-                                    x=settings['x'], num=self.index, name=self.actions[self.index][1].text())
+                                    x=settings['x'],
+                                    num=self.index,
+                                    name=self.actions[self.index][1].text(),
+                                    rel_index=settings['relativity'], change=True)
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             except Exception as e:
                 logging.warning(e)
         elif self.sender() == self.deleteBut_2:
-            self.site.undo(self.index)
-            self.site.save(r'templates/base.html')
-            self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
-            self.delActions(self.index)
+            try:
+                self.site.undo(self.index)
+                self.site.save(r'templates/base.html')
+                self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
+                self.delActions(self.index)
+            except Exception as e:
+                logging.warning(e)
 
     def imageChange(self):
         try:
@@ -1486,11 +1626,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if ok_pressed:
                     self.height_raz_2.setText(name)
             elif self.sender() == self.x_button_4:
-                name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 1200, 1)
+                name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100000, 1)
                 if ok_pressed:
                     self.lineOfX_4.setText(str(name))
             elif self.sender() == self.y_button_4:
-                name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100, 1)
+                name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100000, 1)
                 if ok_pressed:
                     self.lineOfY_4.setText(str(name))
             elif self.sender() == self.x_raz_4:
@@ -1503,6 +1643,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                         ("px", "%"), 1, False)
                 if ok_pressed:
                     self.y_raz_4.setText(name)
+            elif self.sender() == self.border_button_6:
+                name, ok_pressed = QInputDialog.getItem(self, "Вложенность",
+                                                        "Выберете действие, относительно которого будет реализованна вложенность:",
+                                                        set([elem[1].text() for elem in self.actions]), 1, False)
+                if ok_pressed:
+                    self.lineOfBorder_6.setText(name)
             elif self.sender() == self.editBut_3:
                 settings = {'src': self.lineOfSource_2.text(),
                             'y': (int(self.lineOfY_4.text()), self.y_raz_4.text()),
@@ -1522,18 +1668,33 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 else:
                     settings['height'] = (int(self.lineOfHeight_2.text()), self.height_raz_2.text())
                     self.lineOfHeight_2.setStyleSheet(norm)
+                if self.plus_vlozh_3.isChecked():
+                    if self.lineOfBorder_6.text() == '':
+                        self.lineOfBorder_6.setStyleSheet(exception)
+                        excep = True
+                    else:
+                        for i in range(len(self.actions)):
+                            if self.actions[i][1].text() == self.lineOfBorder_6.text():
+                                settings['relativity'] = i
+                                self.lineOfBorder_6.setStyleSheet(norm)
+                                break
+                            elif i == len(self.actions):
+                                self.lineOfBorder_6.setStyleSheet(exception)
+                                excep = True
+                else:
+                    settings['relativity'] = -1
                 if excep:
                     raise Exception
                 name = self.lineOfSource.text().split('/')[-1]
                 shutil.copy(self.lineOfSource_2.text(), f'static/img/' + name)
-                self.site.undo(self.index)
                 self.actions[self.index][5] = settings
                 self.actions[self.index][1].setText(self.lineOfName_3.text())
-                self.site.image(src=f"{f'static/img/' + name}".replace('/', chr(92)),
+                self.site.image(src=f"{f'/static/img/' + name}".replace('/', chr(92)),
                                 width=settings['width'],
                                 height=settings['height'],
                                 y=settings['y'],
-                                x=settings['x'], num=self.index, name=self.actions[self.index][1].text())
+                                x=settings['x'], num=self.index, name=self.actions[self.index][1].text(),
+                                rel_index=settings['relativity'], change=True)
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             elif self.sender() == self.deleteBut_3:
@@ -1566,11 +1727,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if color.isValid():
                 self.lineOfColor_7.setText(color.name())
         elif self.sender() == self.x_button_7:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 1200, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfX_7.setText(str(name))
         elif self.sender() == self.y_button_7:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfY_7.setText(str(name))
         elif self.sender() == self.border_button_4:
@@ -1631,8 +1792,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                     settings['relativity'] = -1
                 if excep:
                     raise Exception
-                self.site.undo(self.index)
-                self.actions[self.index][4] = settings
+                self.actions[self.index][5] = settings
                 self.actions[self.index][1].setText(self.lineOfName_4.text())
                 self.site.square(color=settings['color'],
                                  width=settings['width'],
@@ -1641,7 +1801,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                  border_color=settings['border_color'],
                                  y=settings['y'],
                                  x=settings['x'], num=self.index, name=self.actions[self.index][1].text(),
-                                 rel_index=settings['relativity'])
+                                 rel_index=settings['relativity'], change=True)
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             except Exception as e:
@@ -1699,11 +1859,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if color.isValid():
                 self.lineOfColor_22.setText(color.name())
         elif self.sender() == self.x_button_20:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 9999, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfX_20.setText(str(name))
         elif self.sender() == self.y_button_20:
-            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 9999, 1)
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, 0, 100000, 1)
             if ok_pressed:
                 self.lineOfY_20.setText(str(name))
         elif self.sender() == self.width_raz_21:
@@ -1767,10 +1927,24 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                         self.lineOfColor_22.setStyleSheet(norm)
                 else:
                     settings['border_color'] = ''
+                if self.plus_vlozh_6.isChecked():
+                    if self.lineOfBorder_11.text() == '':
+                        self.lineOfBorder_11.setStyleSheet(exception)
+                        excep = True
+                    else:
+                        for i in range(len(self.actions)):
+                            if self.actions[i][1].text() == self.lineOfBorder_11.text():
+                                settings['relativity'] = i
+                                self.lineOfBorder_11.setStyleSheet(norm)
+                                break
+                            elif i == len(self.actions):
+                                self.lineOfBorder_11.setStyleSheet(exception)
+                                excep = True
+                else:
+                    settings['relativity'] = -1
                 if excep:
                     raise Exception
-                self.site.undo(self.index)
-                self.actions[self.index][4] = settings
+                self.actions[self.index][5] = settings
                 self.actions[self.index][1].setText(self.lineOfName_13.text())
                 self.site.oval(color=settings['color'],
                                width=settings['width'],
@@ -1778,7 +1952,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                border=settings['border'],
                                border_color=settings['border_color'],
                                y=settings['y'],
-                               x=settings['x'], num=self.index, name=self.actions[self.index][1].text())
+                               x=settings['x'], num=self.index, name=self.actions[self.index][1].text(),
+                               rel_index=settings['relativity'], change=True)
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             except Exception as e:
@@ -1901,6 +2076,22 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             else:
                 self.plus_vlozh.setText('+Вложенность')
                 self.lineOfBorder_5.setStyleSheet(norm)
+        elif self.sender() == self.plus_vlozh_4:
+            check = self.plus_vlozh_4.isChecked()
+            self.frame_51.setVisible(check)
+            if check:
+                self.plus_vlozh_4.setText('-Вложенность')
+            else:
+                self.plus_vlozh_4.setText('+Вложенность')
+                self.lineOfBorder_9.setStyleSheet(norm)
+        elif self.sender() == self.plus_vlozh_3:
+            check = self.plus_vlozh_3.isChecked()
+            self.frame_48.setVisible(check)
+            if check:
+                self.plus_vlozh_3.setText('-Вложенность')
+            else:
+                self.plus_vlozh_3.setText('+Вложенность')
+                self.lineOfBorder_6.setStyleSheet(norm)
         elif self.sender() == self.plus_vlozh_2:
             check = self.plus_vlozh_2.isChecked()
             self.frame_42.setVisible(check)
@@ -1909,6 +2100,38 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             else:
                 self.plus_vlozh_2.setText('+Вложенность')
                 self.lineOfBorder_4.setStyleSheet(norm)
+        elif self.sender() == self.plus_vlozh_6:
+            check = self.plus_vlozh_6.isChecked()
+            self.frame_57.setVisible(check)
+            if check:
+                self.plus_vlozh_6.setText('-Вложенность')
+            else:
+                self.plus_vlozh_6.setText('+Вложенность')
+                self.lineOfBorder_11.setStyleSheet(norm)
+        elif self.sender() == self.plus_vlozh_8:
+            check = self.plus_vlozh_8.isChecked()
+            self.frame_63.setVisible(check)
+            if check:
+                self.plus_vlozh_8.setText('-Вложенность')
+            else:
+                self.plus_vlozh_8.setText('+Вложенность')
+                self.lineOfBorder_13.setStyleSheet(norm)
+        elif self.sender() == self.plus_vlozh_7:
+            check = self.plus_vlozh_7.isChecked()
+            self.frame_60.setVisible(check)
+            if check:
+                self.plus_vlozh_7.setText('-Вложенность')
+            else:
+                self.plus_vlozh_7.setText('+Вложенность')
+                self.lineOfBorder_12.setStyleSheet(norm)
+        elif self.sender() == self.plus_vlozh_5:
+            check = self.plus_vlozh_5.isChecked()
+            self.frame_54.setVisible(check)
+            if check:
+                self.plus_vlozh_5.setText('-Вложенность')
+            else:
+                self.plus_vlozh_5.setText('+Вложенность')
+                self.lineOfBorder_10.setStyleSheet(norm)
         elif self.sender() == self.plus_shrift_text_2:
             check = self.plus_shrift_text_2.isChecked()
             self.frame_16.setVisible(check)
@@ -2039,6 +2262,16 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.plus_color_pero.setText('+Цвет')
                 self.plus_color_pero.setStyleSheet(button)
                 self.lineOfColor_14.setStyleSheet(norm)
+        elif self.sender() == self.plus_color_pero_2:
+            check = self.plus_color_pero_2.isChecked()
+            self.frame_88.setVisible(check)
+            if check:
+                self.plus_color_pero_2.setText('-Цвет')
+                self.plus_color_pero_2.setStyleSheet(hat)
+            else:
+                self.plus_color_pero_2.setText('+Цвет')
+                self.plus_color_pero_2.setStyleSheet(button)
+                self.lineOfColor_15.setStyleSheet(norm)
         elif self.sender() == self.plus_color_pero_2:
             check = self.plus_color_pero_2.isChecked()
             self.frame_88.setVisible(check)
