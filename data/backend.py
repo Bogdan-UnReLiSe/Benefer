@@ -21,12 +21,12 @@ class Paragraph:
         self.cipher = ''
         self.text = text
         self.text_code = text
+        self.x_c = [x[0], x[1]]
+        self.y_c = [y[0], y[1]]
         self.x = [x[0], x[1]]
         self.y = [y[0], y[1]]
-        self.x_code = [x[0], x[1]]
-        self.y_code = [y[0], y[1]]
+        self.width_c = width
         self.width = width
-        self.width_code = width
         self.color = color
         self.font = font
         self.font_size = font_size
@@ -54,17 +54,17 @@ class Paragraph:
         param = []
         param.append(f'\tposition:absolute;\n')
         if self.start_obj is not None:
-            self.x[0] = f'calc({self.x_code[0]}{self.x_code[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
-            self.x[1] = ''
-            self.y[0] = f'calc({self.y_code[0]}{self.y_code[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
-            self.y[1] = ''
-        if self. width_code == ['', '']:
-            self.width = [f'calc(100vw - {self.x[0]}{self.x[1]})', '']
-        param.append(f'\tleft:{self.x[0]}{self.x[1]};\n')
-        param.append(f'\ttop:{self.y[0]}{self.y[1]};\n')
+            self.x_c[0] = f'calc({self.x[0]}{self.x[1]} + {self.start_obj.x_c[0]}{self.start_obj.x_c[1]})'
+            self.x_c[1] = ''
+            self.y_c[0] = f'calc({self.y[0]}{self.y[1]} + {self.start_obj.y_c[0]}{self.start_obj.y_c[1]})'
+            self.y_c[1] = ''
+        if self. width == ['', '']:
+            self.width_c = [f'calc(100vw - {self.x_c[0]}{self.x_c[1]})', '']
+        param.append(f'\tleft:{self.x_c[0]}{self.x_c[1]};\n')
+        param.append(f'\ttop:{self.y_c[0]}{self.y_c[1]};\n')
         param.append('\ttext-align:justify;\n')
-        if self.width != ('', ''):
-            param.append(f'\twidth:{self.width[0]}{self.width[1]};\n')
+        if self.width_c != ('', ''):
+            param.append(f'\twidth:{self.width_c[0]}{self.width_c[1]};\n')
         param.append(f'\tcolor:{self.color};\n')
         param.append(f'\tfont-family:{self.font};\n')
         param.append(f'\tfont-size:{self.font_size[0]}{self.font_size[1]};\n')
@@ -76,10 +76,10 @@ class Paragraph:
 
     def cryptographer(self):
         self.cipher = f'{paragraph_mark}&' + \
-                      f'{str(self.x_code[0])}^{self.x_code[1]}&' + \
-                      f'{str(self.y_code[0])}^{self.y_code[1]}&' + \
-            f'{self.width_code[0]}^{self.width_code[1]}' + \
-            f'&{self.color}&{self.font}&{self.font_size[0]}^{self.font_size[1]}&{self.name}&{self.rel}'
+                      f'{str(self.x[0])}^{self.x[1]}&' + \
+                      f'{str(self.y[0])}^{self.y[1]}&' + \
+                      f'{self.width[0]}^{self.width[1]}' + \
+                      f'&{self.color}&{self.font}&{self.font_size[0]}^{self.font_size[1]}&{self.name}&{self.rel}'
         self.cipher = '\t\t<!--' + self.cipher + '-->\n' + '\t\t<!--' + self.text + '-->\n'
         links = ''
         for p in self.links:
@@ -101,10 +101,10 @@ class Image:
         self.style = []
         self.position = ''
         self.src = src
+        self.x_c = [x[0], x[1]]
+        self.y_c = [y[0], y[1]]
         self.x = [x[0], x[1]]
         self.y = [y[0], y[1]]
-        self.x_code = [x[0], x[1]]
-        self.y_code = [x[0], x[1]]
         self.width = width
         self.height = height
         self.index = index
@@ -114,10 +114,10 @@ class Image:
         self.start_obj = start_obj
 
     def cryptographer(self):
-        self.cipher = f'{image_mark} {self.src}&' + \
-                      f'{str(self.x_code[0])}^{self.x_code[1]}&' + \
-                      f'{str(self.y_code[0])}^{self.y_code[1]}&' + \
-            f'{self.width[0]}^{self.width[1]}&{self.height[0]}^{self.height[1]}&{self.alt}&{self.name}&{self.rel}'
+        self.cipher = f'{image_mark}&{self.src}&' + \
+                      f'{str(self.x[0])}^{self.x[1]}&' + \
+                      f'{str(self.y[0])}^{self.y[1]}&' + \
+                f'{self.width[0]}^{self.width[1]}&{self.height[0]}^{self.height[1]}&{self.alt}&{self.name}&{self.rel}'
         self.cipher = '\t\t<!--' + self.cipher + '-->\n'
         self.main_code = [self.cipher] + self.main_code
 
@@ -127,12 +127,12 @@ class Image:
         param = []
         param.append(f'position:absolute;\n')
         if self.start_obj is not None:
-            self.x[0] = f'calc({self.x_code[0]}{self.x_code[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
-            self.x[1] = ''
-            self.y[0] = f'calc({self.y_code[0]}{self.y_code[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
-            self.y[1] = ''
-        param.append(f'left:{self.x[0]}{self.x[1]};\n')
-        param.append(f'top:{self.y[0]}{self.y[1]};\n')
+            self.x_c[0] = f'calc({self.x[0]}{self.x[1]} + {self.start_obj.x_c[0]}{self.start_obj.x_c[1]})'
+            self.x_c[1] = ''
+            self.y_c[0] = f'calc({self.y[0]}{self.y[1]} + {self.start_obj.y_c[0]}{self.start_obj.y_c[1]})'
+            self.y_c[1] = ''
+        param.append(f'left:{self.x_c[0]}{self.x_c[1]};\n')
+        param.append(f'top:{self.y_c[0]}{self.y_c[1]};\n')
         if self.position != '':
             param = [self.position + ';\n'] + param
         for i in range(0, len(param)):
@@ -153,10 +153,10 @@ class Rect:
     def __init__(self, x, y, width, height, border, border_color, color, index, name, start_obj=None, rel=-1):
         self.type = 'element'
         self.rel = rel
+        self.x_c = [x[0], x[1]]
+        self.y_c = [y[0], y[1]]
         self.x = [x[0], x[1]]
         self.y = [y[0], y[1]]
-        self.x_code = [x[0], x[1]]
-        self.y_code = [y[0], y[1]]
         self.w = width
         self.h = height
         self.border = border
@@ -171,8 +171,8 @@ class Rect:
 
     def cryptographer(self):
         self.cipher = f'{rect_mark}&' + \
-                      f'{str(self.x_code[0])}^{self.x_code[1]}&' + \
-                      f'{str(self.y_code[0])}^{self.y_code[1]}&' + \
+                      f'{str(self.x[0])}^{self.x[1]}&' + \
+                      f'{str(self.y[0])}^{self.y[1]}&' + \
                       f'{self.w[0]}^{self.w[1]}&' + \
             f'{self.h[0]}^{self.h[1]}&{self.border[0]}^{self.border[1]}&{self.border_color}&{self.color}&{self.name}'
         self.cipher += f'&{self.rel}'
@@ -185,12 +185,12 @@ class Rect:
         close = '}\n'
         param.append(f'position:absolute;\n')
         if self.start_obj is not None:
-            self.x[0] = f'calc({self.x_code[0]}{self.x_code[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
-            self.x[1] = ''
-            self.y[0] = f'calc({self.y_code[0]}{self.y_code[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
-            self.y[1] = ''
-        param.append(f'left:{self.x[0]}{self.x[1]};\n')
-        param.append(f'top:{self.y[0]}{self.y[1]};\n')
+            self.x_c[0] = f'calc({self.x[0]}{self.x[1]} + {self.start_obj.x_c[0]}{self.start_obj.x_c[1]})'
+            self.x_c[1] = ''
+            self.y_c[0] = f'calc({self.y[0]}{self.y[1]} + {self.start_obj.y_c[0]}{self.start_obj.y_c[1]})'
+            self.y_c[1] = ''
+        param.append(f'left:{self.x_c[0]}{self.x_c[1]};\n')
+        param.append(f'top:{self.y_c[0]}{self.y_c[1]};\n')
         param.append(f'width:{self.w[0]}{self.w[1]};\n')
         param.append(f'height:{self.h[0]}{self.h[1]};\n')
         param.append(f'border:{self.border[0]}{self.border[1]} solid {self.border_color};\n')
@@ -209,11 +209,11 @@ class Rect:
 
 class Oval:
     def __init__(self, x, y, width, height, border, border_color, color, index, name, start_obj, rel):
+        self.x_c = [x[0], x[1]]
+        self.y_c = [y[0], y[1]]
+        self.rel = rel
         self.x = [x[0], x[1]]
         self.y = [y[0], y[1]]
-        self.rel = rel
-        self.x_code = [x[0], x[1]]
-        self.y_code = [y[0], y[1]]
         self.w = width
         self.h = height
         self.border = border
@@ -230,8 +230,8 @@ class Oval:
 
     def cryptographer(self):
         self.cipher = f'{oval_mark}&' + \
-                      f'{str(self.x_code[0])}^{self.x_code[1]}&' + \
-                      f'{str(self.y_code[0])}^{self.y_code[1]}&' + \
+                      f'{str(self.x[0])}^{self.x[1]}&' + \
+                      f'{str(self.y[0])}^{self.y[1]}&' + \
                       f'{self.w[0]}^{self.w[1]}&' + \
             f'{self.h[0]}^{self.h[1]}&{self.border[0]}^{self.border[1]}&{self.border_color}&{self.color}&{self.name}'
         self.cipher += f'&{self.rel}'
@@ -244,12 +244,12 @@ class Oval:
         close = '}\n'
         param.append(f'position:absolute;\n')
         if self.start_obj is not None:
-            self.x[0] = f'calc({self.x_code[0]}{self.x_code[1]} + {self.start_obj.x[0]}{self.start_obj.x[1]})'
-            self.x[1] = ''
-            self.y[0] = f'calc({self.y_code[0]}{self.y_code[1]} + {self.start_obj.y[0]}{self.start_obj.y[1]})'
-            self.y[1] = ''
-        param.append(f'left:{self.x[0]}{self.x[1]};\n')
-        param.append(f'top:{self.y[0]}{self.y[1]};\n')
+            self.x_c[0] = f'calc({self.x[0]}{self.x[1]} + {self.start_obj.x_c[0]}{self.start_obj.x_c[1]})'
+            self.x_c[1] = ''
+            self.y_c[0] = f'calc({self.y[0]}{self.y[1]} + {self.start_obj.y_c[0]}{self.start_obj.y_c[1]})'
+            self.y_c[1] = ''
+        param.append(f'left:{self.x_c[0]}{self.x_c[1]};\n')
+        param.append(f'top:{self.y_c[0]}{self.y_c[1]};\n')
         param.append(f'width:{self.w[0]}{self.w[1]};\n')
         param.append(f'height:{self.h[0]}{self.h[1]};\n')
         param.append(f'border:{self.border[0]}{self.border[1]} solid {self.border_color};\n')
@@ -281,6 +281,7 @@ class Pen:
         self.cipher = ''
         self.name = name
         self.start_obj = start_obj
+        self.js_condition = ''
 
     def cryptographer(self):
         self.cipher = f'\t\t<!--{line_mark}&{self.width}&{self.color}&{self.name}&{self.rel}-->\n'
@@ -294,9 +295,10 @@ class Pen:
         self.style = []
 
     def set_code(self):
+        self.js_condition = ''
         if self.start_obj is not None:
-            x = self.start_obj.x
-            y = self.start_obj.y
+            x = self.start_obj.x_c
+            y = self.start_obj.y_c
             dx = x[0]
             dy = y[0]
             if x[1] == 'vw':
@@ -314,12 +316,12 @@ class Pen:
             self.points = list(map(lambda p: [f'{dx}+{p[0]}', f'{dy}+{p[1]}'], self.p2))
         self.main_code = [f'\t\t<div class = "c{self.index}">', '<script>\n']
         self.main_code += [f'\t\t\tctx.beginPath();\n']
-        self.main_code += [f'\t\t\tif({self.points[0][0]} > canvas.width)canvas.width = {self.points[0][0]};\n']
-        self.main_code += [f'\t\t\tif({self.points[0][1]} > canvas.height)canvas.height = {self.points[0][1]};\n']
+        self.js_condition += f'\t\t\tif({self.points[0][0]} > canvas.width)canvas.width = {self.points[0][0]};\n'
+        self.js_condition += f'\t\t\tif({self.points[0][1]} > canvas.height)canvas.height = {self.points[0][1]};\n'
         self.main_code.append(f'\t\t\tctx.moveTo({self.points[0][0]}, {self.points[0][1]});\n')
         for i in range(1, len(self.points)):
-            self.main_code += [f'\t\t\tif({self.points[i][0]} > canvas.width)canvas.width = {self.points[i][0]};\n']
-            self.main_code += [f'\t\t\tif({self.points[i][1]} > canvas.height)canvas.height = {self.points[i][1]};\n']
+            self.js_condition += f'\t\t\tif({self.points[i][0]} > canvas.width)canvas.width = {self.points[i][0]};\n'
+            self.js_condition += f'\t\t\tif({self.points[i][1]} > canvas.height)canvas.height = {self.points[i][1]};\n'
             self.main_code.append(f'\t\t\tctx.lineTo({self.points[i][0]}, {self.points[i][1]});\n')
         self.main_code.append(f'\t\t\tctx.strokeStyle = "{self.color}";\n')
         self.main_code.append(f'\t\t\tctx.lineWidth = "{self.width}";\n')
@@ -414,12 +416,9 @@ class SiteBuilder:
         self.parent_index = []
         self.page_icon = []
         self.page_title = []
-        self.canvas = ['<canvas id="example"></canvas>\n', '<script>\n',
-                       '\twindow.canvas = document.getElementById("example");\n',
-                       f'\twindow.ctx = canvas.getContext(\'2d\');\n',
-                       '\twindow.canvas.width = window.innerWidth;\n',
-                       '\twindow.canvas.height = window.innerHeight;\n', '</script>\n']
-        self.canvas = list(map(lambda s: '\t\t' + s, self.canvas))
+        self.canvas = []
+        self.js_condition = ''
+        self.canv()
 
         self.determine()
         if file == '':
@@ -463,6 +462,18 @@ class SiteBuilder:
                 t = True
             if words[0] == number_mark:
                 self.ind_class = words[1]
+
+    def canv(self):
+        self.js_condition = ''
+        for obj in self.prev:
+            if obj.__class__.__name__ == 'Pen':
+                self.js_condition += obj.js_condition
+        self.canvas = ['<canvas id="example"></canvas>\n', '<script>\n',
+                       '\twindow.canvas = document.getElementById("example");\n',
+                       '\twindow.canvas.height = window.innerHeight;\n',
+                       '\twindow.canvas.width = window.innerWidth;\n', self.js_condition,
+                       f'\twindow.ctx = canvas.getContext(\'2d\');\n', '</script>\n']
+        self.canvas = list(map(lambda s: '\t\t' + s, self.canvas))
 
     @staticmethod
     def open_proj(html_file):
@@ -681,6 +692,7 @@ class SiteBuilder:
         self.code = self.code[0:index_style] + styles + \
             self.code[index_style:index_body] + codes + self.code[index_body:]
         b = self.code.index('\t<body>\n') + 1
+        self.canv()
         self.code = self.code[0: b] + self.canvas + self.code[b:]
 
     def save(self, html):
