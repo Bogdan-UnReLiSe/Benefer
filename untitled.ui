@@ -298,6 +298,9 @@
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
+             <property name="toolTip">
+              <string>Настройка вкладки</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
 	background-color: rgb(76, 76, 76);
@@ -351,6 +354,9 @@ QPushButton:checked {
              </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string>Настройка текста</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
@@ -406,6 +412,9 @@ QPushButton:checked {
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
+             <property name="toolTip">
+              <string>Настройка изображения</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
 	background-color: rgb(76, 76, 76);
@@ -459,6 +468,9 @@ QPushButton:checked {
              </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string>Настройка прямоугольников</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
@@ -514,6 +526,9 @@ QPushButton:checked {
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
+             <property name="toolTip">
+              <string>Настройка овалов</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
 	background-color: rgb(76, 76, 76);
@@ -567,6 +582,9 @@ QPushButton:checked {
              </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string>Настрока пера</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
@@ -802,6 +820,9 @@ font-size: 16pt;</string>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
+             <property name="toolTip">
+              <string>Сохранить сайт</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
 	background-color: rgb(76, 76, 76);
@@ -859,6 +880,15 @@ QPushButton:pressed {
              </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string comment="Bebra" extracomment="Bebra">Запуск сайта</string>
+             </property>
+             <property name="accessibleName">
+              <string/>
+             </property>
+             <property name="accessibleDescription">
+              <string/>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
@@ -1078,6 +1108,9 @@ border-radius: 16px;</string>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
+             <property name="toolTip">
+              <string>Недавние действия</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton:hover {
 	background-color: rgb(76, 76, 76);
@@ -1149,7 +1182,7 @@ QPushButton:checked {
            <string notr="true">background-color: rgb(40, 40, 40);</string>
           </property>
           <property name="currentIndex">
-           <number>11</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="page">
            <property name="styleSheet">
@@ -8746,8 +8779,8 @@ border-color: rgb(255, 0, 4);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>150</width>
-                 <height>586</height>
+                 <width>100</width>
+                 <height>30</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">

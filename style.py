@@ -70,7 +70,6 @@ class Ui_MainWindow(object):
         self.webEngineView.setObjectName("webEngineView")
         self.gridLayout_3.addWidget(self.webEngineView, 1, 1, 1, 1)
         self.pushButton_2 = Tracker(self.widget)
-        self.pushButton_2.interaction(self)
         self.pushButton_2.setEnabled(True)
         self.pushButton_2.setGeometry(QtCore.QRect(0, 0, 1185, 660))
         self.pushButton_2.setMinimumSize(QtCore.QSize(1185, 660))
@@ -354,6 +353,8 @@ class Ui_MainWindow(object):
         self.play_btn.setMinimumSize(QtCore.QSize(48, 48))
         self.play_btn.setMaximumSize(QtCore.QSize(48, 48))
         self.play_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.play_btn.setAccessibleName("")
+        self.play_btn.setAccessibleDescription("")
         self.play_btn.setStyleSheet("QPushButton:hover {\n"
 "    background-color: rgb(76, 76, 76);\n"
 "    border-radius: 12px\n"
@@ -4087,7 +4088,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 150, 586))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 100, 30))
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_7.setContentsMargins(0, 10, 0, 10)
@@ -8757,13 +8758,22 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.TwoMainWindow.setCurrentIndex(0)
-        self.listOfFunction.setCurrentIndex(4)
+        self.listOfFunction.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Benefer"))
+        self.title_btn.setToolTip(_translate("MainWindow", "Настройка вкладки"))
+        self.text_btn.setToolTip(_translate("MainWindow", "Настройка текста"))
+        self.image_btn.setToolTip(_translate("MainWindow", "Настройка изображения"))
+        self.figure_btn.setToolTip(_translate("MainWindow", "Настройка прямоугольников"))
+        self.cyrcle_btn.setToolTip(_translate("MainWindow", "Настройка овалов"))
+        self.pero_btn.setToolTip(_translate("MainWindow", "Настрока пера"))
         self.pushButton_8.setText(_translate("MainWindow", "Действия"))
+        self.MainLogo.setToolTip(_translate("MainWindow", "Сохранить сайт"))
+        self.play_btn.setToolTip(_translate("MainWindow", "Запуск сайта", "Bebra"))
+        self.ActionsButton.setToolTip(_translate("MainWindow", "Недавние действия"))
         self.pushButton_4.setText(_translate("MainWindow", "Вкладка"))
         self.title_btn_3.setText(_translate("MainWindow", "T"))
         self.header_button.setText(_translate("MainWindow", "Заголовок"))
@@ -8973,3 +8983,13 @@ class Ui_MainWindow(object):
         self.lauchBut.setText(_translate("MainWindow", "Создать"))
         self.helpBut.setText(_translate("MainWindow", "Помощь"))
         self.action.setText(_translate("MainWindow", "Посмотреть код"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
