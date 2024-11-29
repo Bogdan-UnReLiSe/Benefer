@@ -70,6 +70,7 @@ class Ui_MainWindow(object):
         self.webEngineView.setObjectName("webEngineView")
         self.gridLayout_3.addWidget(self.webEngineView, 1, 1, 1, 1)
         self.pushButton_2 = Tracker(self.widget)
+        self.pushButton_2.interaction(self)
         self.pushButton_2.setEnabled(True)
         self.pushButton_2.setGeometry(QtCore.QRect(0, 0, 1185, 660))
         self.pushButton_2.setMinimumSize(QtCore.QSize(1185, 660))
