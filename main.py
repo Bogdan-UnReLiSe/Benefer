@@ -52,6 +52,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.figure_btn.clicked.connect(self.switchLishOfFunction)
         self.cyrcle_btn.clicked.connect(self.switchLishOfFunction)
         self.pero_btn.clicked.connect(self.switchLishOfFunction)
+        self.size_btn.clicked.connect(self.switchLishOfFunction)
 
         self.title_btn.clicked.connect(self.player.play)
         self.text_btn.clicked.connect(self.player.play)
@@ -137,9 +138,14 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.x_raz_19.clicked.connect(self.ovalSettings)
         self.y_raz_19.clicked.connect(self.ovalSettings)
 
+        # Настройка кнопок для редактирования пера
         self.width_button_14.clicked.connect(self.peroSettings)
         self.color_button_14.clicked.connect(self.peroSettings)
         self.width_raz_14.clicked.connect(self.peroSettings)
+
+        # Настройка кнопок для изменения окна отображения содержимого сайта
+        self.width_button_16.clicked.connect(self.sizeSettings)
+        self.height_button_4.clicked.connect(self.sizeSettings)
 
         # Настройка панели действий
         self.listOfActions.setHidden(True)
@@ -393,7 +399,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.pushButton_2.setCursor(Qt.ArrowCursor)
             self.listOfFunction.setCurrentWidget(self.page)
             self.listOfFunction.setHidden(not(self.title_btn.isChecked()))
-            for elem in [self.text_btn, self.image_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn]:
+            for elem in [self.text_btn, self.image_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn, self.size_btn]:
                 elem.setChecked(False)
         elif self.sender() == self.text_btn:
             if self.text_btn.isChecked():
@@ -402,7 +408,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.pushButton_2.setCursor(Qt.ArrowCursor)
             self.listOfFunction.setCurrentWidget(self.page_2)
             self.listOfFunction.setHidden(not(self.text_btn.isChecked()))
-            for elem in [self.title_btn, self.image_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn]:
+            for elem in [self.title_btn, self.image_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn, self.size_btn]:
                 elem.setChecked(False)
         elif self.sender() == self.image_btn:
             if self.image_btn.isChecked():
@@ -411,7 +417,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.pushButton_2.setCursor(Qt.ArrowCursor)
             self.listOfFunction.setCurrentWidget(self.page_3)
             self.listOfFunction.setHidden(not(self.image_btn.isChecked()))
-            for elem in [self.title_btn, self.text_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn]:
+            for elem in [self.title_btn, self.text_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn, self.size_btn]:
                 elem.setChecked(False)
         elif self.sender() == self.figure_btn:
             if self.figure_btn.isChecked():
@@ -420,7 +426,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.pushButton_2.setCursor(Qt.ArrowCursor)
             self.listOfFunction.setCurrentWidget(self.page_4)
             self.listOfFunction.setHidden(not(self.figure_btn.isChecked()))
-            for elem in [self.title_btn, self.text_btn, self.image_btn, self.cyrcle_btn, self.pero_btn]:
+            for elem in [self.title_btn, self.text_btn, self.image_btn, self.cyrcle_btn, self.pero_btn, self.size_btn]:
                 elem.setChecked(False)
         elif self.sender() == self.cyrcle_btn:
             if self.cyrcle_btn.isChecked():
@@ -429,7 +435,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.pushButton_2.setCursor(Qt.ArrowCursor)
             self.listOfFunction.setCurrentWidget(self.page_5)
             self.listOfFunction.setHidden(not (self.cyrcle_btn.isChecked()))
-            for elem in [self.title_btn, self.text_btn, self.image_btn, self.figure_btn, self.pero_btn]:
+            for elem in [self.title_btn, self.text_btn, self.image_btn, self.figure_btn, self.pero_btn, self.size_btn]:
                 elem.setChecked(False)
         elif self.sender() == self.pero_btn:
             if self.pero_btn.isChecked():
@@ -438,7 +444,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.pushButton_2.setCursor(Qt.ArrowCursor)
             self.listOfFunction.setCurrentWidget(self.page_6)
             self.listOfFunction.setHidden(not (self.pero_btn.isChecked()))
-            for elem in [self.title_btn, self.text_btn, self.image_btn, self.figure_btn, self.cyrcle_btn]:
+            for elem in [self.title_btn, self.text_btn, self.image_btn, self.figure_btn, self.cyrcle_btn, self.size_btn]:
+                elem.setChecked(False)
+        elif self.sender() == self.size_btn:
+            self.listOfFunction.setCurrentWidget(self.page_7)
+            self.listOfFunction.setHidden(not (self.size_btn.isChecked()))
+            for elem in [self.title_btn, self.text_btn, self.image_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn]:
                 elem.setChecked(False)
 
     # Функция для переключения с Начальной к Главной сцене
@@ -982,6 +993,20 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.verticalLayout_26.removeWidget(self.points[i][0])
             self.points.clear()
             self.newPero.hide()
+
+    def sizeSettings(self):
+        if self.sender() == self.width_button_16:
+            name, ok_pressed = QInputDialog.getInt(self, "Ширина", "Введите ширину окна:", 0, 0, 9999, 1)
+            if ok_pressed:
+                self.lineOfWidth_16.setText(str(name))
+        elif self.sender() == self.height_button_4:
+            name, ok_pressed = QInputDialog.getInt(self, "Ширина", "Введите высоту окна:", 0, 0, 9999, 1)
+            if ok_pressed:
+                self.lineOfHeight_4.setText(str(name))
+        self.widget.setMinimumSize(QtCore.QSize(int(self.lineOfWidth_16.text()),
+                                                       int(self.lineOfHeight_4.text())))
+        self.widget.setMaximumSize(QtCore.QSize(int(self.lineOfWidth_16.text()),
+                                                       int(self.lineOfHeight_4.text())))
 
     # Функция для отмены последнего действия при нажатии сочетания клавиш CTRL + Z, обработки нажатия на Enter и Esc
     def keyPressEvent(self, event):
