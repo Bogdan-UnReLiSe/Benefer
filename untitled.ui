@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1682</width>
+    <width>1600</width>
     <height>954</height>
    </rect>
   </property>
@@ -58,7 +58,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="TwoMainWindow">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="MainWidget">
        <layout class="QGridLayout" name="gridLayout_7">
@@ -8792,8 +8792,8 @@ border-color: rgb(255, 0, 4);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>150</width>
-                 <height>586</height>
+                 <width>100</width>
+                 <height>30</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -18171,7 +18171,7 @@ QPushButton:pressed {
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::MinimumExpanding</enum>
+           <enum>QSizePolicy::Expanding</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -18208,7 +18208,7 @@ QPushButton:pressed {
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::MinimumExpanding</enum>
+           <enum>QSizePolicy::Expanding</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>

@@ -297,7 +297,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 for f in files:
                     name = f.split("img")[-1][1:]
                     shutil.copy(f, f'static/img/{name}')
-                    print(name)
                 self.site = SiteBuilder(r'templates/base')
                 for elem in self.site.prev:
                     if elem.__class__.__name__ == 'Tab':
@@ -348,11 +347,9 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                     'relativity': elem.rel}
                     elif elem.__class__.__name__ == 'Icon':
                         self.site.icon(elem.icon)
-                        print('adsads')
                         continue
                     elif elem.__class__.__name__ == 'Icon':
                         self.site.title(elem.title)
-                        print('adsads')
                         continue
                     self.newAction(mode, settings)
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
@@ -458,6 +455,25 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 logging.warning(e)
             self.site.save(h + '/site.html')
 
+    # Функция для вызова диологовых окон редактирования заголовка
+    def tabSettings(self):
+        if self.sender() == self.header_button:
+            name, ok_pressed = QInputDialog.getText(self, "Заголовк", "Введите текст заголовка:")
+            if ok_pressed:
+                self.lineOfHeader.setText(name)
+                self.site.title(name)
+                self.lineOfSource_3.setText(name)
+        elif self.sender() == self.icon_button:
+            h = QFileDialog.getOpenFileName(self, 'Выбрать иконку', '')[0]
+            if h:
+                self.lineOfIcon.setText(h)
+                name = h.split('/')[-1]
+                shutil.copy(self.lineOfIcon.text(), f'static/img/' + name)
+                self.site.icon(f'/static/img/' + name)
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap(f'static/img/' + name), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.title_btn_25.setIcon(icon)
+
     # Функция для вызова диологовых окон редактирования текста
     def textSettings(self):
         if self.sender() == self.soderzhanie_button:
@@ -466,7 +482,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.lineOfSoderzhanie.setText(name)
         elif self.sender() == self.shrift_button:
             name, ok_pressed = QInputDialog.getItem(self, "Шрифт", "Выберете шрифт:",
-                                                    ("Arial", "Times New Roman"), 1, False)
+                                                    ("Arial", "Times New Roman", 'Georgia',
+                                                     'Arial Black', 'Courier New',
+                                                     'Trebuchet', 'Tahoma', 'Comic Sans MS',
+                                                     'Franklin Gothic Medium', 'Impact',
+                                                     'Lucida Console'), 1, False)
             if ok_pressed:
                 self.lineOfShrift.setText(name)
         elif self.sender() == self.color_button:
@@ -517,35 +537,17 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.lineOfBorder_12.setText(name)
         elif self.sender() == self.createText_button:
             try:
-                excep, settings = False, {}
-                if self.lineOfSoderzhanie.text() == '':
-                    self.lineOfSoderzhanie.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['text'] = self.lineOfSoderzhanie.text()
-                    self.lineOfSoderzhanie.setStyleSheet(norm)
-                if self.lineOfSize.text() == '':
-                    self.lineOfSize.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['font_size'] = (self.lineOfSize.text(), self.size_raz.text())
-                    self.lineOfSize.setStyleSheet(norm)
-                if self.lineOfX.text() == '':
-                    self.lineOfX.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['x'] = (self.lineOfX.text(), self.x_raz.text())
-                    self.lineOfX.setStyleSheet(norm)
-                if self.lineOfY.text() == '':
-                    self.lineOfY.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['y'] = (self.lineOfY.text(), self.y_raz.text())
-                    self.lineOfY.setStyleSheet(norm)
+                excep, settings = '', {}
+
+                settings['text'] = self.lineOfSoderzhanie.text()
+                settings['font_size'] = (self.lineOfSize.text(), self.size_raz.text())
+                settings['x'] = (self.lineOfX.text(), self.x_raz.text())
+                settings['y'] = (self.lineOfY.text(), self.y_raz.text())
+
                 if self.plus_shrift_text.isChecked():
                     if self.lineOfShrift.text() == '':
                         self.lineOfShrift.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['font'] = self.lineOfShrift.text()
                         self.lineOfShrift.setStyleSheet(norm)
@@ -554,7 +556,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_color_text.isChecked():
                     if self.lineOfColor.text() == '':
                         self.lineOfColor.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['color'] = self.lineOfColor.text()
                         self.lineOfColor.setStyleSheet(norm)
@@ -563,7 +565,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_width_text.isChecked():
                     if self.lineOfWidth.text() == '':
                         self.lineOfWidth.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['width'] = (self.lineOfWidth.text(), self.width_raz.text())
                         self.lineOfWidth.setStyleSheet(norm)
@@ -572,7 +574,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_vlozh_7.isChecked():
                     if self.lineOfBorder_12.text() == '':
                         self.lineOfBorder_12.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         for i in range(len(self.actions)):
                             if self.actions[i][1].text() == self.lineOfBorder_12.text():
@@ -581,11 +583,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                 break
                             elif i == len(self.actions):
                                 self.lineOfBorder_12.setStyleSheet(exception)
-                                excep = True
+                                excep = 'The object relative to which the positioning will be performed does not exist'
                 else:
                     settings['relativity'] = -1
                 if excep:
-                    raise Exception
+                    raise Exception(excep)
                 self.newAction('Text', settings)
                 self.site.paragraph(text=settings['text'],
                                     width=settings['width'],
@@ -599,26 +601,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             except Exception as e:
-                self.lineOfSoderzhanie.setText('')
-
-    # Функция для вызова диологовых окон редактирования заголовка
-    def tabSettings(self):
-        if self.sender() == self.header_button:
-            name, ok_pressed = QInputDialog.getText(self, "Заголовк", "Введите текст заголовка:")
-            if ok_pressed:
-                self.lineOfHeader.setText(name)
-                self.site.title(name)
-                self.lineOfSource_3.setText(name)
-        elif self.sender() == self.icon_button:
-            h = QFileDialog.getOpenFileName(self, 'Выбрать иконку', '')[0]
-            if h:
-                self.lineOfIcon.setText(h)
-                name = h.split('/')[-1]
-                shutil.copy(self.lineOfIcon.text(), f'static/img/' + name)
-                self.site.icon(f'/static/img/' + name)
-                icon = QtGui.QIcon()
-                icon.addPixmap(QtGui.QPixmap(f'static/img/' + name), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-                self.title_btn_25.setIcon(icon)
+                logging.warning(e)
 
     # Функция для вызова диологовых окон редактирования картинок
     def imageSettings(self):
@@ -669,38 +652,21 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.lineOfBorder_9.setText(name)
         elif self.sender() == self.createImage_button:
             try:
-                excep, settings = False, {}
-                if self.lineOfSource.text() == '':
-                    self.lineOfSource.setStyleSheet(exception)
-                    excep = True
-                else:
-                    self.lineOfSource.setStyleSheet(norm)
-                if self.lineOfX_2.text() == '':
-                    self.lineOfX_2.setStyleSheet(exception)
-                    excep = True
-                else:
-                    self.lineOfX_2.setStyleSheet(norm)
-                if self.lineOfY_2.text() == '':
-                    self.lineOfY_2.setStyleSheet(exception)
-                    excep = True
-                else:
-                    self.lineOfY_2.setStyleSheet(norm)
-                if self.lineOfWidth_2.text() == '':
-                    self.lineOfWidth_2.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['width'] = (int(self.lineOfWidth_2.text()), self.width_raz_2.text())
-                    self.lineOfWidth_2.setStyleSheet(norm)
-                if self.lineOfHeight.text() == '':
-                    self.lineOfHeight.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['height'] = (int(self.lineOfHeight.text()), self.height_raz.text())
-                    self.lineOfHeight.setStyleSheet(norm)
+                excep, settings = '', {}
+
+                settings['width'] = (int(self.lineOfWidth_2.text()), self.width_raz_2.text())
+                settings['height'] = (int(self.lineOfHeight.text()), self.height_raz.text())
+                settings['y'] = (int(self.lineOfY_2.text()), self.y_raz_2.text())
+                settings['x'] = (int(self.lineOfX_2.text()), self.x_raz_2.text())
+
+                name = self.lineOfSource.text().split('/')[-1]
+                shutil.copy(self.lineOfSource.text(), f'static/img/' + name)
+                settings['src'] = self.lineOfSource.text()
+
                 if self.plus_vlozh_4.isChecked():
                     if self.lineOfBorder_9.text() == '':
                         self.lineOfBorder_9.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         for i in range(len(self.actions)):
                             if self.actions[i][1].text() == self.lineOfBorder_9.text():
@@ -709,16 +675,14 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                 break
                             elif i == len(self.actions):
                                 self.lineOfBorder_9.setStyleSheet(exception)
-                                excep = True
+                                excep = 'The object relative to which the positioning will be performed does not exist'
                 else:
                     settings['relativity'] = -1
+                if settings['width'][0] == 0 or settings['height'][0] == 0:
+                    excep = 'Incorrect size'
+
                 if excep:
-                    raise Exception
-                name = self.lineOfSource.text().split('/')[-1]
-                shutil.copy(self.lineOfSource.text(), f'static/img/' + name)
-                settings['src'] = self.lineOfSource.text()
-                settings['y'] = (int(self.lineOfY_2.text()), self.y_raz_2.text())
-                settings['x'] = (int(self.lineOfX_2.text()), self.x_raz_2.text())
+                    raise Exception(excep)
                 self.newAction('Image', settings)
                 self.site.image(src=f"{f'/static/img/' + name}".replace('/', chr(92)),
                                 width=settings['width'],
@@ -730,7 +694,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.site.save(r'templates/base.html')
                 self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
             except Exception as e:
-                print(e)
+                logging.warning(e)
 
     def rectSettings(self):
         if self.sender() == self.width_button_5:
@@ -766,91 +730,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                     set([elem[1].text() for elem in self.actions]), 1, False)
             if ok_pressed:
                 self.lineOfBorder_5.setText(name)
-        elif self.sender() == self.createRect_button:
-            excep, settings = False, {}
-            if self.lineOfWidth_5.text() == '':
-                self.lineOfWidth_5.setStyleSheet(exception)
-                excep = True
-            else:
-                self.lineOfWidth_5.setStyleSheet(norm)
-                settings['width'] = (int(self.lineOfWidth_5.text()), self.width_raz_5.text())
-            if self.lineOfHeight_3.text() == '':
-                self.lineOfHeight_3.setStyleSheet(exception)
-                excep = True
-            else:
-                self.lineOfHeight_3.setStyleSheet(norm)
-                settings['height'] = (int(self.lineOfHeight_3.text()), self.height_raz_3.text())
-            if self.lineOfY_5.text() == '':
-                self.lineOfY_5.setStyleSheet(exception)
-                excep = True
-            else:
-                self.lineOfY_5.setStyleSheet(norm)
-                settings['y'] = (int(self.lineOfY_5.text()), self.y_raz_5.text())
-            if self.lineOfX_5.text() == '':
-                self.lineOfX_5.setStyleSheet(exception)
-                excep = True
-            else:
-                self.lineOfX_5.setStyleSheet(norm)
-                settings['x'] = (int(self.lineOfX_5.text()), self.x_raz_5.text())
-            if self.plus_color_rect.isChecked():
-                if self.lineOfColor_3.text() == '':
-                    self.lineOfColor_3.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['color'] = self.lineOfColor_3.text()
-                    self.lineOfColor_3.setStyleSheet(norm)
-            else:
-                settings['color'] = ''
-            if self.plus_border_rect.isChecked():
-                if self.lineOfBorder.text() == '':
-                    self.lineOfBorder.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['border'] = (int(self.lineOfBorder.text()), self.border_raz.text())
-                    self.lineOfBorder.setStyleSheet(norm)
-            else:
-                settings['border'] = ('', '')
-            if self.plus_colorofborder_rect.isChecked():
-                if self.lineOfColor_4.text() == '':
-                    self.lineOfColor_4.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['border_color'] = self.lineOfColor_4.text()
-                    self.lineOfColor_4.setStyleSheet(norm)
-            else:
-                settings['border_color'] = ''
-            if self.plus_vlozh.isChecked():
-                if self.lineOfBorder_5.text() == '':
-                    self.lineOfBorder_5.setStyleSheet(exception)
-                    excep = True
-                else:
-                    for i in range(len(self.actions)):
-                        if self.actions[i][1].text() == self.lineOfBorder_5.text():
-                            settings['relativity'] = i
-                            self.lineOfBorder_5.setStyleSheet(norm)
-                            break
-                        elif i == len(self.actions):
-                            self.lineOfBorder_5.setStyleSheet(exception)
-                            excep = True
-            else:
-                settings['relativity'] = -1
-            if excep:
-                return None
-            try:
-                self.newAction('Rect', settings)
-                self.site.square(color=settings['color'],
-                                 width=settings['width'],
-                                 height=settings['height'],
-                                 border=settings['border'],
-                                 border_color=settings['border_color'],
-                                 y=settings['y'],
-                                 x=settings['x'],
-                                 rel_index=settings['relativity'],
-                                 name=self.actions[-1][1].text())
-                self.site.save(r'templates/base.html')
-                self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
-            except Exception as e:
-                logging.warning(e)
         elif self.sender() == self.width_raz_5:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность:",
                                                     ("px", "%", "vw", "vh"), 1, False)
@@ -876,6 +755,76 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                     ("px", "%", "vw", "vh"), 1, False)
             if ok_pressed:
                 self.y_raz_5.setText(name)
+        elif self.sender() == self.createRect_button:
+            try:
+                excep, settings = '', {}
+
+                settings['width'] = (int(self.lineOfWidth_5.text()), self.width_raz_5.text())
+                settings['height'] = (int(self.lineOfHeight_3.text()), self.height_raz_3.text())
+                settings['y'] = (int(self.lineOfY_5.text()), self.y_raz_5.text())
+                settings['x'] = (int(self.lineOfX_5.text()), self.x_raz_5.text())
+
+                if self.plus_color_rect.isChecked():
+                    if self.lineOfColor_3.text() == '':
+                        self.lineOfColor_3.setStyleSheet(exception)
+                        excep = 'All arguments are not filled in'
+                    else:
+                        settings['color'] = self.lineOfColor_3.text()
+                        self.lineOfColor_3.setStyleSheet(norm)
+                else:
+                    settings['color'] = ''
+                if self.plus_border_rect.isChecked():
+                    if self.lineOfBorder.text() == '':
+                        self.lineOfBorder.setStyleSheet(exception)
+                        excep = 'All arguments are not filled in'
+                    else:
+                        settings['border'] = (int(self.lineOfBorder.text()), self.border_raz.text())
+                        self.lineOfBorder.setStyleSheet(norm)
+                else:
+                    settings['border'] = ('', '')
+                if self.plus_colorofborder_rect.isChecked():
+                    if self.lineOfColor_4.text() == '':
+                        self.lineOfColor_4.setStyleSheet(exception)
+                        excep = 'All arguments are not filled in'
+                    else:
+                        settings['border_color'] = self.lineOfColor_4.text()
+                        self.lineOfColor_4.setStyleSheet(norm)
+                else:
+                    settings['border_color'] = ''
+                if self.plus_vlozh.isChecked():
+                    if self.lineOfBorder_5.text() == '':
+                        self.lineOfBorder_5.setStyleSheet(exception)
+                        excep = 'All arguments are not filled in'
+                    else:
+                        for i in range(len(self.actions)):
+                            if self.actions[i][1].text() == self.lineOfBorder_5.text():
+                                settings['relativity'] = i
+                                self.lineOfBorder_5.setStyleSheet(norm)
+                                break
+                            elif i == len(self.actions):
+                                self.lineOfBorder_5.setStyleSheet(exception)
+                                excep = 'The object relative to which the positioning will be performed does not exist'
+                else:
+                    settings['relativity'] = -1
+                if settings['width'][0] == 0 or settings['height'][0] == 0:
+                    excep = 'Incorrect size'
+
+                if excep:
+                    raise Exception(excep)
+                self.newAction('Rect', settings)
+                self.site.square(color=settings['color'],
+                                 width=settings['width'],
+                                 height=settings['height'],
+                                 border=settings['border'],
+                                 border_color=settings['border_color'],
+                                 y=settings['y'],
+                                 x=settings['x'],
+                                 rel_index=settings['relativity'],
+                                 name=self.actions[-1][1].text())
+                self.site.save(r'templates/base.html')
+                self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
+            except Exception as e:
+                logging.warning(e)
 
     def ovalSettings(self):
         if self.sender() == self.width_button_13:
@@ -937,36 +886,25 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if ok_pressed:
                 self.lineOfBorder_10.setText(name)
         elif self.sender() == self.createOval_button:
-            excep, settings = False, {}
             try:
-                if self.lineOfWidth_13.text() == '':
-                    self.lineOfWidth_13.setStyleSheet(exception)
-                    excep = True
-                else:
-                    self.lineOfWidth_13.setStyleSheet(norm)
-                    settings['width'] = (int(self.lineOfWidth_13.text()), self.width_raz_13.text())
-                if self.lineOfHeight_9.text() == '':
-                    self.lineOfHeight_9.setStyleSheet(exception)
-                    excep = True
-                else:
-                    self.lineOfHeight_9.setStyleSheet(norm)
-                    settings['height'] = (int(self.lineOfHeight_9.text()), self.height_raz_9.text())
-                if self.lineOfX_19.text() == '':
-                    self.lineOfX_19.setStyleSheet(exception)
-                    excep = True
-                else:
-                    self.lineOfX_19.setStyleSheet(norm)
-                    settings['x'] = (int(self.lineOfX_19.text()), self.x_raz_19.text())
-                if self.lineOfY_19.text() == '':
-                    self.lineOfY_19.setStyleSheet(exception)
-                    excep = True
-                else:
-                    self.lineOfY_19.setStyleSheet(norm)
-                    settings['y'] = (int(self.lineOfY_19.text()), self.y_raz_19.text())
+                excep, settings = '', {}
+
+                self.lineOfWidth_13.setStyleSheet(norm)
+                settings['width'] = (int(self.lineOfWidth_13.text()), self.width_raz_13.text())
+
+                self.lineOfHeight_9.setStyleSheet(norm)
+                settings['height'] = (int(self.lineOfHeight_9.text()), self.height_raz_9.text())
+
+                self.lineOfX_19.setStyleSheet(norm)
+                settings['x'] = (int(self.lineOfX_19.text()), self.x_raz_19.text())
+
+                self.lineOfY_19.setStyleSheet(norm)
+                settings['y'] = (int(self.lineOfY_19.text()), self.y_raz_19.text())
+
                 if self.plus_color_oval.isChecked():
                     if self.lineOfColor_13.text() == '':
                         self.lineOfColor_13.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['color'] = self.lineOfColor_13.text()
                         self.lineOfColor_13.setStyleSheet(norm)
@@ -975,7 +913,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_border_oval.isChecked():
                     if self.lineOfBorder_7.text() == '':
                         self.lineOfBorder_7.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['border'] = (int(self.lineOfBorder_7.text()), self.border_raz_7.text())
                         self.lineOfBorder_7.setStyleSheet(norm)
@@ -984,7 +922,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_colorofborder_oval.isChecked():
                     if self.lineOfColor_21.text() == '':
                         self.lineOfColor_21.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['border_color'] = self.lineOfColor_21.text()
                         self.lineOfColor_21.setStyleSheet(norm)
@@ -993,7 +931,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_vlozh_5.isChecked():
                     if self.lineOfBorder_10.text() == '':
                         self.lineOfBorder_10.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         for i in range(len(self.actions)):
                             if self.actions[i][1].text() == self.lineOfBorder_10.text():
@@ -1002,11 +940,14 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                 break
                             elif i == len(self.actions):
                                 self.lineOfBorder_10.setStyleSheet(exception)
-                                excep = True
+                                excep = 'The object relative to which the positioning will be performed does not exist'
                 else:
                     settings['relativity'] = -1
+                if settings['width'][0] == 0 or settings['height'][0] == 0:
+                    excep = 'Incorrect size'
+
                 if excep:
-                    logging.warning(1)
+                    raise Exception(excep)
                 self.newAction('Oval', settings)
                 self.site.oval(color=settings['color'],
                                width=settings['width'],
@@ -1057,7 +998,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                     self.pero_index = None
                 self.delActions(-1)
             except Exception as e:
-                print(e)
+                logging.warning(e)
         elif event.key() == Qt.Key_Escape:
             self.TwoMainWindow.setCurrentWidget(self.Intro)
 
@@ -1182,7 +1123,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 icon.addPixmap(QtGui.QPixmap(f"Picture/Actions9.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
                 self.ActionsButton.setIcon(icon)
 
-    # Функция действия по его индексу
+    # Функция удаления действия по его индексу
     def delActions(self, index):
         self.verticalLayout_10.removeWidget(self.actions[index][0])
         del self.actions[index]
@@ -1376,70 +1317,73 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             logging.warning(e)
 
     def ovalEdit(self):
-        self.listOfFunction.setCurrentWidget(self.page_edit_5)
-        for elem in [self.title_btn, self.text_btn, self.image_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn]:
-            elem.setChecked(False)
-        self.pushButton_2.setCursor(Qt.ArrowCursor)
-        for i in range(len(self.actions)):
-            if self.sender() in self.actions[i]:
-                self.index = i
-                break
-        self.lineOfName_13.setText(self.actions[self.index][1].text())
-        self.lineOfWidth_21.setText(str(self.actions[self.index][5]['width'][0]))
-        self.lineOfHeight_15.setText(str(self.actions[self.index][5]['height'][0]))
-        if self.actions[self.index][5]['color'] == ''\
-                or self.actions[self.index][5]['color'] == 'black':
-            self.frame_135.hide()
-            self.plus_color_oval_2.setText("+Цвет")
-            self.plus_color_oval_2.setStyleSheet(button)
-            self.plus_color_oval_2.setChecked(False)
-        else:
-            self.frame_135.show()
-            self.lineOfColor_23.setText(self.actions[self.index][5]['color'])
-            self.plus_color_oval_2.setText("-Цвет")
-            self.plus_color_oval_2.setStyleSheet(hat)
-            self.plus_color_oval_2.setChecked(True)
-        if self.actions[self.index][5]['border'][0] == ''\
-                or self.actions[self.index][5]['border'][0] == '0':
-            self.frame_136.hide()
-            self.plus_border_color_2.setText("+Окантовка")
-            self.plus_border_color_2.setStyleSheet(button)
-            self.plus_border_color_2.setChecked(False)
-        else:
-            self.frame_136.show()
-            self.lineOfBorder_8.setText(str(self.actions[self.index][5]['border'][0]))
-            self.plus_border_color_2.setText("-Окантовка")
-            self.plus_border_color_2.setStyleSheet(hat)
-            self.plus_border_color_2.setChecked(True)
-            self.border_raz_8.setText(self.actions[self.index][5]['border'][1])
-        if self.actions[self.index][5]['border_color'] == ''\
-                or self.actions[self.index][5]['border_color'] == 'black':
-            self.frame_134.hide()
-            self.plus_colorofborder_oval_2.setText("+Цвет окантовки")
-            self.plus_colorofborder_oval_2.setStyleSheet(button)
-            self.plus_colorofborder_oval_2.setChecked(False)
-        else:
-            self.frame_134.show()
-            self.lineOfColor_22.setText(self.actions[self.index][5]['border_color'])
-            self.plus_colorofborder_oval_2.setText("-Цвет окантовки")
-            self.plus_colorofborder_oval_2.setStyleSheet(hat)
-            self.plus_colorofborder_oval_2.setChecked(True)
-        if self.actions[self.index][5]['relativity'] == -1:
-            self.frame_57.hide()
-            self.plus_vlozh_6.setText("+Вложенность")
-            self.plus_vlozh_6.setChecked(False)
-        else:
-            self.frame_57.show()
-            self.lineOfBorder_11.setText(self.actions[self.actions[self.index][5]['relativity']][1].text())
-            self.plus_vlozh_6.setText("-Вложенность")
-            self.plus_vlozh_6.setChecked(True)
-        self.lineOfX_20.setText(str(self.actions[self.index][5]['x'][0]))
-        self.lineOfY_20.setText(str(self.actions[self.index][5]['y'][0]))
+        try:
+            self.listOfFunction.setCurrentWidget(self.page_edit_5)
+            for elem in [self.title_btn, self.text_btn, self.image_btn, self.figure_btn, self.cyrcle_btn, self.pero_btn]:
+                elem.setChecked(False)
+            self.pushButton_2.setCursor(Qt.ArrowCursor)
+            for i in range(len(self.actions)):
+                if self.sender() in self.actions[i]:
+                    self.index = i
+                    break
+            self.lineOfName_13.setText(self.actions[self.index][1].text())
+            self.lineOfWidth_21.setText(str(self.actions[self.index][5]['width'][0]))
+            self.lineOfHeight_15.setText(str(self.actions[self.index][5]['height'][0]))
+            if self.actions[self.index][5]['color'] == ''\
+                    or self.actions[self.index][5]['color'] == 'black':
+                self.frame_135.hide()
+                self.plus_color_oval_2.setText("+Цвет")
+                self.plus_color_oval_2.setStyleSheet(button)
+                self.plus_color_oval_2.setChecked(False)
+            else:
+                self.frame_135.show()
+                self.lineOfColor_23.setText(self.actions[self.index][5]['color'])
+                self.plus_color_oval_2.setText("-Цвет")
+                self.plus_color_oval_2.setStyleSheet(hat)
+                self.plus_color_oval_2.setChecked(True)
+            if self.actions[self.index][5]['border'][0] == ''\
+                    or self.actions[self.index][5]['border'][0] == '0':
+                self.frame_136.hide()
+                self.plus_border_color_2.setText("+Окантовка")
+                self.plus_border_color_2.setStyleSheet(button)
+                self.plus_border_color_2.setChecked(False)
+            else:
+                self.frame_136.show()
+                self.lineOfBorder_8.setText(str(self.actions[self.index][5]['border'][0]))
+                self.plus_border_color_2.setText("-Окантовка")
+                self.plus_border_color_2.setStyleSheet(hat)
+                self.plus_border_color_2.setChecked(True)
+                self.border_raz_8.setText(self.actions[self.index][5]['border'][1])
+            if self.actions[self.index][5]['border_color'] == ''\
+                    or self.actions[self.index][5]['border_color'] == 'black':
+                self.frame_134.hide()
+                self.plus_colorofborder_oval_2.setText("+Цвет окантовки")
+                self.plus_colorofborder_oval_2.setStyleSheet(button)
+                self.plus_colorofborder_oval_2.setChecked(False)
+            else:
+                self.frame_134.show()
+                self.lineOfColor_22.setText(self.actions[self.index][5]['border_color'])
+                self.plus_colorofborder_oval_2.setText("-Цвет окантовки")
+                self.plus_colorofborder_oval_2.setStyleSheet(hat)
+                self.plus_colorofborder_oval_2.setChecked(True)
+            if self.actions[self.index][5]['relativity'] == -1:
+                self.frame_57.hide()
+                self.plus_vlozh_6.setText("+Вложенность")
+                self.plus_vlozh_6.setChecked(False)
+            else:
+                self.frame_57.show()
+                self.lineOfBorder_11.setText(self.actions[self.actions[self.index][5]['relativity']][1].text())
+                self.plus_vlozh_6.setText("-Вложенность")
+                self.plus_vlozh_6.setChecked(True)
+            self.lineOfX_20.setText(str(self.actions[self.index][5]['x'][0]))
+            self.lineOfY_20.setText(str(self.actions[self.index][5]['y'][0]))
 
-        self.width_raz_21.setText(self.actions[self.index][5]['width'][1])
-        self.height_raz_15.setText(self.actions[self.index][5]['height'][1])
-        self.x_raz_20.setText(self.actions[self.index][5]['x'][1])
-        self.y_raz_20.setText(self.actions[self.index][5]['y'][1])
+            self.width_raz_21.setText(self.actions[self.index][5]['width'][1])
+            self.height_raz_15.setText(self.actions[self.index][5]['height'][1])
+            self.x_raz_20.setText(self.actions[self.index][5]['x'][1])
+            self.y_raz_20.setText(self.actions[self.index][5]['y'][1])
+        except Exception as e:
+            logging.warning(e)
 
     def peroEdit(self):
         try:
@@ -1468,8 +1412,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.verticalLayout_32.itemAt(i).widget().setParent(None)
             for point in self.points:
                 self.verticalLayout_32.addWidget(point[0])
-        except Exception:
-            pass
+        except Exception as e:
+            logging.warning(e)
 
     def textChange(self):
         if self.sender() == self.soderzhanie_button_2:
@@ -1535,11 +1479,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                             'x': (self.lineOfX_3.text(), self.x_raz_3.text()),
                             'name': self.lineOfName_2.text(),
                             }
-                excep = False
+                excep = ''
                 if self.plus_shrift_text_2.isChecked():
                     if self.lineOfShrift_2.text() == '':
                         self.lineOfShrift_2.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['font'] = self.lineOfShrift_2.text()
                         self.lineOfShrift_2.setStyleSheet(norm)
@@ -1548,7 +1492,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_color_text_3.isChecked():
                     if self.lineOfColor_2.text() == '':
                         self.lineOfColor_2.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['color'] = self.lineOfColor_2.text()
                         self.lineOfColor_2.setStyleSheet(norm)
@@ -1557,7 +1501,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_width_text_2.isChecked():
                     if self.lineOfWidth_3.text() == '':
                         self.lineOfWidth_3.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['width'] = (self.lineOfWidth_3.text(), self.width_raz_3.text())
                         self.lineOfWidth_3.setStyleSheet(norm)
@@ -1566,7 +1510,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_vlozh_8.isChecked():
                     if self.lineOfBorder_13.text() == '':
                         self.lineOfBorder_13.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         for i in range(len(self.actions)):
                             if self.actions[i][1].text() == self.lineOfBorder_13.text():
@@ -1575,11 +1519,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                 break
                             elif i == len(self.actions):
                                 self.lineOfBorder_13.setStyleSheet(exception)
-                                excep = True
+                                excep = 'The object relative to which the positioning will be performed does not exist'
                 else:
                     settings['relativity'] = -1
                 if excep:
-                    raise Exception
+                    raise Exception(excep)
                 self.actions[self.index][5] = settings
                 self.actions[self.index][1].setText(self.lineOfName_2.text())
                 self.site.paragraph(text=settings['text'],
@@ -1597,117 +1541,101 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             except Exception as e:
                 logging.warning(e)
         elif self.sender() == self.deleteBut_2:
-            try:
-                self.site.undo(self.index)
-                self.site.save(r'templates/base.html')
-                self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
-                self.delActions(self.index)
-            except Exception as e:
-                logging.warning(e)
+            self.site.undo(self.index)
+            self.site.save(r'templates/base.html')
+            self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
+            self.delActions(self.index)
 
     def imageChange(self):
-        try:
-            if self.sender() == self.source_button_2:
-                h = QFileDialog.getOpenFileName(self, 'Выбрать картинку', '')[0]
-                if h:
-                    self.lineOfSource_2.setText(h)
-            elif self.sender() == self.width_button_4:
-                name, ok_pressed = QInputDialog.getInt(self, "Ширина", "Введите ширину картинки:", 0, 0, 1200, 1)
-                if ok_pressed:
-                    self.lineOfWidth_4.setText(str(name))
-            elif self.sender() == self.height_button_2:
-                name, ok_pressed = QInputDialog.getInt(self, "Ширина", "Введите высоту картинки:", 0, 0, 1200, 1)
-                if ok_pressed:
-                    self.lineOfHeight_2.setText(str(name))
-            elif self.sender() == self.width_raz_4:
-                name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для ширины картинки:",
-                                                        ("px", "%", "vw"), 1, False)
-                if ok_pressed:
-                    self.width_raz_4.setText(name)
-            elif self.sender() == self.height_raz_2:
-                name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для длины картинки:",
-                                                        ("px", "%", "vh"), 1, False)
-                if ok_pressed:
-                    self.height_raz_2.setText(name)
-            elif self.sender() == self.x_button_4:
-                name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, -100000, 100000, 1)
-                if ok_pressed:
-                    self.lineOfX_4.setText(str(name))
-            elif self.sender() == self.y_button_4:
-                name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, -100000, 100000, 1)
-                if ok_pressed:
-                    self.lineOfY_4.setText(str(name))
-            elif self.sender() == self.x_raz_4:
-                name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа слева:",
-                                                        ("px", "%"), 1, False)
-                if ok_pressed:
-                    self.x_raz_4.setText(name)
-            elif self.sender() == self.y_raz_4:
-                name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа сверху:",
-                                                        ("px", "%"), 1, False)
-                if ok_pressed:
-                    self.y_raz_4.setText(name)
-            elif self.sender() == self.border_button_6:
-                name, ok_pressed = QInputDialog.getItem(self, "Вложенность",
-                                                        "Выберете действие, относительно которого будет реализованна вложенность:",
-                                                        set([elem[1].text() for elem in self.actions]), 1, False)
-                if ok_pressed:
-                    self.lineOfBorder_6.setText(name)
-            elif self.sender() == self.editBut_3:
-                settings = {'src': self.lineOfSource_2.text(),
-                            'y': (int(self.lineOfY_4.text()), self.y_raz_4.text()),
-                            'x': (int(self.lineOfX_4.text()), self.x_raz_4.text()),
-                            'name': self.lineOfName_3.text()
-                            }
-                excep = False
-                if self.lineOfWidth_4.text() == '':
-                    self.lineOfWidth_4.setStyleSheet(exception)
-                    excep = True
+        if self.sender() == self.source_button_2:
+            h = QFileDialog.getOpenFileName(self, 'Выбрать картинку', '')[0]
+            if h:
+                self.lineOfSource_2.setText(h)
+        elif self.sender() == self.width_button_4:
+            name, ok_pressed = QInputDialog.getInt(self, "Ширина", "Введите ширину картинки:", 0, 0, 1200, 1)
+            if ok_pressed:
+                self.lineOfWidth_4.setText(str(name))
+        elif self.sender() == self.height_button_2:
+            name, ok_pressed = QInputDialog.getInt(self, "Ширина", "Введите высоту картинки:", 0, 0, 1200, 1)
+            if ok_pressed:
+                self.lineOfHeight_2.setText(str(name))
+        elif self.sender() == self.width_raz_4:
+            name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для ширины картинки:",
+                                                    ("px", "%", "vw"), 1, False)
+            if ok_pressed:
+                self.width_raz_4.setText(name)
+        elif self.sender() == self.height_raz_2:
+            name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для длины картинки:",
+                                                    ("px", "%", "vh"), 1, False)
+            if ok_pressed:
+                self.height_raz_2.setText(name)
+        elif self.sender() == self.x_button_4:
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ слева:", 0, -100000, 100000, 1)
+            if ok_pressed:
+                self.lineOfX_4.setText(str(name))
+        elif self.sender() == self.y_button_4:
+            name, ok_pressed = QInputDialog.getInt(self, "Отступ", "Введите отступ сверху:", 0, -100000, 100000, 1)
+            if ok_pressed:
+                self.lineOfY_4.setText(str(name))
+        elif self.sender() == self.x_raz_4:
+            name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа слева:",
+                                                    ("px", "%"), 1, False)
+            if ok_pressed:
+                self.x_raz_4.setText(name)
+        elif self.sender() == self.y_raz_4:
+            name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа сверху:",
+                                                    ("px", "%"), 1, False)
+            if ok_pressed:
+                self.y_raz_4.setText(name)
+        elif self.sender() == self.border_button_6:
+            name, ok_pressed = QInputDialog.getItem(self, "Вложенность",
+                                                    "Выберете действие, относительно которого будет реализованна вложенность:",
+                                                    set([elem[1].text() for elem in self.actions]), 1, False)
+            if ok_pressed:
+                self.lineOfBorder_6.setText(name)
+        elif self.sender() == self.editBut_3:
+            settings = {'src': self.lineOfSource_2.text(),
+                        'y': (int(self.lineOfY_4.text()), self.y_raz_4.text()),
+                        'x': (int(self.lineOfX_4.text()), self.x_raz_4.text()),
+                        'name': self.lineOfName_3.text(),
+                        'width': (int(self.lineOfWidth_4.text()), self.width_raz_4.text()),
+                        'height': (int(self.lineOfHeight_2.text()), self.height_raz_2.text())
+                        }
+            excep = ''
+            if self.plus_vlozh_3.isChecked():
+                if self.lineOfBorder_6.text() == '':
+                    self.lineOfBorder_6.setStyleSheet(exception)
+                    excep = 'All arguments are not filled in'
                 else:
-                    settings['width'] = (int(self.lineOfWidth_4.text()), self.width_raz_4.text())
-                    self.lineOfWidth_4.setStyleSheet(norm)
-                if self.lineOfHeight_2.text() == '':
-                    self.lineOfHeight_2.setStyleSheet(exception)
-                    excep = True
-                else:
-                    settings['height'] = (int(self.lineOfHeight_2.text()), self.height_raz_2.text())
-                    self.lineOfHeight_2.setStyleSheet(norm)
-                if self.plus_vlozh_3.isChecked():
-                    if self.lineOfBorder_6.text() == '':
-                        self.lineOfBorder_6.setStyleSheet(exception)
-                        excep = True
-                    else:
-                        for i in range(len(self.actions)):
-                            if self.actions[i][1].text() == self.lineOfBorder_6.text():
-                                settings['relativity'] = i
-                                self.lineOfBorder_6.setStyleSheet(norm)
-                                break
-                            elif i == len(self.actions):
-                                self.lineOfBorder_6.setStyleSheet(exception)
-                                excep = True
-                else:
-                    settings['relativity'] = -1
-                if excep:
-                    raise Exception
-                name = self.lineOfSource_2.text().split('/')[-1]
-                shutil.copy(self.lineOfSource_2.text(), f'static/img/' + name)
-                self.actions[self.index][5] = settings
-                self.actions[self.index][1].setText(self.lineOfName_3.text())
-                self.site.image(src=f"{f'/static/img/' + name}".replace('/', chr(92)),
-                                width=settings['width'],
-                                height=settings['height'],
-                                y=settings['y'],
-                                x=settings['x'], num=self.index, name=self.actions[self.index][1].text(),
-                                rel_index=settings['relativity'], change=True)
-                self.site.save(r'templates/base.html')
-                self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
-            elif self.sender() == self.deleteBut_3:
-                self.site.undo(self.index)
-                self.site.save(r'templates/base.html')
-                self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
-                self.delActions(self.index)
-        except Exception as e:
-            print(e)
+                    for i in range(len(self.actions)):
+                        if self.actions[i][1].text() == self.lineOfBorder_6.text():
+                            settings['relativity'] = i
+                            self.lineOfBorder_6.setStyleSheet(norm)
+                            break
+                        elif i == len(self.actions):
+                            self.lineOfBorder_6.setStyleSheet(exception)
+                            excep = 'The object relative to which the positioning will be performed does not exist'
+            else:
+                settings['relativity'] = -1
+            if excep:
+                raise Exception(excep)
+            name = self.lineOfSource_2.text().split('/')[-1]
+            shutil.copy(self.lineOfSource_2.text(), f'static/img/' + name)
+            self.actions[self.index][5] = settings
+            self.actions[self.index][1].setText(self.lineOfName_3.text())
+            self.site.image(src=f"{f'/static/img/' + name}".replace('/', chr(92)),
+                            width=settings['width'],
+                            height=settings['height'],
+                            y=settings['y'],
+                            x=settings['x'], num=self.index, name=self.actions[self.index][1].text(),
+                            rel_index=settings['relativity'], change=True)
+            self.site.save(r'templates/base.html')
+            self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
+        elif self.sender() == self.deleteBut_3:
+            self.site.undo(self.index)
+            self.site.save(r'templates/base.html')
+            self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
+            self.delActions(self.index)
 
     def rectChange(self):
         if self.sender() == self.width_button_7:
@@ -1743,78 +1671,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                     set([elem[1].text() for elem in self.actions]), 1, False)
             if ok_pressed:
                 self.lineOfBorder_4.setText(name)
-        elif self.sender() == self.editBut_4:
-            try:
-                settings = {'width': (int(self.lineOfWidth_7.text()), self.width_raz_7.text()),
-                            'height': (int(self.lineOfHeight_5.text()), self.height_raz_5.text()),
-                            'y': (int(self.lineOfY_7.text()), self.y_raz_7.text()),
-                            'x': (int(self.lineOfX_7.text()), self.x_raz_7.text()),
-                            'name': self.lineOfName_4.text()
-                            }
-                excep = False
-                if self.plus_color_rect_2.isChecked():
-                    if self.lineOfColor_8.text() == '':
-                        self.lineOfColor_8.setStyleSheet(exception)
-                        excep = True
-                    else:
-                        settings['color'] = self.lineOfColor_8.text()
-                        self.lineOfColor_8.setStyleSheet(norm)
-                else:
-                    settings['color'] = ''
-                if self.plus_border_rect_2.isChecked():
-                    if self.lineOfBorder_3.text() == '':
-                        self.lineOfBorder_3.setStyleSheet(exception)
-                        excep = True
-                    else:
-                        settings['border'] = (int(self.lineOfBorder_3.text()), self.border_raz_3.text())
-                        self.lineOfBorder_3.setStyleSheet(norm)
-                else:
-                    settings['border'] = ('', '')
-                if self.plus_colorofborder_rect_2.isChecked():
-                    if self.lineOfColor_7.text() == '':
-                        self.lineOfColor_7.setStyleSheet(exception)
-                        excep = True
-                    else:
-                        settings['border_color'] = self.lineOfColor_7.text()
-                        self.lineOfColor_7.setStyleSheet(norm)
-                else:
-                    settings['border_color'] = ''
-                if self.plus_vlozh_2.isChecked():
-                    if self.lineOfBorder_4.text() == '':
-                        self.lineOfBorder_4.setStyleSheet(exception)
-                        excep = True
-                    else:
-                        for i in range(len(self.actions)):
-                            if self.actions[i][1].text() == self.lineOfBorder_4.text():
-                                settings['relativity'] = i
-                                self.lineOfBorder_4.setStyleSheet(norm)
-                                break
-                            elif i == len(self.actions):
-                                self.lineOfBorder_4.setStyleSheet(exception)
-                                excep = True
-                else:
-                    settings['relativity'] = -1
-                if excep:
-                    raise Exception
-                self.actions[self.index][5] = settings
-                self.actions[self.index][1].setText(self.lineOfName_4.text())
-                self.site.square(color=settings['color'],
-                                 width=settings['width'],
-                                 height=settings['height'],
-                                 border=settings['border'],
-                                 border_color=settings['border_color'],
-                                 y=settings['y'],
-                                 x=settings['x'], num=self.index, name=self.actions[self.index][1].text(),
-                                 rel_index=settings['relativity'], change=True)
-                self.site.save(r'templates/base.html')
-                self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
-            except Exception as e:
-                logging.warning(e)
-        elif self.sender() == self.deleteBut_4:
-            self.site.undo(self.index)
-            self.site.save(r'templates/base.html')
-            self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
-            self.delActions(self.index)
         elif self.sender() == self.width_raz_7:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность:",
                                                     ("px", "%", "vw"), 1, False)
@@ -1840,6 +1696,78 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                     ("px", "%"), 1, False)
             if ok_pressed:
                 self.y_raz_7.setText(name)
+        elif self.sender() == self.editBut_4:
+            try:
+                settings = {'width': (int(self.lineOfWidth_7.text()), self.width_raz_7.text()),
+                            'height': (int(self.lineOfHeight_5.text()), self.height_raz_5.text()),
+                            'y': (int(self.lineOfY_7.text()), self.y_raz_7.text()),
+                            'x': (int(self.lineOfX_7.text()), self.x_raz_7.text()),
+                            'name': self.lineOfName_4.text()
+                            }
+                excep = ''
+                if self.plus_color_rect_2.isChecked():
+                    if self.lineOfColor_8.text() == '':
+                        self.lineOfColor_8.setStyleSheet(exception)
+                        excep = 'All arguments are not filled in'
+                    else:
+                        settings['color'] = self.lineOfColor_8.text()
+                        self.lineOfColor_8.setStyleSheet(norm)
+                else:
+                    settings['color'] = ''
+                if self.plus_border_rect_2.isChecked():
+                    if self.lineOfBorder_3.text() == '':
+                        self.lineOfBorder_3.setStyleSheet(exception)
+                        excep = 'All arguments are not filled in'
+                    else:
+                        settings['border'] = (int(self.lineOfBorder_3.text()), self.border_raz_3.text())
+                        self.lineOfBorder_3.setStyleSheet(norm)
+                else:
+                    settings['border'] = ('', '')
+                if self.plus_colorofborder_rect_2.isChecked():
+                    if self.lineOfColor_7.text() == '':
+                        self.lineOfColor_7.setStyleSheet(exception)
+                        excep = 'All arguments are not filled in'
+                    else:
+                        settings['border_color'] = self.lineOfColor_7.text()
+                        self.lineOfColor_7.setStyleSheet(norm)
+                else:
+                    settings['border_color'] = ''
+                if self.plus_vlozh_2.isChecked():
+                    if self.lineOfBorder_4.text() == '':
+                        self.lineOfBorder_4.setStyleSheet(exception)
+                        excep = 'All arguments are not filled in'
+                    else:
+                        for i in range(len(self.actions)):
+                            if self.actions[i][1].text() == self.lineOfBorder_4.text():
+                                settings['relativity'] = i
+                                self.lineOfBorder_4.setStyleSheet(norm)
+                                break
+                            elif i == len(self.actions):
+                                self.lineOfBorder_4.setStyleSheet(exception)
+                                excep = 'The object relative to which the positioning will be performed does not exist'
+                else:
+                    settings['relativity'] = -1
+                if excep:
+                    raise Exception(excep)
+                self.actions[self.index][5] = settings
+                self.actions[self.index][1].setText(self.lineOfName_4.text())
+                self.site.square(color=settings['color'],
+                                 width=settings['width'],
+                                 height=settings['height'],
+                                 border=settings['border'],
+                                 border_color=settings['border_color'],
+                                 y=settings['y'],
+                                 x=settings['x'], num=self.index, name=self.actions[self.index][1].text(),
+                                 rel_index=settings['relativity'], change=True)
+                self.site.save(r'templates/base.html')
+                self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
+            except Exception as e:
+                logging.warning(e)
+        elif self.sender() == self.deleteBut_4:
+            self.site.undo(self.index)
+            self.site.save(r'templates/base.html')
+            self.webEngineView.setUrl(QUrl.fromLocalFile(r'\templates\base.html'))
+            self.delActions(self.index)
 
     def ovalChange(self):
         if self.sender() == self.width_button_21:
@@ -1908,11 +1836,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                             'x': (int(self.lineOfX_20.text()), self.x_raz_20.text()),
                             'name': self.lineOfName_13.text()
                             }
-                excep = False
+                excep = ''
                 if self.plus_color_oval_2.isChecked():
                     if self.lineOfColor_23.text() == '':
                         self.lineOfColor_23.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['color'] = self.lineOfColor_23.text()
                         self.lineOfColor_23.setStyleSheet(norm)
@@ -1921,7 +1849,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_border_color_2.isChecked():
                     if self.lineOfBorder_8.text() == '':
                         self.lineOfBorder_8.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['border'] = (int(self.lineOfBorder_8.text()), self.border_raz_8.text())
                         self.lineOfBorder_8.setStyleSheet(norm)
@@ -1930,7 +1858,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_colorofborder_oval_2.isChecked():
                     if self.lineOfColor_22.text() == '':
                         self.lineOfColor_22.setStyleSheet(exception)
-                        excep = True
+                        excep = 'All arguments are not filled in'
                     else:
                         settings['border_color'] = self.lineOfColor_22.text()
                         self.lineOfColor_22.setStyleSheet(norm)
@@ -1939,7 +1867,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if self.plus_vlozh_6.isChecked():
                     if self.lineOfBorder_11.text() == '':
                         self.lineOfBorder_11.setStyleSheet(exception)
-                        excep = True
+                        excep ='All arguments are not filled in'
                     else:
                         for i in range(len(self.actions)):
                             if self.actions[i][1].text() == self.lineOfBorder_11.text():
@@ -1948,11 +1876,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                 break
                             elif i == len(self.actions):
                                 self.lineOfBorder_11.setStyleSheet(exception)
-                                excep = True
+                                excep = 'The object relative to which the positioning will be performed does not exist'
                 else:
                     settings['relativity'] = -1
                 if excep:
-                    raise Exception
+                    raise Exception(excep)
                 self.actions[self.index][5] = settings
                 self.actions[self.index][1].setText(self.lineOfName_13.text())
                 self.site.oval(color=settings['color'],
@@ -2000,7 +1928,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                     self.pero_index = None
                 self.delActions(self.index)
             except Exception as e:
-                pass
+                logging.warning(e)
 
     def changeName(self):
         name, ok_pressed = QInputDialog.getText(self, "Название", "Введите новое название:")
