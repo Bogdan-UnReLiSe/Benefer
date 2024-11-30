@@ -228,8 +228,6 @@ class Tracker(QPushButton):
 
 
 """self.webEngineView = QtWebEngineWidgets.QWebEngineView(self.MainWidget)
-        self.webEngineView.setMinimumSize(QtCore.QSize(1200, 675))
-        self.webEngineView.setMaximumSize(QtCore.QSize(1200, 675))
         self.webEngineView.setObjectName("webEngineView")
         self.gridLayout_3.addWidget(self.webEngineView, 1, 1, 1, 1)"""
 

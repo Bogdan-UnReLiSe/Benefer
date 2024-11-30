@@ -486,7 +486,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.lineOfIcon.setText(h)
                 name = h.split('/')[-1]
                 shutil.copy(self.lineOfIcon.text(), f'static/img/' + name)
-                self.site.icon(f'/static/img/' + name)
+                self.site.icon(f'static/img/' + name)
                 icon = QtGui.QIcon()
                 icon.addPixmap(QtGui.QPixmap(f'static/img/' + name), QtGui.QIcon.Normal, QtGui.QIcon.Off)
                 self.title_btn_25.setIcon(icon)
