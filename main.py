@@ -30,7 +30,16 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.count = 0
 
         # Загрузка звука клика на кнопку
-        self.load_mp3('Sound/click_sound.mp3')
+        media = QtCore.QUrl.fromLocalFile('Sound/click_sound.mp3')
+        content = QtMultimedia.QMediaContent(media)
+        self.click = QtMultimedia.QMediaPlayer()
+        self.click.setMedia(content)
+
+        # Загрузка лучшего звука в мире
+        media = QtCore.QUrl.fromLocalFile('Sound/aaaaflp.mp3')
+        content = QtMultimedia.QMediaContent(media)
+        self.wb = QtMultimedia.QMediaPlayer()
+        self.wb.setMedia(content)
 
         self.patternBut.clicked.connect(self.openProj)
 
@@ -41,7 +50,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         # Найстрока двух основных сцен программы(Начальной и Главной)
         self.TwoMainWindow.setCurrentWidget(self.Intro)
         self.lauchBut.clicked.connect(self.toMainWidget)
-        self.lauchBut.clicked.connect(self.player.play)
+        self.lauchBut.clicked.connect(self.click.play)
 
         # Настройка работы listOfFunction (Группа виджетов с различными функциями для редактирования)
         self.listOfFunction.setHidden(True)
@@ -53,13 +62,14 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.cyrcle_btn.clicked.connect(self.switchLishOfFunction)
         self.pero_btn.clicked.connect(self.switchLishOfFunction)
         self.size_btn.clicked.connect(self.switchLishOfFunction)
+        self.back_btn.clicked.connect(self.back_func)
 
-        self.title_btn.clicked.connect(self.player.play)
-        self.text_btn.clicked.connect(self.player.play)
-        self.image_btn.clicked.connect(self.player.play)
-        self.figure_btn.clicked.connect(self.player.play)
-        self.cyrcle_btn.clicked.connect(self.player.play)
-        self.pero_btn.clicked.connect(self.player.play)
+        self.title_btn.clicked.connect(self.click.play)
+        self.text_btn.clicked.connect(self.click.play)
+        self.image_btn.clicked.connect(self.click.play)
+        self.figure_btn.clicked.connect(self.click.play)
+        self.cyrcle_btn.clicked.connect(self.click.play)
+        self.pero_btn.clicked.connect(self.click.play)
 
         # Настройка кнопки для сохранения файлов
         self.MainLogo.clicked.connect(self.saving)
@@ -80,7 +90,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.y_raz.clicked.connect(self.textSettings)
         self.x_raz.clicked.connect(self.textSettings)
 
-        self.createText_button.clicked.connect(self.player.play)
+        self.createText_button.clicked.connect(self.click.play)
 
         # Настройка кнопок для редактирования заголовка
         self.header_button.clicked.connect(self.tabSettings)
@@ -93,7 +103,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.x_button_2.clicked.connect(self.imageSettings)
         self.y_button_2.clicked.connect(self.imageSettings)
         self.createImage_button.clicked.connect(self.imageSettings)
-        self.createImage_button.clicked.connect(self.player.play)
+        self.createImage_button.clicked.connect(self.click.play)
         self.border_button_9.clicked.connect(self.imageSettings)
 
         self.width_raz_2.clicked.connect(self.imageSettings)
@@ -111,7 +121,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.y_button_5.clicked.connect(self.rectSettings)
         self.border_button_5.clicked.connect(self.rectSettings)
         self.createRect_button.clicked.connect(self.rectSettings)
-        self.createRect_button.clicked.connect(self.player.play)
+        self.createRect_button.clicked.connect(self.click.play)
 
 
         self.width_raz_5.clicked.connect(self.rectSettings)
@@ -129,7 +139,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.x_button_19.clicked.connect(self.ovalSettings)
         self.y_button_19.clicked.connect(self.ovalSettings)
         self.createOval_button.clicked.connect(self.ovalSettings)
-        self.createOval_button.clicked.connect(self.player.play)
+        self.createOval_button.clicked.connect(self.click.play)
         self.border_button_10.clicked.connect(self.ovalSettings)
 
         self.width_raz_13.clicked.connect(self.ovalSettings)
@@ -149,7 +159,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 
         # Настройка панели действий
         self.listOfActions.setHidden(True)
-        self.ActionsButton.clicked.connect(self.player.play)
+        self.ActionsButton.clicked.connect(self.click.play)
         self.ActionsButton.clicked.connect(self.hideListOfAction)
 
         self.soderzhanie_button_2.clicked.connect(self.textChange)
@@ -373,12 +383,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             sw = PlayWidget()
             sw.show()
 
-    # Функция отвечает за загрузку музыкального файла и создание объекта плеера, в котором эта музыка будет содержаться.
-    def load_mp3(self, filename):
-        media = QtCore.QUrl.fromLocalFile(filename)
-        content = QtMultimedia.QMediaContent(media)
-        self.player = QtMultimedia.QMediaPlayer()
-        self.player.setMedia(content)
+    def back_func(self):
+        self.TwoMainWindow.setCurrentWidget(self.Intro)
 
     # Функция для скрытия и появления listOfFunction
     def hideOrAppearListOfFunction(self):
@@ -1026,6 +1032,9 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 logging.warning(e)
         elif event.key() == Qt.Key_Escape:
             self.TwoMainWindow.setCurrentWidget(self.Intro)
+        elif event.key() == (Qt.Key_Control and Qt.Key_W):
+            self.wb.play()
+
 
     # Функция для скрытие/открытия листа с действиями
     def hideListOfAction(self):
@@ -1121,7 +1130,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                                                 "    border-radius: 12px\n"
                                                 "}")
         self.actions[-1][4].addWidget(self.actions[-1][3], 1, 0, 1, 2)
-        self.actions[-1][3].clicked.connect(self.player.play)
+        self.actions[-1][3].clicked.connect(self.click.play)
         self.actions[-1][3].clicked.connect(self.appearListOfFunction)
         if mode == 'Text':
             self.actions[-1][3].clicked.connect(self.textEdit)

@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
         self.widgetWithLeftButton.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.widgetWithLeftButton.setObjectName("widgetWithLeftButton")
         self.gridLayout_25 = QtWidgets.QGridLayout(self.widgetWithLeftButton)
-        self.gridLayout_25.setContentsMargins(-1, -1, -1, 23)
+        self.gridLayout_25.setContentsMargins(9, 9, -1, 25)
         self.gridLayout_25.setObjectName("gridLayout_25")
         self.title_btn = QtWidgets.QPushButton(self.widgetWithLeftButton)
         self.title_btn.setEnabled(True)
@@ -285,6 +285,34 @@ class Ui_MainWindow(object):
         self.size_btn.setFlat(True)
         self.size_btn.setObjectName("size_btn")
         self.gridLayout_25.addWidget(self.size_btn, 7, 0, 1, 1)
+        self.back_btn = QtWidgets.QPushButton(self.widgetWithLeftButton)
+        self.back_btn.setMinimumSize(QtCore.QSize(48, 48))
+        self.back_btn.setMaximumSize(QtCore.QSize(48, 48))
+        self.back_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.back_btn.setStyleSheet("QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:checked {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.back_btn.setText("")
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap("Picture/back.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.back_btn.setIcon(icon8)
+        self.back_btn.setIconSize(QtCore.QSize(32, 32))
+        self.back_btn.setCheckable(True)
+        self.back_btn.setFlat(True)
+        self.back_btn.setObjectName("back_btn")
+        self.back_btn.setCheckable(False)
+        self.gridLayout_25.addWidget(self.back_btn, 8, 0, 1, 1)
         self.gridLayout_7.addWidget(self.widgetWithLeftButton, 1, 0, 1, 1)
         self.listOfActions = QtWidgets.QScrollArea(self.MainWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
@@ -363,9 +391,9 @@ class Ui_MainWindow(object):
 "}")
         self.MainLogo.setLocale(QtCore.QLocale(QtCore.QLocale.Russian, QtCore.QLocale.Ukraine))
         self.MainLogo.setText("")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("Picture/save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.MainLogo.setIcon(icon8)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap("Picture/save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.MainLogo.setIcon(icon9)
         self.MainLogo.setIconSize(QtCore.QSize(32, 32))
         self.MainLogo.setFlat(True)
         self.MainLogo.setObjectName("MainLogo")
@@ -393,9 +421,9 @@ class Ui_MainWindow(object):
 "}")
         self.play_btn.setLocale(QtCore.QLocale(QtCore.QLocale.Russian, QtCore.QLocale.Ukraine))
         self.play_btn.setText("")
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("Picture/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.play_btn.setIcon(icon9)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap("Picture/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.play_btn.setIcon(icon10)
         self.play_btn.setIconSize(QtCore.QSize(36, 36))
         self.play_btn.setFlat(True)
         self.play_btn.setObjectName("play_btn")
@@ -479,9 +507,9 @@ class Ui_MainWindow(object):
 "    border-radius: 12px\n"
 "}")
         self.ActionsButton.setText("")
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap("Picture/Actions.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.ActionsButton.setIcon(icon10)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap("Picture/Actions.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.ActionsButton.setIcon(icon11)
         self.ActionsButton.setIconSize(QtCore.QSize(32, 32))
         self.ActionsButton.setCheckable(True)
         self.ActionsButton.setObjectName("ActionsButton")
@@ -4168,6 +4196,8 @@ class Ui_MainWindow(object):
         self.gridLayout_26.setContentsMargins(15, 15, 15, 15)
         self.gridLayout_26.setSpacing(10)
         self.gridLayout_26.setObjectName("gridLayout_26")
+        spacerItem16 = QtWidgets.QSpacerItem(20, 631, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_26.addItem(spacerItem16, 3, 0, 1, 1)
         self.pushButton_13 = QtWidgets.QPushButton(self.page_7)
         self.pushButton_13.setMinimumSize(QtCore.QSize(120, 50))
         self.pushButton_13.setMaximumSize(QtCore.QSize(120, 16777215))
@@ -4184,95 +4214,6 @@ class Ui_MainWindow(object):
 "font-size: 16pt;")
         self.pushButton_13.setObjectName("pushButton_13")
         self.gridLayout_26.addWidget(self.pushButton_13, 0, 0, 1, 1)
-        self.frame_89 = QtWidgets.QFrame(self.page_7)
-        self.frame_89.setMinimumSize(QtCore.QSize(120, 72))
-        self.frame_89.setMaximumSize(QtCore.QSize(120, 72))
-        self.frame_89.setStyleSheet("color: rgb(0, 0, 0);\n"
-"background-color: rgb(255, 255, 255);\n"
-"border-radius: 16px\n"
-"")
-        self.frame_89.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_89.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_89.setObjectName("frame_89")
-        self.gridLayout_127 = QtWidgets.QGridLayout(self.frame_89)
-        self.gridLayout_127.setObjectName("gridLayout_127")
-        self.lineOfWidth_16 = QtWidgets.QPushButton(self.frame_89)
-        self.lineOfWidth_16.setEnabled(False)
-        self.lineOfWidth_16.setMinimumSize(QtCore.QSize(64, 28))
-        self.lineOfWidth_16.setMaximumSize(QtCore.QSize(64, 28))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        self.lineOfWidth_16.setFont(font)
-        self.lineOfWidth_16.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lineOfWidth_16.setStyleSheet("QPushButton {\n"
-"    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 12px\n"
-"}")
-        self.lineOfWidth_16.setIconSize(QtCore.QSize(32, 32))
-        self.lineOfWidth_16.setFlat(False)
-        self.lineOfWidth_16.setObjectName("lineOfWidth_16")
-        self.gridLayout_127.addWidget(self.lineOfWidth_16, 1, 1, 1, 1)
-        self.width_button_16 = QtWidgets.QPushButton(self.frame_89)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.width_button_16.sizePolicy().hasHeightForWidth())
-        self.width_button_16.setSizePolicy(sizePolicy)
-        self.width_button_16.setMinimumSize(QtCore.QSize(100, 28))
-        self.width_button_16.setMaximumSize(QtCore.QSize(100, 28))
-        font = QtGui.QFont()
-        font.setFamily("Yu Gothic UI Semibold")
-        font.setPointSize(8)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(7)
-        self.width_button_16.setFont(font)
-        self.width_button_16.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.width_button_16.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.width_button_16.setObjectName("width_button_16")
-        self.gridLayout_127.addWidget(self.width_button_16, 0, 0, 1, 2)
-        self.width_raz_16 = QtWidgets.QPushButton(self.frame_89)
-        self.width_raz_16.setEnabled(True)
-        self.width_raz_16.setMinimumSize(QtCore.QSize(28, 28))
-        self.width_raz_16.setMaximumSize(QtCore.QSize(28, 28))
-        self.width_raz_16.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.width_raz_16.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(76, 76, 76);\n"
-"    border-radius: 12px\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(116, 116, 116);\n"
-"    border-radius: 12px\n"
-"}")
-        self.width_raz_16.setIconSize(QtCore.QSize(32, 32))
-        self.width_raz_16.setFlat(False)
-        self.width_raz_16.setObjectName("width_raz_16")
-        self.gridLayout_127.addWidget(self.width_raz_16, 1, 0, 1, 1)
-        self.gridLayout_26.addWidget(self.frame_89, 1, 0, 1, 1)
         self.frame_65 = QtWidgets.QFrame(self.page_7)
         self.frame_65.setMinimumSize(QtCore.QSize(120, 72))
         self.frame_65.setMaximumSize(QtCore.QSize(120, 72))
@@ -4362,46 +4303,95 @@ class Ui_MainWindow(object):
         self.height_raz_4.setObjectName("height_raz_4")
         self.gridLayout_103.addWidget(self.height_raz_4, 1, 0, 1, 1)
         self.gridLayout_26.addWidget(self.frame_65, 2, 0, 1, 1)
-        spacerItem16 = QtWidgets.QSpacerItem(20, 621, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_26.addItem(spacerItem16, 3, 0, 1, 1)
-        self.createSize_button = QtWidgets.QPushButton(self.page_7)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        self.frame_89 = QtWidgets.QFrame(self.page_7)
+        self.frame_89.setMinimumSize(QtCore.QSize(120, 72))
+        self.frame_89.setMaximumSize(QtCore.QSize(120, 72))
+        self.frame_89.setStyleSheet("color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);\n"
+"border-radius: 16px\n"
+"")
+        self.frame_89.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_89.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_89.setObjectName("frame_89")
+        self.gridLayout_127 = QtWidgets.QGridLayout(self.frame_89)
+        self.gridLayout_127.setObjectName("gridLayout_127")
+        self.lineOfWidth_16 = QtWidgets.QPushButton(self.frame_89)
+        self.lineOfWidth_16.setEnabled(False)
+        self.lineOfWidth_16.setMinimumSize(QtCore.QSize(64, 28))
+        self.lineOfWidth_16.setMaximumSize(QtCore.QSize(64, 28))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.lineOfWidth_16.setFont(font)
+        self.lineOfWidth_16.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineOfWidth_16.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 12px\n"
+"}")
+        self.lineOfWidth_16.setIconSize(QtCore.QSize(32, 32))
+        self.lineOfWidth_16.setFlat(False)
+        self.lineOfWidth_16.setObjectName("lineOfWidth_16")
+        self.gridLayout_127.addWidget(self.lineOfWidth_16, 1, 1, 1, 1)
+        self.width_button_16 = QtWidgets.QPushButton(self.frame_89)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.createSize_button.sizePolicy().hasHeightForWidth())
-        self.createSize_button.setSizePolicy(sizePolicy)
-        self.createSize_button.setMinimumSize(QtCore.QSize(120, 0))
-        self.createSize_button.setMaximumSize(QtCore.QSize(120, 0))
+        sizePolicy.setHeightForWidth(self.width_button_16.sizePolicy().hasHeightForWidth())
+        self.width_button_16.setSizePolicy(sizePolicy)
+        self.width_button_16.setMinimumSize(QtCore.QSize(100, 28))
+        self.width_button_16.setMaximumSize(QtCore.QSize(100, 28))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI Semibold")
-        font.setBold(True)
-        font.setWeight(75)
-        self.createSize_button.setFont(font)
-        self.createSize_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.createSize_button.setStyleSheet("QPushButton {\n"
-"    background-color: black;\n"
-"    border-style: outset;\n"
-"    border-width: 4px;\n"
-"    border-radius: 16px;\n"
-"    border-color: rgb(42, 220, 10);\n"
-"    color: white;\n"
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(7)
+        self.width_button_16.setFont(font)
+        self.width_button_16.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.width_button_16.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    border-style: none;\n"
-"    background-color:rgb(42, 220, 10);\n"
-"    border-radius: 16px;\n"
-"    color: white;\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    border-style: none;\n"
-"    background-color:rgb(72, 250, 50);\n"
-"    border-radius: 16px;\n"
-"    color: white;\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
 "}")
-        self.createSize_button.setObjectName("createSize_button")
-        self.gridLayout_26.addWidget(self.createSize_button, 4, 0, 1, 1)
+        self.width_button_16.setObjectName("width_button_16")
+        self.gridLayout_127.addWidget(self.width_button_16, 0, 0, 1, 2)
+        self.width_raz_16 = QtWidgets.QPushButton(self.frame_89)
+        self.width_raz_16.setEnabled(True)
+        self.width_raz_16.setMinimumSize(QtCore.QSize(28, 28))
+        self.width_raz_16.setMaximumSize(QtCore.QSize(28, 28))
+        self.width_raz_16.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.width_raz_16.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 63 8pt \"Yu Gothic UI Semibold\";\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(76, 76, 76);\n"
+"    border-radius: 12px\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(116, 116, 116);\n"
+"    border-radius: 12px\n"
+"}")
+        self.width_raz_16.setIconSize(QtCore.QSize(32, 32))
+        self.width_raz_16.setFlat(False)
+        self.width_raz_16.setObjectName("width_raz_16")
+        self.gridLayout_127.addWidget(self.width_raz_16, 1, 0, 1, 1)
+        self.gridLayout_26.addWidget(self.frame_89, 1, 0, 1, 1)
         self.listOfFunction.addWidget(self.page_7)
         self.page_edit = QtWidgets.QWidget()
         self.page_edit.setStyleSheet("background-color: rgb(40, 40, 40);")
@@ -9007,9 +8997,9 @@ class Ui_MainWindow(object):
         self.pushButton_3.setMinimumSize(QtCore.QSize(280, 100))
         self.pushButton_3.setMaximumSize(QtCore.QSize(280, 100))
         self.pushButton_3.setText("")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap("Picture/NameLogo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_3.setIcon(icon11)
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap("Picture/NameLogo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_3.setIcon(icon12)
         self.pushButton_3.setIconSize(QtCore.QSize(280, 100))
         self.pushButton_3.setObjectName("pushButton_3")
         self.gridLayout_45.addWidget(self.pushButton_3, 0, 0, 1, 1)
@@ -9039,6 +9029,7 @@ class Ui_MainWindow(object):
         self.cyrcle_btn.setToolTip(_translate("MainWindow", "Настройка овалов"))
         self.pero_btn.setToolTip(_translate("MainWindow", "Настрока пера"))
         self.size_btn.setToolTip(_translate("MainWindow", "Изменить окно сайта"))
+        self.back_btn.setToolTip(_translate("MainWindow", "Изменить окно сайта"))
         self.pushButton_8.setText(_translate("MainWindow", "Действия"))
         self.MainLogo.setToolTip(_translate("MainWindow", "Сохранить сайт"))
         self.play_btn.setToolTip(_translate("MainWindow", "Запуск сайта"))
@@ -9140,13 +9131,12 @@ class Ui_MainWindow(object):
         self.title_btn_44.setText(_translate("MainWindow", "#"))
         self.newPero.setText(_translate("MainWindow", "Создать новое"))
         self.pushButton_13.setText(_translate("MainWindow", "Размер"))
-        self.lineOfWidth_16.setText(_translate("MainWindow", "1200"))
-        self.width_button_16.setText(_translate("MainWindow", "Ширина"))
-        self.width_raz_16.setText(_translate("MainWindow", "px"))
         self.lineOfHeight_4.setText(_translate("MainWindow", "675"))
         self.height_button_4.setText(_translate("MainWindow", "Высота"))
         self.height_raz_4.setText(_translate("MainWindow", "px"))
-        self.createSize_button.setText(_translate("MainWindow", "Создать"))
+        self.lineOfWidth_16.setText(_translate("MainWindow", "1200"))
+        self.width_button_16.setText(_translate("MainWindow", "Ширина"))
+        self.width_raz_16.setText(_translate("MainWindow", "px"))
         self.pushButton_6.setText(_translate("MainWindow", "Вкладка"))
         self.title_btn_16.setText(_translate("MainWindow", "T"))
         self.header_button_2.setText(_translate("MainWindow", "Заголовок"))
