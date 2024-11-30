@@ -882,7 +882,7 @@ QPushButton:pressed {
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="toolTip">
-              <string comment="Bebra" extracomment="Bebra">Запуск сайта</string>
+              <string>Запуск сайта</string>
              </property>
              <property name="accessibleName">
               <string/>
@@ -949,6 +949,9 @@ QPushButton:pressed {
                <height>48</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Вкладка сайта</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">background-color: rgb(255, 255, 255);
 font: 63 8pt &quot;Yu Gothic UI Semibold&quot;;
@@ -997,12 +1000,19 @@ font-size: 16pt;</string>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
+                <property name="toolTip">
+                 <string>Лого сайта в браузере</string>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 16px;</string>
                 </property>
                 <property name="text">
                  <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>Picture/Logo.png</normaloff>Picture/Logo.png</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1044,6 +1054,9 @@ border-radius: 16px;</string>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
+                <property name="toolTip">
+                 <string>Название сайта в браузере</string>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
 	color: rgb(0, 0, 0);
@@ -1053,7 +1066,7 @@ border-radius: 16px;</string>
 }</string>
                 </property>
                 <property name="text">
-                 <string/>
+                 <string>Имя сайта</string>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1182,7 +1195,7 @@ QPushButton:checked {
            <string notr="true">background-color: rgb(40, 40, 40);</string>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="page">
            <property name="styleSheet">
@@ -8779,8 +8792,8 @@ border-color: rgb(255, 0, 4);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>150</width>
+                 <height>586</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -17751,8 +17764,8 @@ border-color: rgb(255, 0, 4);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>150</width>
-                 <height>497</height>
+                 <width>100</width>
+                 <height>30</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_30">

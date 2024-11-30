@@ -71,6 +71,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.webEngineView, 1, 1, 1, 1)
         self.pushButton_2 = Tracker(self.widget)
         self.pushButton_2.interaction(self)
+        self.pushButton_2.setToolTip("Содержание сайта")
         self.pushButton_2.setEnabled(True)
         self.pushButton_2.setGeometry(QtCore.QRect(0, 0, 1185, 660))
         self.pushButton_2.setMinimumSize(QtCore.QSize(1185, 660))
@@ -398,6 +399,7 @@ class Ui_MainWindow(object):
         self.title_btn_25.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 16px;")
         self.title_btn_25.setText("")
+        self.title_btn_25.setIcon(icon)
         self.title_btn_25.setIconSize(QtCore.QSize(36, 36))
         self.title_btn_25.setFlat(False)
         self.title_btn_25.setObjectName("title_btn_25")
@@ -420,7 +422,6 @@ class Ui_MainWindow(object):
 "    border-radius: 16px;\n"
 "    font: 63 12pt \"Yu Gothic UI Semibold\";\n"
 "}")
-        self.lineOfSource_3.setText("")
         self.lineOfSource_3.setIconSize(QtCore.QSize(32, 32))
         self.lineOfSource_3.setFlat(False)
         self.lineOfSource_3.setObjectName("lineOfSource_3")
@@ -4089,7 +4090,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 150, 586))
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_7.setContentsMargins(0, 10, 0, 10)
@@ -8418,7 +8419,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_6 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 150, 497))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 100, 30))
         self.scrollAreaWidgetContents_6.setObjectName("scrollAreaWidgetContents_6")
         self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_30.setContentsMargins(0, 10, 0, 10)
@@ -8759,7 +8760,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.TwoMainWindow.setCurrentIndex(0)
-        self.listOfFunction.setCurrentIndex(2)
+        self.listOfFunction.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -8773,7 +8774,11 @@ class Ui_MainWindow(object):
         self.pero_btn.setToolTip(_translate("MainWindow", "Настрока пера"))
         self.pushButton_8.setText(_translate("MainWindow", "Действия"))
         self.MainLogo.setToolTip(_translate("MainWindow", "Сохранить сайт"))
-        self.play_btn.setToolTip(_translate("MainWindow", "Запуск сайта", "Bebra"))
+        self.play_btn.setToolTip(_translate("MainWindow", "Запуск сайта"))
+        self.frame_22.setToolTip(_translate("MainWindow", "Вкладка сайта"))
+        self.title_btn_25.setToolTip(_translate("MainWindow", "Лого сайта в браузере"))
+        self.lineOfSource_3.setToolTip(_translate("MainWindow", "Название сайта в браузере"))
+        self.lineOfSource_3.setText(_translate("MainWindow", "Имя сайта"))
         self.ActionsButton.setToolTip(_translate("MainWindow", "Недавние действия"))
         self.pushButton_4.setText(_translate("MainWindow", "Вкладка"))
         self.title_btn_3.setText(_translate("MainWindow", "T"))
@@ -8984,13 +8989,3 @@ class Ui_MainWindow(object):
         self.lauchBut.setText(_translate("MainWindow", "Создать"))
         self.helpBut.setText(_translate("MainWindow", "Помощь"))
         self.action.setText(_translate("MainWindow", "Посмотреть код"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
