@@ -46,7 +46,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.lineOfWidth_14.setText('5')
         self.pero_index = None
 
-
         # Найстрока двух основных сцен программы(Начальной и Главной)
         self.TwoMainWindow.setCurrentWidget(self.Intro)
         self.lauchBut.clicked.connect(self.toMainWidget)
@@ -122,7 +121,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.border_button_5.clicked.connect(self.rectSettings)
         self.createRect_button.clicked.connect(self.rectSettings)
         self.createRect_button.clicked.connect(self.click.play)
-
 
         self.width_raz_5.clicked.connect(self.rectSettings)
         self.height_raz_3.clicked.connect(self.rectSettings)
@@ -461,6 +459,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
     # Функция для переключения с Начальной к Главной сцене
     def toMainWidget(self):
         self.TwoMainWindow.setCurrentWidget(self.MainWidget)
+        self.lauchBut.setText('Продолжить')
 
     # Функция для сохранения файла с сайтом
     def saving(self):
@@ -644,22 +643,22 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.lineOfY_2.setText(str(name))
         elif self.sender() == self.width_raz_2:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для ширины картинки:",
-                                                    ("px", "%", "vw"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.width_raz_2.setText(name)
         elif self.sender() == self.height_raz:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для длины картинки:",
-                                                    ("px", "%", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.height_raz.setText(name)
         elif self.sender() == self.x_raz_2:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа слева:",
-                                                    ("px", "%", "vw", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.x_raz_2.setText(name)
         elif self.sender() == self.y_raz_2:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа сверху:",
-                                                    ("px", "%", "vw", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.y_raz_2.setText(name)
         elif self.sender() == self.border_button_9:
@@ -671,10 +670,32 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             try:
                 excep, settings = '', {}
 
-                settings['width'] = (int(self.lineOfWidth_2.text()), self.width_raz_2.text())
-                settings['height'] = (int(self.lineOfHeight.text()), self.height_raz.text())
-                settings['y'] = (int(self.lineOfY_2.text()), self.y_raz_2.text())
-                settings['x'] = (int(self.lineOfX_2.text()), self.x_raz_2.text())
+                if (width := -1 * int(self.lineOfWidth_2.text())) > 0:
+                    settings['width'] = (width, self.width_raz_2.text())
+                    if self.width_raz_2.text() == self.x_raz_2.text():
+                        settings['x'] = (int(self.lineOfX_2.text()) - width, self.x_raz_2.text())
+                    elif self.width_raz_2.text() == '%':
+                        settings['x'] = (int(self.lineOfX_2.text()) - width * (self.widget.width() / 100),
+                                         self.x_raz_2.text())
+                    else:
+                        settings['x'] = (int(self.lineOfX_2.text()) - width / (self.widget.width() / 100),
+                                         self.x_raz_2.text())
+                else:
+                    settings['width'] = (-1 * width, self.width_raz_2.text())
+                    settings['x'] = (int(self.lineOfX_2.text()), self.x_raz_2.text())
+                if (height := -1 * int(self.lineOfHeight.text())) > 0:
+                    settings['height'] = (height, self.height_raz.text())
+                    if self.y_raz_2.text() == self.height_raz.text():
+                        settings['y'] = (int(self.lineOfY_2.text()) - height, self.y_raz_2.text())
+                    elif self.height_raz.text() == '%':
+                        settings['y'] = (int(self.lineOfY_2.text()) - height * (self.widget.height() / 100),
+                                         self.y_raz_2.text())
+                    else:
+                        settings['y'] = (int(self.lineOfY_2.text()) - height / (self.widget.height() / 100),
+                                         self.y_raz_2.text())
+                else:
+                    settings['height'] = (-1 * height, self.height_raz_9.text())
+                    settings['y'] = (int(self.lineOfY_19.text()), self.y_raz_2.text())
 
                 name = self.lineOfSource.text().split('/')[-1]
                 shutil.copy(self.lineOfSource.text(), f'static/img/' + name)
@@ -743,18 +764,19 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             if ok_pressed:
                 self.lineOfY_5.setText(str(name))
         elif self.sender() == self.border_button_5:
-            name, ok_pressed = QInputDialog.getItem(self, "Вложенность", "Выберете действие, относительно которого будет реализованна вложенность:",
+            name, ok_pressed = QInputDialog.getItem(self, "Вложенность",
+                                                    "Выберете действие, относительно которого будет реализованна вложенность:",
                                                     set([elem[1].text() for elem in self.actions]), 1, False)
             if ok_pressed:
                 self.lineOfBorder_5.setText(name)
         elif self.sender() == self.width_raz_5:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность:",
-                                                    ("px", "%", "vw", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.width_raz_5.setText(name)
         elif self.sender() == self.height_raz_3:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность:",
-                                                    ("px", "%", "vh", "vw"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.height_raz_3.setText(name)
         elif self.sender() == self.border_raz:
@@ -764,22 +786,44 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.border_raz.setText(name)
         elif self.sender() == self.x_raz_5:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа слева:",
-                                                    ("px", "%", "vw", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.x_raz_5.setText(name)
         elif self.sender() == self.y_raz_5:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа сверху:",
-                                                    ("px", "%", "vw", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.y_raz_5.setText(name)
         elif self.sender() == self.createRect_button:
             try:
                 excep, settings = '', {}
 
-                settings['width'] = (int(self.lineOfWidth_5.text()), self.width_raz_5.text())
-                settings['height'] = (int(self.lineOfHeight_3.text()), self.height_raz_3.text())
-                settings['y'] = (int(self.lineOfY_5.text()), self.y_raz_5.text())
-                settings['x'] = (int(self.lineOfX_5.text()), self.x_raz_5.text())
+                if (width := -1 * int(self.lineOfWidth_5.text())) > 0:
+                    settings['width'] = (width, self.width_raz_5.text())
+                    if self.width_raz_5.text() == self.x_raz_5.text():
+                        settings['x'] = (int(self.lineOfX_5.text()) - width, self.x_raz_5.text())
+                    elif self.width_raz_5.text() == '%':
+                        settings['x'] = (int(self.lineOfX_5.text()) - width * (self.widget.width() / 100),
+                                         self.x_raz_5.text())
+                    else:
+                        settings['x'] = (int(self.lineOfX_5.text()) - width / (self.widget.width() / 100),
+                                         self.x_raz_5.text())
+                else:
+                    settings['width'] = (-1 * width, self.width_raz_5.text())
+                    settings['x'] = (int(self.lineOfX_5.text()), self.x_raz_5.text())
+                if (height := -1 * int(self.lineOfHeight_3.text())) > 0:
+                    settings['height'] = (height, self.height_raz_3.text())
+                    if self.y_raz_5.text() == self.height_raz_3.text():
+                        settings['y'] = (int(self.lineOfY_5.text()) - height, self.y_raz_5.text())
+                    elif self.height_raz_3.text() == '%':
+                        settings['y'] = (int(self.lineOfY_5.text()) - height * (self.widget.height() / 100),
+                                         self.y_raz_5.text())
+                    else:
+                        settings['y'] = (int(self.lineOfY_5.text()) - height / (self.widget.height() / 100),
+                                         self.y_raz_5.text())
+                else:
+                    settings['height'] = (-1 * height, self.height_raz_3.text())
+                    settings['y'] = (int(self.lineOfY_5.text()), self.y_raz_5.text())
 
                 if self.plus_color_rect.isChecked():
                     if self.lineOfColor_3.text() == '':
@@ -825,10 +869,10 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                     settings['relativity'] = -1
                 if settings['width'][0] == 0 or settings['height'][0] == 0:
                     excep = 'Incorrect size'
-
                 if excep:
                     raise Exception(excep)
                 self.newAction('Rect', settings)
+                print(settings)
                 self.site.square(color=settings['color'],
                                  width=settings['width'],
                                  height=settings['height'],
@@ -874,12 +918,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.lineOfY_19.setText(str(name))
         elif self.sender() == self.width_raz_13:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность:",
-                                                    ("px", "%", "vw", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.width_raz_13.setText(name)
         elif self.sender() == self.height_raz_9:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность:",
-                                                    ("px", "%", "vh", "vw"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.height_raz_9.setText(name)
         elif self.sender() == self.border_raz_7:
@@ -889,12 +933,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 self.border_raz_7.setText(name)
         elif self.sender() == self.x_raz_19:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа слева:",
-                                                    ("px", "%", "vw", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.x_raz_19.setText(name)
         elif self.sender() == self.y_raz_19:
             name, ok_pressed = QInputDialog.getItem(self, "Размерность", "Выберете размерность для отступа сверху:",
-                                                    ("px", "%", "vw", "vh"), 1, False)
+                                                    ("px", "%"), 1, False)
             if ok_pressed:
                 self.y_raz_19.setText(name)
         elif self.sender() == self.border_button_10:
@@ -906,17 +950,32 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             try:
                 excep, settings = '', {}
 
-                self.lineOfWidth_13.setStyleSheet(norm)
-                settings['width'] = (int(self.lineOfWidth_13.text()), self.width_raz_13.text())
-
-                self.lineOfHeight_9.setStyleSheet(norm)
-                settings['height'] = (int(self.lineOfHeight_9.text()), self.height_raz_9.text())
-
-                self.lineOfX_19.setStyleSheet(norm)
-                settings['x'] = (int(self.lineOfX_19.text()), self.x_raz_19.text())
-
-                self.lineOfY_19.setStyleSheet(norm)
-                settings['y'] = (int(self.lineOfY_19.text()), self.y_raz_19.text())
+                if (width := -1 * int(self.lineOfWidth_13.text())) > 0:
+                    settings['width'] = (width, self.width_raz_13.text())
+                    if self.width_raz_13.text() == self.x_raz_19.text():
+                        settings['x'] = (int(self.lineOfX_19.text()) - width, self.x_raz_19.text())
+                    elif self.width_raz_13.text() == '%':
+                        settings['x'] = (int(self.lineOfX_19.text()) - width * (self.widget.width() / 100),
+                                         self.x_raz_19.text())
+                    else:
+                        settings['x'] = (int(self.lineOfX_19.text()) - width / (self.widget.width() / 100),
+                                         self.x_raz_19.text())
+                else:
+                    settings['width'] = (-1 * width, self.width_raz_13.text())
+                    settings['x'] = (int(self.lineOfX_19.text()), self.x_raz_19.text())
+                if (height := -1 * int(self.lineOfHeight_9.text())) > 0:
+                    settings['height'] = (height, self.height_raz_9.text())
+                    if self.y_raz_19.text() == self.height_raz_9.text():
+                        settings['y'] = (int(self.lineOfY_19.text()) - height, self.y_raz_19.text())
+                    elif self.height_raz_9.text() == '%':
+                        settings['y'] = (int(self.lineOfY_19.text()) - height * (self.widget.height() / 100),
+                                         self.y_raz_19.text())
+                    else:
+                        settings['y'] = (int(self.lineOfY_19.text()) - height / (self.widget.height() / 100),
+                                         self.y_raz_19.text())
+                else:
+                    settings['height'] = (-1 * height, self.height_raz_9.text())
+                    settings['y'] = (int(self.lineOfY_19.text()), self.y_raz_19.text())
 
                 if self.plus_color_oval.isChecked():
                     if self.lineOfColor_13.text() == '':
@@ -1028,13 +1087,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                     self.newPero.hide()
                     self.pero_index = None
                 self.delActions(-1)
-            except Exception as e:
-                logging.warning(e)
+            except Exception:
+                pass
         elif event.key() == Qt.Key_Escape:
             self.TwoMainWindow.setCurrentWidget(self.Intro)
         elif event.key() == (Qt.Key_Control and Qt.Key_W):
             self.wb.play()
-
 
     # Функция для скрытие/открытия листа с действиями
     def hideListOfAction(self):
@@ -2468,9 +2526,7 @@ class KeyWidget(QWidget, Ui_Key):
         self.pushButton_5.clicked.connect(self.get_key)
 
     def get_key(self):
-        if self.lineEdit.text() == '':
-            pass
-        else:
+        if self.lineEdit.text():
             benefer.key = self.lineEdit.text()
             with open('cash\key.txt', 'w') as file:
                 file.write(benefer.key)
