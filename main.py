@@ -5,11 +5,9 @@ from PyQt5.QtCore import Qt, QUrl
 
 from style import Ui_MainWindow
 from style_fw import Ui_Key
-from style_sw import Ui_StartServer
 
 from PyQt5 import QtCore, QtMultimedia, QtGui, QtWidgets
 from data.css import *
-import subprocess
 import os
 import shutil
 import glob
@@ -25,7 +23,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        with open('cash\key.txt', 'r') as file:
+        with open(r'cash\key.txt', 'r') as file:
             self.key = file.read()
         self.count = 0
 
@@ -372,14 +370,13 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             logging.warning(e)
 
     def play(self):
-        global fw, sw
         if self.key == '':
             fw = KeyWidget()
             fw.show()
-            os.system(f'xTunnel -k {self.key}')
         else:
-            sw = PlayWidget()
-            sw.show()
+            benefer.site.save(r"templates/base.html")
+            os.system(f'start /min python server.py')
+            os.system(f'ngrok http 5000')
 
     def back_func(self):
         self.TwoMainWindow.setCurrentWidget(self.Intro)
@@ -694,8 +691,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                         settings['y'] = (int(self.lineOfY_2.text()) - height / (self.widget.height() / 100),
                                          self.y_raz_2.text())
                 else:
-                    settings['height'] = (-1 * height, self.height_raz_9.text())
-                    settings['y'] = (int(self.lineOfY_19.text()), self.y_raz_2.text())
+                    settings['height'] = (-1 * height, self.height_raz.text())
+                    settings['y'] = (int(self.lineOfY_2.text()), self.y_raz_2.text())
 
                 name = self.lineOfSource.text().split('/')[-1]
                 shutil.copy(self.lineOfSource.text(), f'static/img/' + name)
@@ -872,7 +869,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
                 if excep:
                     raise Exception(excep)
                 self.newAction('Rect', settings)
-                print(settings)
                 self.site.square(color=settings['color'],
                                  width=settings['width'],
                                  height=settings['height'],
@@ -2528,40 +2524,9 @@ class KeyWidget(QWidget, Ui_Key):
     def get_key(self):
         if self.lineEdit.text():
             benefer.key = self.lineEdit.text()
-            with open('cash\key.txt', 'w') as file:
+            with open(r'cash\key.txt', 'w') as file:
                 file.write(benefer.key)
             self.close()
-
-
-class PlayWidget(QWidget, Ui_StartServer):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-        self.pushButton_5.clicked.connect(self.cmd)
-        self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_AttributeCount)
-        self.closeBut.clicked.connect(self.close)
-        self.closeBut_2.clicked.connect(self.minimize)
-
-    def close(self):
-        self.hide()
-
-    def mousePressEvent(self, event):
-        self.dragPos = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        self.move(self.pos() + event.globalPos() - self.dragPos)
-        self.dragPos = event.globalPos()
-        event.accept()
-
-    def cmd(self):
-        benefer.site.save(r"templates/base.html")
-        os.system(f'start /min python server.py')
-        self.hide()
-        subprocess.run(['cmd'])
-
-    def minimize(self):
-        self.showMinimized()
 
 
 if __name__ == '__main__':
