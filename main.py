@@ -27,6 +27,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.key = file.read()
         self.count = 0
 
+        self.setGeometry(100, 100, 100, 100)
+        
         # Загрузка звука клика на кнопку
         media = QtCore.QUrl.fromLocalFile('Sound/click_sound.mp3')
         content = QtMultimedia.QMediaContent(media)

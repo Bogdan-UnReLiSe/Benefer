@@ -408,7 +408,6 @@ class Title:
 
 
 class SiteBuilder:
-
     def __init__(self, file=''):
         self.code = []
         self.prev = []
@@ -472,7 +471,7 @@ class SiteBuilder:
                        '\twindow.canvas = document.getElementById("example");\n',
                        '\twindow.canvas.height = window.innerHeight;\n',
                        '\twindow.canvas.width = window.innerWidth;\n', self.js_condition,
-                       f'\twindow.ctx = canvas.getContext(\'2d\');\n', '</script>\n']
+                       f'window.ctx = canvas.getContext(\'2d\');\n', '</script>\n']
         self.canvas = list(map(lambda s: '\t\t' + s, self.canvas))
 
     @staticmethod

@@ -12,8 +12,6 @@ from data.css import *
 class Tracker(QPushButton):
     def interaction(self, object):
         self.object = object
-        self.delta_x = 0
-        self.delta_y = 0
 
     # Метод для передачи основного класса приложения в данный
     def mousePressEvent(self, event):
@@ -222,7 +220,7 @@ class Tracker(QPushButton):
             self.object.createImage_button.click()
 
 
-"""self.webEngineView = QtWebEngineWidgets.QWebEngineView(self.MainWidget)
-        self.webEngineView.setObjectName("webEngineView")
+"""self.webEngineView = QWebEngineView(self.MainWidget)
+        self.webEngineView.page().settings().setAttribute(QWebEngineSettings.ShowScrollBars, False)
         self.gridLayout_3.addWidget(self.webEngineView, 1, 1, 1, 1)"""
 
