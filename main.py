@@ -2314,7 +2314,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         files = glob.glob('static/img/*')
         for f in files:
             os.remove(f)
-        os.remove('templates/base.html')
+        with open('templates/base.html', 'w') as f: pass
         sys.exit(0)
 
     def changePrior(self):
