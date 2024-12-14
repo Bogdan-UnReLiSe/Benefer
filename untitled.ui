@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1740</width>
-    <height>1100</height>
+    <width>1600</width>
+    <height>954</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -58,7 +58,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="TwoMainWindow">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="MainWidget">
        <layout class="QGridLayout" name="gridLayout_7">
@@ -776,7 +776,7 @@ QPushButton:checked {
              <x>0</x>
              <y>0</y>
              <width>148</width>
-             <height>1032</height>
+             <height>886</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1290,7 +1290,7 @@ QPushButton:checked {
            <string notr="true">background-color: rgb(40, 40, 40);</string>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="page">
            <property name="styleSheet">
@@ -8887,8 +8887,8 @@ border-color: rgb(255, 0, 4);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>83</width>
+                 <height>22</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -18291,8 +18291,8 @@ border-color: rgb(255, 0, 4);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>83</width>
+                 <height>22</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -19024,6 +19024,313 @@ QPushButton:pressed {
            </spacer>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="Support">
+       <layout class="QGridLayout" name="gridLayout_28">
+        <item row="2" column="3">
+         <spacer name="horizontalSpacer_11">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>167</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="2">
+         <spacer name="verticalSpacer_21">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>109</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>167</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_19">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>109</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="1" rowspan="2" colspan="2">
+         <widget class="QScrollArea" name="scrollArea_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>1230</width>
+            <height>700</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1330</width>
+            <height>700</height>
+           </size>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>-637</y>
+             <width>1273</width>
+             <height>1467</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_27">
+            <property name="leftMargin">
+             <number>9</number>
+            </property>
+            <property name="topMargin">
+             <number>9</number>
+            </property>
+            <property name="rightMargin">
+             <number>64</number>
+            </property>
+            <property name="bottomMargin">
+             <number>9</number>
+            </property>
+            <property name="spacing">
+             <number>9</number>
+            </property>
+            <item row="2" column="1">
+             <widget class="QTextEdit" name="textEdit_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>1155</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1155</width>
+                <height>36</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="2">
+             <widget class="QTextEdit" name="textEdit">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>1200</width>
+                <height>675</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1200</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QPushButton" name="title_btn_27">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>36</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>36</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>ArrowCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>Лого сайта в браузере</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 16px;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>Picture/Logo.png</normaloff>Picture/Logo.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>36</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QPushButton" name="title_btn_26">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>36</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>36</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>ArrowCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>Лого сайта в браузере</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 16px;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>Picture/Logo.png</normaloff>Picture/Logo.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>36</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QTextEdit" name="textEdit_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>1155</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1155</width>
+                <height>36</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="2">
+             <widget class="QTextEdit" name="textEdit_4">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>1200</width>
+                <height>675</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1200</width>
+                <height>675</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </item>
        </layout>
       </widget>

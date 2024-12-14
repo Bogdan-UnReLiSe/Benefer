@@ -46,9 +46,10 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.lineOfWidth_14.setText('5')
         self.pero_index = None
 
-        # Найстрока двух основных сцен программы(Начальной и Главной)
+        # Найстрока трёх основных сцен программы(Начальной, Главной и Поддержки)
         self.TwoMainWindow.setCurrentWidget(self.Intro)
         self.lauchBut.clicked.connect(self.toMainWidget)
+        self.helpBut.clicked.connect(self.toSupportWidget)
         self.lauchBut.clicked.connect(self.click.play)
 
         # Настройка работы listOfFunction (Группа виджетов с различными функциями для редактирования)
@@ -459,6 +460,10 @@ class MyWidget(QMainWindow, Ui_MainWindow):
     def toMainWidget(self):
         self.TwoMainWindow.setCurrentWidget(self.MainWidget)
         self.lauchBut.setText('Продолжить')
+
+    #Функция для переключения с Начальной к сцене поддержке
+    def toSupportWidget(self):
+        self.TwoMainWindow.setCurrentWidget(self.Support)
 
     # Функция для сохранения файла с сайтом
     def saving(self):
