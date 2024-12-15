@@ -47,10 +47,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.pero_index = None
 
         # Найстрока трёх основных сцен программы(Начальной, Главной и Поддержки)
-        self.TwoMainWindow.setCurrentWidget(self.Intro)
+        self.ThreeMainWindow.setCurrentWidget(self.Intro)
         self.lauchBut.clicked.connect(self.toMainWidget)
         self.helpBut.clicked.connect(self.toSupportWidget)
         self.lauchBut.clicked.connect(self.click.play)
+
+        self.back_btn_2.clicked.connect(self.back_func)
 
         # Настройка работы listOfFunction (Группа виджетов с различными функциями для редактирования)
         self.listOfFunction.setHidden(True)
@@ -382,7 +384,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             os.system(f'ngrok http 5000')
 
     def back_func(self):
-        self.TwoMainWindow.setCurrentWidget(self.Intro)
+        self.ThreeMainWindow.setCurrentWidget(self.Intro)
 
     # Функция для скрытия и появления listOfFunction
     def hideOrAppearListOfFunction(self):
@@ -458,12 +460,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 
     # Функция для переключения с Начальной к Главной сцене
     def toMainWidget(self):
-        self.TwoMainWindow.setCurrentWidget(self.MainWidget)
+        self.ThreeMainWindow.setCurrentWidget(self.MainWidget)
         self.lauchBut.setText('Продолжить')
 
     #Функция для переключения с Начальной к сцене поддержке
     def toSupportWidget(self):
-        self.TwoMainWindow.setCurrentWidget(self.Support)
+        self.ThreeMainWindow.setCurrentWidget(self.Support)
 
     # Функция для сохранения файла с сайтом
     def saving(self):
@@ -1093,9 +1095,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             except Exception:
                 pass
         elif event.key() == Qt.Key_Escape:
-            self.TwoMainWindow.setCurrentWidget(self.Intro)
+            self.ThreeMainWindow.setCurrentWidget(self.Intro)
         elif event.key() == (Qt.Key_Control and Qt.Key_W):
             self.wb.play()
+        elif event.key() == (Qt.Key_Control and Qt.Key_S):
+            if self.ThreeMainWindow.currentWidget() == self.MainWidget:
+                self.saving()
 
     # Функция для скрытие/открытия листа с действиями
     def hideListOfAction(self):
